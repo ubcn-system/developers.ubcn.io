@@ -1,0 +1,21 @@
+---
+title: 2024-07-18 업데이트
+releasedAt: 2024-07-25
+writtenAt: 2024-07-18
+---
+
+import SubTitle from "/src/components/SubTitle.astro";
+import ContentHeader from "/src/components/ContentHeader.astro";
+import Footer from "/src/components/Footer.astro";
+
+<SubTitle style="etc">
+  {frontmatter.title}
+</SubTitle>
+
+## 주요 업데이트 사항
+<ContentHeader>✔️ 이 기능이 추가 될 예정입니다.</ContentHeader>
+이제 이 기능을 통해 한 번에 조회할 수 있습니다.
+[VMMS-운영자판기 관리](https://vmms.ubcn.co.kr/service/ServiceOVM) 페이지에서 확인하실 수 있습니다.
+
+<ContentHeader>✔️ 이 기능도 추가되었습니다.</ContentHeader>
+<Footer date={frontmatter.writtenAt.slice(0, 10)}></Footer>
