@@ -11,7 +11,7 @@ export default defineConfig({
         light: './src/assets/logo/logo_blue.png',
         dark: './src/assets/logo/logo_white.png',
       },
-      favicon: './src/assets/logo/favicon.png',
+      favicon: '/favicon.png',
       customCss: ['./src/assets/styles/style.css'],
       social: {
         github: 'https://github.com/ubcn-system/developers.ubcn.io',
