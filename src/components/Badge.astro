@@ -1,7 +1,22 @@
 ---
-const cls = `inline-block rounded-sm bg-orange px-1.5 text-sm color-white font-bold`;
+interface Props {
+  style: "web" | "api" | "batch" | "online" | "database" ;
+}
+const {style} = Astro.props;
+const cls = `inline-block rounded-sm px-1.5 text-sm color-white font-bold ${
+    style === "web"
+        ? "bg-blue"
+        : style === "api"
+            ? "bg-orange"
+            : style === "batch"
+                ? "bg-green-6"
+                : style === "online"
+                    ? "bg-indigo-6"
+                    : style === "database"
+                        ? "bg-red"
+                        : ""
+}`;
 ---
 <span class={cls}>
-<slot />
+<slot/>
 </span>
-<br>

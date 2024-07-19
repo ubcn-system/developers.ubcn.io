@@ -1,20 +1,22 @@
 ---
 title: 서비스 프로세스
-no: 1
+sidebar:
+  order: 1
 releasedAt: 2024-07-05
 writtenAt: 2024-07-08
 ---
 
 import Hint from "/src/components/Hint.astro";
+import Badge from "/src/components/Badge.astro";
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-## ✔️ 릴리즈 노트 서비스 프로세스
+## ✔️ 서비스 프로세스
 
-<Hint style="etc">
+<Hint style="info">
 📘 **릴리즈노트는 서비스 배포의 일정과 내용을 기록하는 서비스 입니다.**
 </Hint>
-
+<Badge style={'web'}>울지마</Badge>\
 전반적인 프로세스는 다음과 같으며 유비씨엔의 모든 서비스는 해당 프로세스를 이용하고 있다고 가정합니다.
-
 - 유비씨엔 시스템은 **사전에 공유된 일정** 또는 **정기 배포일정** 에 맞추어 배포합니다.
 - 유비씨엔 시스템의 최소 개발 공수 단위는 테스트를 포함한 기간 **2주** 입니다.
 - 프로젝트는 최소 **2명 이상의 개발자**가 참여합니다.
@@ -24,3 +26,10 @@ import Hint from "/src/components/Hint.astro";
 - **배포 전, 후 테스트**를 진행합니다.
 - **팀장 또는 PM**이 배포를 승인합니다.
 - **배포 후**에는 **배포 내용을 기록, 공유**합니다.
+
+_별:_
+
+<Tabs syncKey="별자리">
+  <TabItem label="오리온자리">벨라트릭스, 리겔, 베텔게우스</TabItem>
+  <TabItem label="쌍둥이자리">폴룩스, 캐스터 A, 캐스터 B</TabItem>
+</Tabs>

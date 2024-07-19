@@ -27,7 +27,7 @@ export default defineConfig({
       sidebar: [
         {
           label: '서비스 가이드',
-          collapsed: true,
+          collapsed: false,
           autogenerate: {directory: 'guides'},
         },
         {

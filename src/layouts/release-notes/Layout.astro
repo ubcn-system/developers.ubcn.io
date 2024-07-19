@@ -13,6 +13,7 @@ const { date } = Astro.props;
       <div>{frontmatter.title} 소식을 안내드립니다.</div>
       <img src="https://iubc.co.kr/assets/banner_1920x700.png" alt="banner" />
       <br>
+      <h2 id="주요 업데이트 사항">주요 업데이트 사항</h2>
     </div>
   </head>
   <body>
@@ -20,7 +21,6 @@ const { date } = Astro.props;
   </body>
   <footer>
     <div class="mt-10 flex flex-col gap-2">
-      <br />
     </div>
     <p class="self-end">작성일자: {frontmatter.writtenAt.slice(0, 10)}</p>
     <br />

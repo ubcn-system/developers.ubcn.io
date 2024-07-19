@@ -289,6 +289,14 @@ ol, ul, menu {
   gap: 8px;
 }
 
+starlight-tabs [role=tablist]{
+  flex-direction: row !important;
+  list-style: none !important;
+}
+
+:where(.astro-esqgolmp)[role=tablist]{
+  border-bottom: 0;
+}
 
 dialog {
   padding: 0
@@ -1075,6 +1083,10 @@ img, video {
 
 .mr-1\.75rem {
   margin-right: 1.75rem
+}
+
+.mr-1 {
+  margin-right: .25rem
 }
 
 .mr-2 {
@@ -1871,11 +1883,6 @@ img, video {
 .bg-orange-7 {
   --un-bg-opacity: 1;
   background-color: rgb(194 65 12 / var(--un-bg-opacity))
-}
-
-.bg-portone {
-  --un-bg-opacity: 1;
-  background-color: rgb(252 107 45 / var(--un-bg-opacity))
 }
 
 .bg-purple {

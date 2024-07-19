@@ -3,6 +3,7 @@
 유비씨엔 개발자센터 저장소입니다.
 ## 문서 수정하기
 각 카테고리에 맞는 폴더에 문서를 추가하거나 수정하면 됩니다.
+[별도의 문서](./DOCS_GUIDE.md)를 참고해 주세요.
 
 ## 개발환경 구성하기
 
@@ -21,6 +22,8 @@
 ```sh
 npm install
 npm start # http://localhost:4321/ 접속
+npm run build
+npm preview
 ```
 
 --------
