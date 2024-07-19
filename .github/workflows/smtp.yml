@@ -2,8 +2,8 @@ name: Send Email
 
 on:
   push:
-    branches:
-      - main
+      paths:
+        -'/src/content/docs/release-notes/*'
 
 jobs:
   send_email:
