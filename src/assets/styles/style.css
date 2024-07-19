@@ -140,9 +140,10 @@ h3 {
   font-size: 1.375rem !important;
   line-height: 1.25 !important;
   letter-spacing: -.018em !important;
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   margin: 12px 0px !important;
   scroll-margin-top: 5.2rem !important;
+  color: #353841 !important;
 }
 
 p {
