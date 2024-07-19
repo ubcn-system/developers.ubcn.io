@@ -1,23 +1,16 @@
 ---
-title: 2024-07-18 업데이트
-releasedAt: 2024-07-18
-writtenAt: 2024-07-18
+layout: ../../../../layouts/Layout.astro
+title: '나의 첫 MDX 게시물'
+publishDate: '21 September 2022'
 ---
+import BaseLayout from '../../../..//layouts/Layout.astro';
 
-import SubTitle from "/src/components/SubTitle.astro";
-import Badge from "/src/components/Badge.astro";
-import ContentHeader from "/src/components/ContentHeader.astro";
-import Footer from "/src/components/Footer.astro";
+export function fancyJsHelper() {
+  return "YAML로 시도해 보세요!";
+}
 
-<SubTitle style="etc">
-  {frontmatter.title}
-</SubTitle>
+모든 프런트매터 속성은 Astro 레이아웃 컴포넌트에 대한 props로 사용할 수 있습니다.
 
-## 주요 업데이트 사항
-<Badge>VMMS</Badge>
-<ContentHeader>✔️ 이 기능이 추가되었습니다.</ContentHeader>
-이제 이 기능을 통해 한 번에 조회할 수 있습니다.
-[VMMS-운영자판기 관리](https://vmms.ubcn.co.kr/service/ServiceOVM) 페이지에서 확인하실 수 있습니다.
+`layout` 속성은 Astro에서 제공하는 유일한 특수 속성입니다.
 
-<ContentHeader>✔️ 이 기능도 추가되었습니다.</ContentHeader>
-<Footer date={frontmatter.writtenAt.slice(0, 10)}></Footer>
+`src/pages/` 디렉터리에 있는 Markdown 및 MDX 파일 모두에서 사용할 수 있습니다.
