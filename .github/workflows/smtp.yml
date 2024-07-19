@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '16'
 
       # 파일을 읽어 메일을 받는 사람(RECEIVER_EMAIL)를 환경변수로 설정 
       - name: Read mail receiver
