@@ -65,6 +65,7 @@ export default defineConfig({
                         },
                     ],
                 },
+                {label: 'API', autogenerate: {directory: 'api'}, collapsed: false},
             ],
         })
         ,
