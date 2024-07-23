@@ -24,7 +24,7 @@ const shouldRenderSearch =
                     릴리즈 노트
                   </span>
             </a>
-            <a class="h-full inline-flex items-center px-4" href="/#" onclick="alert('준비 중인 페이지입니다.')">
+            <a class="h-full inline-flex items-center px-4" href="/api">
                   <span>
                     API
                   </span>
@@ -35,11 +35,11 @@ const shouldRenderSearch =
     <div class="sl-flex">
       {shouldRenderSearch && <Search {...Astro.props} />}
     </div>
-    <div class="sl-hidden md:sl-flex right-group">
+<!--    <div class="sl-hidden md:sl-flex right-group">
         <div class="sl-flex social-icons">
             <SocialIcons {...Astro.props} />
         </div>
-    </div>
+    </div>-->
 </div>
 
 <style>
