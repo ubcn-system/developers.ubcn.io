@@ -158,3 +158,53 @@ import logo from "./_assets/sample.png";
   
       export const components = prose;
       ```
+
+## 문서 작성 샘플
+```md
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 릴리즈노트 샘플
+releasedAt: 2024-00-00
+writtenAt: 2024-07-19
+---
+
+
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import { Aside } from '@astrojs/starlight/components';
+
+import sample1 from "./_assets/sample.png";
+import sample3 from "./_assets/sample3.svg";
+
+{/*프로젝트 명, 같은 내용이 여러 프로젝트에서 진행될 경우 ', '로 구분*/}
+<Badge style={'web'}>web</Badge>
+<Badge style={'batch'}>batch</Badge>
+<Badge style={'api'}>api</Badge>
+<Badge style={'online'}>online</Badge>
+<Badge style={'database'}>database</Badge>
+### ✔️제목 샘플 입니다.
+<Figure src={sample3} caption={"팝업 이미지"}/>
+이미지가 추가될 경우, Header 바로 밑에 입력해주세요.
+
+<Aside>
+    ```mdx
+    // A code snippet, for example.
+    ```
+</Aside>
+
+<Badge style={'web'}>vmms</Badge>
+<Badge style={'web'}>biz</Badge>
+### ✔️팝업 이미지 반응형 업데이트
+<Figure src={sample1} caption={"팝업 이미지"}/>
+팝업 이미지의 해상도가 접속한 환경에 따라 조정되도록 반응형으로 변경되었어요.\
+접속한 브라우저 환경에 따라 팝업의 해상도가 자동으로 바뀝니다.\
+[VMMS-운영자판기 관리](https://vmms.ubcn.co.kr/service/ServiceOVM) 페이지에서 확인하실 수 있습니다.
+<br/>
+
+<Badge style={'devapi'}>개발API</Badge>
+### ✔️개발API 설정 변경
+팝업 이미지의 해상도가 접속한 환경에 따라 조정되도록 반응형으로 변경되었어요.\
+접속한 브라우저 환경에 따라 팝업의 해상도가 자동으로 바뀝니다.\
+[VMMS-운영자판기 관리](https://vmms.ubcn.co.kr/service/ServiceOVM) 페이지에서 확인하실 수 있습니다.
+<br/>
+```

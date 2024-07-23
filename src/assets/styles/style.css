@@ -1631,6 +1631,12 @@ img, video {
   word-break: keep-all
 }
 
+#category-group::before{
+  content: "";
+  height: 2rem;
+  border-inline-end: 1px solid var(--sl-color-gray-5);
+}
+
 .b, .border, .border-1 {
   border-width: 1px
 }
@@ -1731,7 +1737,7 @@ img, video {
   border-bottom-color: rgb(255 255 255 / var(--un-border-bottom-opacity))
 }
 
-.border-l-portone {
+.border-l-ubcn {
   --un-border-opacity: 1;
   --un-border-left-opacity: var(--un-border-opacity);
   border-left-color: rgb(252 107 45 / var(--un-border-left-opacity))
@@ -1741,7 +1747,7 @@ img, video {
   border-left-color: transparent
 }
 
-.border-t-portone {
+.border-t-ubcn {
   --un-border-opacity: 1;
   --un-border-top-opacity: var(--un-border-opacity);
   border-top-color: rgb(252 107 45 / var(--un-border-top-opacity))
@@ -1969,7 +1975,7 @@ img, video {
   background-color: rgb(255 255 255 / var(--un-bg-opacity))
 }
 
-.active\:bg-portone:active {
+.active\:bg-ubcn:active {
   --un-bg-opacity: 1;
   background-color: rgb(252 107 45 / var(--un-bg-opacity))
 }
@@ -2304,7 +2310,7 @@ img, video {
   color: rgb(194 65 12 / var(--un-text-opacity))
 }
 
-.text-portone {
+.text-ubcn {
   --un-text-opacity: 1;
   color: rgb(252 107 45 / var(--un-text-opacity))
 }
@@ -2406,7 +2412,7 @@ img, video {
   color: rgb(194 65 12 / var(--un-text-opacity))
 }
 
-.hover\:text-portone:hover {
+.hover\:text-ubcn:hover {
   --un-text-opacity: 1;
   color: rgb(252 107 45 / var(--un-text-opacity))
 }
@@ -2426,7 +2432,7 @@ img, video {
   color: rgb(15 23 42 / var(--un-text-opacity))
 }
 
-.focus\:text-portone:focus {
+.focus\:text-ubcn:focus {
   --un-text-opacity: 1;
   color: rgb(252 107 45 / var(--un-text-opacity))
 }
