@@ -14,3 +14,10 @@ import image from "../_assets/2024-07-18.png";
 신용카드/선불 결제 영수증 발송을 위한 원거래 검색 쿼리가 수정 되었습니다.\
 검색 조건에 MSGTYPE='01'(신용), MSGTYPE='11'(선불) 이 추가 되었습니다.
 <br/>
+
+
+<Badge style={'batch'}>vmmsTradeClosing</Badge>
+### ✔️단말기 마감 수신 정보 저장 Batch 기능추가
+online 로 수신 되는 상태정보의 pd_error 부분을 분리하여 DB화 처리 합니다.\
+저장 데이타는 <b>자판기 모델</b>,<b>모뎀감도</b>,<b>모뎀전화번호</b>,<b>모뎀타입</b> 의 4가지 입니다. 
+<br/>
