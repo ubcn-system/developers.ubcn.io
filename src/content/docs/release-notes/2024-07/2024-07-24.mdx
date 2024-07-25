@@ -7,7 +7,7 @@ writtenAt: 2024-07-24
 
 import Badge from "/src/components/Badge.astro";
 import Figure from "/src/components/Figure.astro";
-import image from "../_assets/2024-07-18.png";
+import image from "../_assets/2024-07-24-1.png";
 
 <Badge style={'server'}>online서버</Badge>
 ### ✔️online 서버 오류 수정
@@ -36,6 +36,7 @@ online 로 수신 되는 상태정보의 pd_error 부분을 분리하여 DB화 �
 
 <Badge style={'web'}>개발자센터</Badge>
 ### ✔️카테고리 추가
+<Figure src={image} caption={"신규 Network 카테고리"}/>
 단말기 결제에 필요한 서버 정보(IP, Port)를 담은 `Network` 카테고리가 추가되었습니다.\
 해당 페이지는 `Notion` 을 이용해 구현되었으며 <b>결제에 필요한 모든 IP</b> 가 포함되어 있습니다.\
 <b>네트워크 방화벽 추가에 필요한 정보</b>를 확인할 수 있습니다.
