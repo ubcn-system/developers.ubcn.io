@@ -7,8 +7,10 @@ writtenAt: 2024-07-25
 
 import Badge from "/src/components/Badge.astro";
 import Figure from "/src/components/Figure.astro";
-import image from "../_assets/2024-07-25-1.jpg";
+import Image from "../_assets/2024-07-25-1.jpg";
+import Frame from "/src/components/Frame.astro";
 
+<Frame>
 <Badge style={'web'}>VMMS</Badge>
 ### ✔️VMMS 정기 업데이트
 VMMS 의 정기 업데이트가 진행되었어요.\
@@ -17,25 +19,34 @@ VMMS 의 정기 업데이트가 진행되었어요.\
 ##### 운영 자판기 관리
     - '상품 모두 제거' 버튼 추가
     - '상품 템플릿 적용' 버튼 선택 시, 자동 삭제 후 재등록 기능 추가
-
 ##### 계정관리
     - '이력저장' 기능 추가(계정 정보 생성 또는 수정 시, 변경 이력 저장)
     - 정보수정 페이지 내 조직을 소속된 전체 루트 조직 표기로 변경
-<br/>
+</Frame>
 
+<Frame>
 <Badge style={'web'}>홈페이지</Badge>
 ### ✔️신규 제품 추가 런칭
-<Figure src={image} caption={"Bingo Smart Multi 10C"}/>
+<Figure src={Image} caption={"Bingo Smart Multi 10C"} width={400}/>
 신규 제품 <a href={"https://ubcn.co.kr/productDetail/2211100003"}>Bingo Smart Multi 10C</a> 가 추가되었어요.\
 자판기에 안드로이드를 탑재해 기존 시장에 존재하던 자판기의 한계점을 보완하고\
 점주와 사용자 모두 편리하게 서비스를 이용할 수 있도록 설계되었습니다.
 <br/>
-<a href={"https://image.ubcn.co.kr/download/Bingo_Smart_Multi_10C.pdf"} target={"_blank"} download={"Bingo_Smart_Multi_10C.pdf"}>Bingo Smart Multi 10C 브로셔 보기</a>
-<br/>
-<br/>
+<a href={"https://image.ubcn.co.kr/download/Bingo_Smart_Multi_10C.pdf"} target={"_blank"}
+   download={"Bingo_Smart_Multi_10C.pdf"}>Bingo Smart Multi 10C 브로셔 보러가기</a>
+</Frame>
+
+<Frame>
 <Badge style={'server'}>상태 서버</Badge>
 ### ✔️상태서버 기능추가
 상태서버로 수신되는 pd_error 부분을 분리하여 DB화 처리 합니다.(09:30 ~ 09:50)\
 저장 데이타는 <b>자판기 모델</b>,<b>모뎀감도</b>,<b>모뎀전화번호</b>,<b>모뎀타입</b> 의 4가지 입니다.\
 저장 데이타는 각 정보가 이전정보와 다를때만 추가로 저장 됩니다.
-<br/>
+</Frame>
+
+<Frame>
+<Badge style={'web'}>쿠폰사이트</Badge>
+### ✔️신규 페이지 임시 오픈
+'단말기 주문' 페이지가 임시로 오픈되었어요.\
+향후, 단말기 주문 페이지를 통해 단말기를 주문할 수 있도록 서비스를 제공할 예정입니다.
+</Frame>
