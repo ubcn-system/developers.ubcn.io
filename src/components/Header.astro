@@ -1,11 +1,7 @@
 ---
 import config from 'virtual:starlight/user-config';
-import type { Props } from '@astrojs/starlight/props';
-
-import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
 import Search from 'virtual:starlight/components/Search';
 import SiteTitle from 'virtual:starlight/components/SiteTitle';
-import SocialIcons from 'virtual:starlight/components/SocialIcons';
 import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 
 /**
@@ -14,7 +10,12 @@ import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 const shouldRenderSearch =
     config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
 ---
-
+<script>
+  document.documentElement.dataset.theme = 'light';
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem('starlight-theme', 'light');
+  }
+</script>
 <div class="header sl-flex">
     <div class="title-wrapper sl-flex">
         <SiteTitle {...Astro.props}  />
@@ -42,9 +43,7 @@ const shouldRenderSearch =
       {shouldRenderSearch && <Search {...Astro.props} />}
     </div>
 <!--    <div class="sl-hidden md:sl-flex right-group">
-        <div class="sl-flex social-icons">
-            <SocialIcons {...Astro.props} />
-        </div>
+        <ThemeSelect {...Astro.props} />
     </div>-->
 </div>
 
