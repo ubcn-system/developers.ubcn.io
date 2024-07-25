@@ -12,7 +12,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://iubc.co.kr/",
+  "homepage": "https://developers.ubcn.co.kr/",
   "dependencies": {
     "@astrojs/starlight": "^0.25.1",
     "astro": "^4.10.2",
