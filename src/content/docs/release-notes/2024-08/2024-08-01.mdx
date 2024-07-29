@@ -1,0 +1,23 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2024-08-01 업데이트
+releasedAt: 2024-08-01
+writtenAt: 2024-07-25
+---
+
+import Badge from "/src/components/Badge.astro";
+import Frame from "/src/components/Frame.astro";
+
+<Frame>
+<Badge style={'web'}>VMMS</Badge>
+### ✔️VMMS 정기 업데이트
+VMMS 의 정기 업데이트가 진행되었어요.\
+이번 주 업데이트 된 내역은 아래와 같습니다.
+<br/>
+##### 거래내역 취소
+    + '거래 진행상태' 에 따른 취소 기능 변경
+        + `거래취소` 버튼명을 세부 문구로 변경 -> `승인취소`, `매입취소`, `거래삭제`
+        + `매입`이 되었으나 거래의 진행상태가 `구매`로 남아있는 경우, `승인취소` 로 진행되는 내용 수정
+        + 특정 소속 취소 조건 추가
+            + 특정 소속에 한하여 마감이 진행된 경우 모든 `취소` 불가능 (`코카콜라`)
+</Frame>

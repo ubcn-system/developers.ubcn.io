@@ -114,10 +114,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom:8px;
 }
 
-.sl-markdown-content li{
-  height: 24px;
-}
-
 h1 {
   font-size: 1.75rem !important;
   line-height: 1.15 !important;
