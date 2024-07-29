@@ -60,8 +60,12 @@ export default defineConfig({
                         {
                             label: '2024년 7월',
                             autogenerate: {directory: 'release-notes/2024-07'},
-                            collapsed: false,
-                            badge: {text: 'New', variant: 'default'},
+                            collapsed: false
+                        },
+                        {
+                            label: '2024년 8월',
+                            autogenerate: {directory: 'release-notes/2024-08'},
+                            collapsed: false
                         },
                     ],
                 },
