@@ -6,18 +6,26 @@ writtenAt: 2024-07-25
 ---
 
 import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image from "../_assets/2024-08-01-1.png"
 import Frame from "/src/components/Frame.astro";
 
 <Frame>
-<Badge style={'web'}>VMMS</Badge>
-### ✔️VMMS 정기 업데이트
-VMMS 의 정기 업데이트가 진행되었어요.\
-이번 주 업데이트 된 내역은 아래와 같습니다.
-<br/>
-##### 거래내역 취소
+    <Badge style={'web'}>VMMS</Badge>
+    ### ✔️VMMS 정기 업데이트
+    VMMS 의 정기 업데이트가 진행되었어요.\
+    이번 주 업데이트 된 내역은 아래와 같습니다.
+    <br/>
+
+    ##### 1. 거래내역 신규 검색 조건 추가
+    거래내역 페이지에 신규 검색 조건이 추가되었어요.\
+    `카드번호`, `승인번호` 를 검색 조건으로 추가하여 더욱 편리하게 검색할 수 있습니다.\
+    단, 기간 내 범위 조회가 아닌 `당일`에 한하여 조회가 가능합니다.
+    <Figure src={Image} caption={"신규 검색 조건"}/>
+    ##### 2. 거래내역 취소
     + '거래 진행상태' 에 따른 취소 기능 변경
         + `거래취소` 버튼명을 세부 문구로 변경 -> `승인취소`, `매입취소`, `거래삭제`
         + `매입`이 되었으나 거래의 진행상태가 `구매`로 남아있는 경우, `승인취소` 로 진행되는 내용 수정
-        + 특정 소속 취소 조건 추가
-            + 특정 소속에 한하여 마감이 진행된 경우 모든 `취소` 불가능 (`코카콜라`)
+    + 취소 제한 기능 추가
+        + 특정 소속에 한하여 마감이 진행된 경우 모든 `취소` 불가능 (`코카콜라`)
 </Frame>

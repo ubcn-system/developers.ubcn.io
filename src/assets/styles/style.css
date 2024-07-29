@@ -91,7 +91,8 @@ abbr:where([title]) {
 
 h1, h2, h3, h4, h5, h6 {
   font-size: inherit;
-  font-weight: inherit
+  font-weight: inherit;
+  margin: 12px 0px !important;
 }
 
 .site-title span {
@@ -277,8 +278,6 @@ ol, ul, menu {
 
 .main-pane .sl-markdown-content ul {
   list-style: disc;
-  margin-top: 8px;
-  margin-bottom: 16px;
   padding-left: 1.5em;
   display: flex;
   flex-direction: column;
