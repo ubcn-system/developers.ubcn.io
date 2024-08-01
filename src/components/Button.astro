@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  url: string;
+  params: string;
+}
+const request = Astro.props;
+---
+
+<button class="sl-flex action primary" id="_clickHandler" datasrc={request.url}>{request.title}</button>
+<p id="response"></p>
+<script>
+  // Find all buttons with the `alert` class on the page.
+  import axios from "axios";
+
+  const button = document.getElementById('_clickHandler');
+  button.addEventListener('click', () => {
+    axios.post(button.getAttribute('datasrc'), {
+      data: null,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((res) => {
+      const json = res.data.data.map(item=>(
+          `<div>${item.regDate}</div>`
+      ));
+      //button.append(json);
+      document.getElementById('response').innerHTML = json;
+    });
+  });
+</script>
