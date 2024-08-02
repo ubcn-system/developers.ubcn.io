@@ -1,0 +1,29 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2024-07-31 업데이트
+releasedAt: 2024-07-31
+writtenAt: 2024-07-31
+---
+
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Frame from "/src/components/Frame.astro";
+
+<Frame>
+<Badge style={'web'}>MVP</Badge>
+### ✔️최신 버전 업데이트
+MVP 의 소규모 업데이트가 진행되었어요.\
+이번 주 업데이트 된 내역은 아래와 같습니다.
+<br/>
+##### 이벤트 관리
+    - '이벤트관리' 기능 오픈
+    - `시스템관리자`, `소속관리자` 권한 사용 가능
+##### 자판기 관리
+    - 자판기 등록 시 단말기 ID 중복 체크 추가(중복 시 등록불가)
+##### 상품 관리
+    - 상품코드 수동 추가
+    - 상품코드 미입력할 경우 자동 채번, 입력할 경우 수동 등록
+##### 거래내역
+    - '결제수단', '취소일시' 추가
+    - <Badge style={'web'}>VMMS</Badge> 거래내역 자동 동기화(20분 마다) 추가
+</Frame>
