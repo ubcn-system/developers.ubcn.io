@@ -1,0 +1,28 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2024-08-05 업데이트
+releasedAt: 2024-08-05
+writtenAt: 2024-08-05
+---
+
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "../_assets/2024-08-05-1.png"
+import Frame from "/src/components/Frame.astro";
+
+<Frame>
+    <Badge style={'web'}>VMMS</Badge>
+    ### ✔️VMMS 정기 업데이트
+    VMMS 의 정기 업데이트가 진행되었어요.\
+    이번 주 업데이트 된 내역은 아래와 같습니다.
+    <br/>
+
+    ##### 1. 거래내역-엑셀 장바구니
+    <Figure src={Image1} caption={"거래내역 내 장바구니 상품 표기"}/>
+    + `엑셀`로 다운로드 받은 '거래내역' 데이터에 `장바구니` 항목이 별도로 표기돼요.
+        + 기존에는 대표 상품 1건에 `장바구니 합산 금액`으료 포기되었지만\
+        업데이트 이후에는 모든 상품이 각자의 상품과 금액으로 표기하고 있어요. (장바구니 합산 금액은 표기되지 않아요.)
+    + 데이터가 늘어났기 때문에 '거래내역' 페이지와 `엑셀` 로 저장한 파일 내 건수가 달라질 수 있어요.
+    + 장바구니의 구분은 `수단` 내 `결제수단+(장바구니)` 항목으로 표기돼요.
+<br/>
+</Frame>
