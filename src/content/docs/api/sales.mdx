@@ -1,6 +1,8 @@
 ---
 layout: /src/layouts/api/Layout.astro
-title: 거래 관련 API
+title: 거래내역 요청 API
+sidebar:
+    order: 2
 description: 거래와 관련된 API 기능을 제공합니다.
 releasedAt: 2024-08-01
 writtenAt: 2024-08-01
@@ -15,23 +17,21 @@ import Button from "/src/components/Button.astro";
 ```ts
 
 const API = axios.create({
-baseURL: `http://api.ubcn.co.kr`,
+baseURL: `http://api.ubcn.co.kr/api`,
 headers: {
-"Content-Type" : `application/json;charset=UTF-8`,
-"Access-Control-Allow-Origin": "*",
-"Accept": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "company": "{company}",
+    "token": "{token}",
 },
 });
 
-    const res = await API.post("{서비스 도메인}", {
-    body: JSON.stringify({
-    //{객체 생략}
-}),
-});
+//get, post 모두 지원합니다.
+const res = await API.get("/sales/{date}/{time}/{minute}");
+console.log(res.data);
 
-    // 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다
-    if (response.code != null) {
-    return alert(response.message);
+// 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
+if (res.code != null) {
+    return alert(res.decription);
 }
 
 ```
@@ -55,11 +55,25 @@ headers: {
         <td>-</td>
     </tr>
     <tr>
+        <td>message</td>
+        <td>-</td>
+        <td>String</td>
+        <td>응답 메시지</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>-</td>
+        <td>String</td>
+        <td>API 유형</td>
+        <td>-</td>
+    </tr>
+    <tr>
         <td>salesDate</td>
         <td>-</td>
         <td>String</td>
-        <td>요청이자</td>
-        <td>YYYY-MM-DD</td>
+        <td>요청일자</td>
+        <td>YYYYMMDD</td>
     </tr>
     <tr>
         <td rowSpan={34}>salesList</td>
@@ -265,20 +279,6 @@ headers: {
         <td>String</td>
         <td>입금 예정일</td>
         <td>카드결제시 입금 예정일</td>
-    </tr>
-    <tr>
-        <td>message</td>
-        <td>-</td>
-        <td>String</td>
-        <td>응답 메시지</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>type</td>
-        <td>-</td>
-        <td>String</td>
-        <td>API 유형</td>
-        <td>-</td>
     </tr>
     </tbody>
 </table>
