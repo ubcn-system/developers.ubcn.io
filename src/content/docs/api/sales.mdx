@@ -17,12 +17,12 @@ import Button from "/src/components/Button.astro";
 ```ts
 
 const API = axios.create({
-baseURL: `http://api.ubcn.co.kr/api`,
-headers: {
+  baseURL: `http://api.ubcn.co.kr/api`,
+  headers: {
     "Access-Control-Allow-Origin": "*",
     "company": "{company}",
     "token": "{token}",
-},
+  },
 });
 
 //get, post 모두 지원합니다.
@@ -31,7 +31,7 @@ console.log(res.data);
 
 // 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
 if (res.code != null) {
-    return alert(res.decription);
+  return alert(res.decription);
 }
 
 ```
