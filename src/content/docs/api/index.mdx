@@ -1,8 +1,32 @@
 ---
 title: API 가이드
+sidebar:
+    order: 1
 ---
 
 유비씨엔 API를 소개합니다.
 
-## API
-준비 중인 페이지 입니다.
+## 개요
+유비씨엔 API를 이용하여 서비스를 테스트 할 수 있습니다. 서비스 테스트를 위해서는 API 호출이 필요합니다.
+<br/>
+
+```ts
+const API = axios.create({
+baseURL: `http://api.ubcn.co.kr/api`,
+headers: {
+    "Access-Control-Allow-Origin": "*",
+    "company": "{company}",
+    "token": "{token}",
+},
+});
+
+//get, post 모두 지원합니다.
+const res = await API.get("{service}");
+console.log(res.data);
+
+// 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
+if (res.code != null) {
+    return alert(res.decription);
+}
+
+```
