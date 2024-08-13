@@ -13,7 +13,6 @@
 개발자센터에서는 편리한 문서 작성을 위해 다양한 컴포넌트들을 사용할 수 있습니다.
 
 ### `<Badge>`
-![img.png](src/content/docs/guides/_assets/sample2.png)\
 
 프로젝트명을 명시하기 위한 컴포넌트 입니다.\
 Badge 사용 후, Header 가 없는 경우 줄바꿈('\'')을 사용하여 다음 문장을 작성합니다.\
@@ -24,14 +23,18 @@ Badge 사용 후, Header 가 없는 경우 줄바꿈('\'')을 사용하여 다�
 
 ```tsx
 import Badge from "/src/components/Badge.astro";
+import Frame from "/src/components/Frame.astro";
 
-//Header 컴포넌트가 있는 경우
+//프로젝트별로 구분하기 위한 Frame 입니다.
+<Frame>
+//프로젝트의 특성을 표기하기 위한 Badge 입니다.
+  
 <Badge style={'web'}>프로젝트명</Badge>
+//제목은 '#' 2개를 표기하여 H2로 표기합니다.  
 ## 제목입니다.
-    
-//Header 컴포넌트가 없는 경우
-<Badge style={'batch'}>프로젝트명</Badge>\
-내용입니다.
+//내용은 줄바꿈(<br/> 태그 삽입)을 통해 작성합니다.
+  
+</Frame>
 
 <Badge style={'api'}>프로젝트명</Badge>
 <Badge style={'online'}>프로젝트2명</Badge>
@@ -164,23 +167,25 @@ import logo from "./_assets/sample.png";
 ---
 layout: /src/layouts/release-notes/Layout.astro
 title: 릴리즈노트 샘플
-releasedAt: 2024-00-00
-writtenAt: 2024-07-19
+releasedAt: 0000-00-00
+writtenAt: 0000-00-00
 ---
 
 
 import Badge from "/src/components/Badge.astro";
 import Figure from "/src/components/Figure.astro";
 import { Aside } from '@astrojs/starlight/components';
+import Frame from "/src/components/Frame.astro";
 
 import sample1 from "./_assets/sample.png";
 import sample3 from "./_assets/sample3.svg";
 
-{/*프로젝트 명, 같은 내용이 여러 프로젝트에서 진행될 경우 ', '로 구분*/}
-<Badge style={'web'}>web</Badge>
-<Badge style={'batch'}>batch</Badge>
-<Badge style={'api'}>api</Badge>
-<Badge style={'online'}>online</Badge>
+{/*프로젝트 명, 같은 내용이 여러 프로젝트에서 진행될 경우 &nbsp; 로 구분*/}
+<Frame>
+<Badge style={'web'}>web</Badge>&nbsp;
+<Badge style={'batch'}>batch</Badge>&nbsp;
+<Badge style={'api'}>api</Badge>&nbsp;
+<Badge style={'online'}>online</Badge>&nbsp;
 <Badge style={'database'}>database</Badge>
 ### ✔️제목 샘플 입니다.
 <Figure src={sample3} caption={"팝업 이미지"}/>
@@ -200,11 +205,14 @@ import sample3 from "./_assets/sample3.svg";
 접속한 브라우저 환경에 따라 팝업의 해상도가 자동으로 바뀝니다.\
 [VMMS-운영자판기 관리](https://vmms.ubcn.co.kr/service/ServiceOVM) 페이지에서 확인하실 수 있습니다.
 <br/>
+</Frame>
 
+<Frame>
 <Badge style={'devapi'}>개발API</Badge>
 ### ✔️개발API 설정 변경
 팝업 이미지의 해상도가 접속한 환경에 따라 조정되도록 반응형으로 변경되었어요.\
 접속한 브라우저 환경에 따라 팝업의 해상도가 자동으로 바뀝니다.\
 [VMMS-운영자판기 관리](https://vmms.ubcn.co.kr/service/ServiceOVM) 페이지에서 확인하실 수 있습니다.
 <br/>
+</Frame>
 ```
