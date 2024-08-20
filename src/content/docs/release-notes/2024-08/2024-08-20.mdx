@@ -1,0 +1,29 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2024-08-20 업데이트
+releasedAt: 2024-08-20
+writtenAt: 2024-08-20
+---
+
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "../_assets/2024-08-20-1.png"
+import Image2 from "../_assets/2024-08-20-2.png"
+import Frame from "/src/components/Frame.astro";
+import { Aside } from '@astrojs/starlight/components';
+
+
+<Frame>
+    <Badge style={'web'}>MultiVM</Badge>
+    ### ✔️ MultiVM 업데이트
+    상품 코드 등록 관련 업데이트 된 내역은 아래와 같습니다.
+    <br/>
+
+    ##### 1. 광고 유형 변경이 가능해졌어요.
+    <Figure src={Image1} caption={"광고 유형 변경 가능"} width={300}/>
+    <br/>
+    ##### 2. 파일 유형이 h.264(hevc) 코덱 파일일 경우 광고 업로드가 불가능해요.
+    <Figure src={Image2} caption={"광고 업로드 파일 유형 검사"} width={500}/>
+
+<br/>
+</Frame>
