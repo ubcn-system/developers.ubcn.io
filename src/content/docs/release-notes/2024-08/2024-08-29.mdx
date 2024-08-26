@@ -1,0 +1,24 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2024-08-29 업데이트
+releasedAt: 2024-08-29
+writtenAt: 2024-08-29
+---
+
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "../_assets/2024-08-29-1.png"
+import Frame from "/src/components/Frame.astro";
+
+<Frame>
+    <Badge style={'web'}>Biz</Badge>
+    ## ✔️Biz 정기 업데이트
+    Biz 의 정기 업데이트가 진행되었어요.\
+    이번 주 업데이트 된 내역은 아래와 같습니다.
+    <br/>
+
+    ### 1. 단말기 등록 시 티머니ID 자동 채번
+    <Figure src={Image1} caption={"단말기 등록 시 티머니ID 자동 채번"} width={700}/>
+    + 단말기 신규 등록 시 `자동으로 티머니ID가 채번` 됩니다.
+    + 사용자가 임의로 `수정/삭제가 불가능`해요.
+</Frame>
