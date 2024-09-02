@@ -98,6 +98,11 @@ h1, h2, h3, h4, h5, h6 {
   margin: 12px 0px !important;
 }
 
+.main-pane h1, .main-pane h2, .main-pane h3, .main-pane h4, .main-pane h5, .main-pane h6 {
+  /*border-bottom: 1px solid #e5e7eb;*/
+  font-weight: 400 !important;
+}
+
 .site-title span {
   font-weight: 400;
   font-size: 16px;
@@ -138,6 +143,15 @@ h2 {
 h3 {
   font-size: 1.375rem !important;
   line-height: 1.25 !important;
+  letter-spacing: -.018em !important;
+  font-weight: 400 !important;
+  margin: 12px 0px !important;
+  color: #353841 !important;
+}
+
+h4 {
+  font-size: 1.125rem !important;
+  line-height: 1.35 !important;
   letter-spacing: -.018em !important;
   font-weight: 400 !important;
   margin: 12px 0px !important;

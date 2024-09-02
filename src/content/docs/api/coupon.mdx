@@ -1,0 +1,203 @@
+---
+layout: /src/layouts/api/Layout.astro
+title: 쿠폰 API
+sidebar:
+    order: 4
+    badge:
+        text: New
+        variant: tip
+description: 쿠폰과 관련된 API 기능을 제공합니다.
+releasedAt: 2024-08-14
+writtenAt: 2024-08-14
+---
+
+import Button from "/src/components/Button.astro";
+import Frame from "/src/components/Frame.astro";
+
+## 개요
+<Frame>
+각 사이트에 등록된 정보를 바탕으로 쿠폰을 발권하고, 발권된 쿠폰의 상태에 대해 수정을 할 수 있습니다.
+<br/>
+쿠폰의 전송 방식은 기본적으로 `알림톡` 으로 전송되며, 카카오톡의 버전이 낮거나 미사용자 또는 채널 차단 등\
+고객의 사정에 의해 `알림톡`을 받을 수 없는 경우 `MMS`로 대체 전송됩니다.
+<br/>
+
+<strong>*API 계약</strong>을 별도로 맺지 않은 경우, 쿠폰 발송 1건 당 아래와 같이 `코인`이 차감됩니다.
+    + `알림톡` : 12코인
+    + `MMS` : 70코인
+</Frame>
+<br/>
+
+## 기본 호출 구문
+<Frame>
+```ts
+const API = axios.create({
+    baseURL: `http://api.ubcn.co.kr/membership/coupon`,
+    headers: {
+        "Access-Control-Allow-Origin": "*",
+        "company": "{company}", //유비씨엔 발급
+        "token"  : "{token}",     //유비씨엔 발급
+    },
+});
+```
+</Frame>
+
+## 계정 조회하기
+단말기 ID 를 통해 단말기 ID 와 매칭된 계정을 조회할 수 있습니다.
+<br/>
+<strong style={"color: green"}>GET</strong> /user/search/terminalId/`{terminalId}`
+<Frame>
+```ts
+    //유비씨엔(주)에서 제공하는 단말기 ID를 기준으로 사용자 계정 정보를 조회합니다.
+    const res = await API.get("/user/search/terminalId/{terminalId}");
+```
+</Frame>
+
+## 쿠폰 발권하기
+<Frame>
+<strong style={"color: green"}>POST</strong> /issuance
+```ts
+const res = await API.post("/issuance",
+    {
+        "id": "userID",  //사용자 ID, 유비씨엔 제공
+        "type": "RUSE",   //GIFT: 1회권, RUSE: 금액권
+        "amount": 10000,  //쿠폰 발권 금액
+        "phone": "010-1234-1234", //010-xxxx-xxxx, '-' 를 포함한 13자리의 연락처(쿠폰 수신자용)
+        "sendFlag" : "Y",         //Y: 알림톡 또는 MMS 전송, N: 전송 안함
+        "expireDate" : "20240831" //쿠폰 유효기간
+    }
+);
+
+// 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
+if (res.code != null) {
+  return alert(res.decription);
+}
+
+```
+</Frame>
+<Frame>
+### Request Schema
+<table>
+    <thead>
+    <th>필드명</th>
+    <th className={'text-center'}>필수</th>
+    <th>타입</th>
+    <th>설명</th>
+    <th>비고</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>id</td>
+        <td className={'text-center'}>Y</td>
+        <td>String</td>
+        <td>아이디</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td className={'text-center'}>Y</td>
+        <td>String</td>
+        <td>쿠폰 유형</td>
+        <td>GIFT: 1회권\
+            RUSE: 금액권 (최대 사용 회수는 그룹 설정)</td>
+    </tr>
+    <tr>
+        <td>amount</td>
+        <td className={'text-center'}>Y</td>
+        <td>Long</td>
+        <td>발권 금액</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>phone</td>
+        <td className={'text-center'}>N</td>
+        <td>String</td>
+        <td>쿠폰 수신 연락처</td>
+        <td>연락처가 없으면 미전송 발권</td>
+    </tr>
+    <tr>
+        <td>sendFlag</td>
+        <td className={'text-center'}>N</td>
+        <td>String</td>
+        <td>알림톡 발송여부</td>
+        <td>기본값: 전송\
+            Y: 전송\
+            N: 미전송\
+            <code>고객사 자체 QR 을 그리는 경우 sendFlag='N',\
+                phone `필드 미사용` 또는 '000-0000-0000' 기입</code></td>
+    </tr>
+    <tr>
+        <td>expireDate</td>
+        <td className={'text-center'}>N</td>
+        <td>String</td>
+        <td>만료일</td>
+        <td>만료일 당일까지 사용 가능\
+            `필드 미사용`시 그룹 설정을 따름</td>
+    </tr>
+    </tbody>
+</table>
+</Frame>
+<Frame>
+### Response Schema
+결과 값에 들어 있는 필드는 다음과 같습니다.
+<table>
+    <thead>
+    <th>필드명</th>
+    <th className={'text-center'}>필수</th>
+    <th>타입</th>
+    <th>설명</th>
+    <th>비고</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>code</td>
+        <td className={'text-center'}>Y</td>
+        <td>String</td>
+        <td>API 결과코드</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>message</td>
+        <td className={'text-center'}>Y</td>
+        <td>String</td>
+        <td>쿠폰번호</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td className={'text-center'}>Y</td>
+        <td>String</td>
+        <td>쿠폰내용 + "," + 쿠폰 만료일자</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>amount</td>
+        <td className={'text-center'}>N</td>
+        <td>Long</td>
+        <td>발권 금액</td>
+        <td>정상 발권 시 표기</td>
+    </tr>
+    <tr>
+        <td>expireDate</td>
+        <td className={'text-center'}>N</td>
+        <td>String</td>
+        <td>발권된 쿠폰의 유효기간</td>
+        <td>정상 발권 시 표기</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td className={'text-center'}>N</td>
+        <td>String</td>
+        <td>쿠폰타입</td>
+        <td>정상 발권 시 표기</td>
+    </tr>
+    <tr>
+        <td>msgSendType</td>
+        <td className={'text-center'}>N</td>
+        <td>String</td>
+        <td>전송유형</td>
+        <td>정상 발권 시 표기</td>
+    </tr>
+    </tbody>
+</table>
+</Frame>
