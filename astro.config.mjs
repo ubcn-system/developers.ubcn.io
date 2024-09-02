@@ -28,43 +28,18 @@ export default defineConfig({
                     /*autogenerate: {directory: 'release-notes'},*/
                     items: [
                         {
-                            label: '2024년 1월',
-                            autogenerate: {directory: 'release-notes/2024-01'},
-                            collapsed: true
-                        },
-                        {
-                            label: '2024년 2월',
-                            autogenerate: {directory: 'release-notes/2024-02'},
-                            collapsed: true
-                        },
-                        {
-                            label: '2024년 3월',
-                            autogenerate: {directory: 'release-notes/2024-03'},
-                            collapsed: true
-                        },
-                        {
-                            label: '2024년 4월',
-                            autogenerate: {directory: 'release-notes/2024-04'},
-                            collapsed: true
-                        },
-                        {
-                            label: '2024년 5월',
-                            autogenerate: {directory: 'release-notes/2024-05'},
-                            collapsed: true
-                        },
-                        {
-                            label: '2024년 6월',
-                            autogenerate: {directory: 'release-notes/2024-06'},
-                            collapsed: true
-                        },
-                        {
                             label: '2024년 7월',
                             autogenerate: {directory: 'release-notes/2024-07'},
-                            collapsed: false
+                            collapsed: true
                         },
                         {
                             label: '2024년 8월',
                             autogenerate: {directory: 'release-notes/2024-08'},
+                            collapsed: true
+                        },
+                        {
+                            label: '2024년 9월',
+                            autogenerate: {directory: 'release-notes/2024-09'},
                             collapsed: false
                         },
                     ],
