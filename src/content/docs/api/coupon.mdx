@@ -52,6 +52,64 @@ const API = axios.create({
     const res = await API.get("/user/search/terminalId/{terminalId}");
 ```
 </Frame>
+<Frame>
+    ### Request Schema
+    <table>
+        <thead>
+        <th>필드명</th>
+        <th className={'text-center'}>필수</th>
+        <th>타입</th>
+        <th>설명</th>
+        <th>비고</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>terminalId</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>단말기ID</td>
+            <td>-</td>
+        </tr>
+        </tbody>
+    </table>
+</Frame>
+<Frame>
+    ### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+    <table>
+        <thead>
+        <th>필드명</th>
+        <th className={'text-center'}>필수</th>
+        <th>타입</th>
+        <th>설명</th>
+        <th>비고</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>code</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>API 결과코드</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>message</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>사용자 ID</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>description</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>결과문구</td>
+            <td>-</td>
+        </tr>
+        </tbody>
+    </table>
+</Frame>
+
 
 ## 쿠폰 발권하기
 <Frame>
@@ -137,6 +195,7 @@ if (res.code != null) {
     </tbody>
 </table>
 </Frame>
+
 <Frame>
 ### Response Schema
 결과 값에 들어 있는 필드는 다음과 같습니다.
@@ -200,4 +259,144 @@ if (res.code != null) {
     </tr>
     </tbody>
 </table>
+</Frame>
+
+## 쿠폰 조회하기
+발권된 쿠폰의 현재 상태를 조회할 수 있습니다.
+<br/>
+<strong style={"color: green"}>GET</strong> /search/`{couponNo}`/user/`{id}`
+<Frame>
+    ```ts
+    //쿠폰 번호로 쿠폰의 현재 상태를 조회합니다.
+    const res = await API.get("/search/{couponNo}/user/{id}");
+    ```
+</Frame>
+<Frame>
+    ### Request Schema
+    <table>
+        <thead>
+        <th>필드명</th>
+        <th className={'text-center'}>필수</th>
+        <th>타입</th>
+        <th>설명</th>
+        <th>비고</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>couponNo</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>쿠폰번호</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>id</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>사용자 ID</td>
+            <td>-</td>
+        </tr>
+        </tbody>
+    </table>
+</Frame>
+<Frame>
+    ### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+    <table>
+        <thead>
+        <th>필드명</th>
+        <th className={'text-center'}>필수</th>
+        <th>타입</th>
+        <th>설명</th>
+        <th>비고</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>code</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>API 결과코드</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>message</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>쿠폰번호</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>description</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>결과문구</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>groupName</td>
+            <td className={'text-center'}>N</td>
+            <td>String</td>
+            <td>그룹명</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>merchantName</td>
+            <td className={'text-center'}>N</td>
+            <td>String</td>
+            <td>가맹점명</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>couponNo</td>
+            <td className={'text-center'}>N</td>
+            <td>String</td>
+            <td>쿠폰번호</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>amount</td>
+            <td className={'text-center'}>N</td>
+            <td>Long</td>
+            <td>발권 금액</td>
+            <td>-</td>
+        </tr>
+
+        <tr>
+            <td>phone</td>
+            <td className={'text-center'}>N</td>
+            <td>String</td>
+            <td>수신 연락처</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>regDate</td>
+            <td className={'text-center'}>N</td>
+            <td>String</td>
+            <td>발권일자</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>expireDate</td>
+            <td className={'text-center'}>N</td>
+            <td>String</td>
+            <td>발권된 쿠폰의 유효기간</td>
+            <td>명시된 일자까지 사용 가능</td>
+        </tr>
+        <tr>
+            <td>couponType</td>
+            <td className={'text-center'}>N</td>
+            <td>String</td>
+            <td>쿠폰타입</td>
+            <td>GIFT: 1회권\
+                RUSE: 금액권</td>
+        </tr>
+        <tr>
+            <td>couponStatus</td>
+            <td className={'text-center'}>N</td>
+            <td>String</td>
+            <td>쿠폰상태</td>
+            <td>쿠폰 현재 상태 표기</td>
+        </tr>
+        </tbody>
+    </table>
 </Frame>
