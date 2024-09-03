@@ -45,11 +45,11 @@ const API = axios.create({
 ## 계정 조회하기
 단말기 ID 를 통해 단말기 ID 와 매칭된 계정을 조회할 수 있습니다.
 <br/>
-<strong style={"color: green"}>GET</strong> /user/search/terminalId/`{terminalId}`
+<strong style={"color: green"}>GET</strong> /user/search/tid/`{tid}`
 <Frame>
 ```ts
     //유비씨엔(주)에서 제공하는 단말기 ID를 기준으로 사용자 계정 정보를 조회합니다.
-    const res = await API.get("/user/search/terminalId/{terminalId}");
+    const res = await API.get("/user/search/tid/{tid}");
 ```
 </Frame>
 <Frame>
@@ -64,10 +64,10 @@ const API = axios.create({
         </thead>
         <tbody>
         <tr>
-            <td>terminalId</td>
+            <td>tid</td>
             <td className={'text-center'}>Y</td>
             <td>String</td>
-            <td>단말기ID</td>
+            <td>단말기 ID</td>
             <td>-</td>
         </tr>
         </tbody>
@@ -148,8 +148,9 @@ if (res.code != null) {
         <td>id</td>
         <td className={'text-center'}>Y</td>
         <td>String</td>
-        <td>아이디</td>
-        <td>-</td>
+        <td>고유 ID</td>
+        <td>사용자 ID\
+            단말기 ID</td>
     </tr>
     <tr>
         <td>type</td>
@@ -263,11 +264,11 @@ if (res.code != null) {
 ## 쿠폰 조회하기
 발권된 쿠폰의 현재 상태를 조회할 수 있습니다.
 <br/>
-<strong style={"color: green"}>GET</strong> /search/`{couponNo}`/user/`{id}`
+<strong style={"color: green"}>GET</strong> /`{couponNo}`/type/`{type}`/`{id}`
 <Frame>
     ```ts
     //쿠폰 번호로 쿠폰의 현재 상태를 조회합니다.
-    const res = await API.get("/search/{couponNo}/user/{id}");
+    const res = await API.get("/{couponNo}/type/{type}/{id}");
     ```
 </Frame>
 <Frame>
@@ -289,11 +290,20 @@ if (res.code != null) {
             <td>-</td>
         </tr>
         <tr>
+            <td>type</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>인증타입</td>
+            <td>사용자 ID: id\
+                단말기 ID: tid</td>
+        </tr>
+        <tr>
             <td>id</td>
             <td className={'text-center'}>Y</td>
             <td>String</td>
-            <td>사용자 ID</td>
-            <td>-</td>
+            <td>고유 ID</td>
+            <td>사용자 ID\
+                단말기 ID</td>
         </tr>
         </tbody>
     </table>
@@ -433,7 +443,7 @@ if (res.code != null) {
             <td>String</td>
             <td>인증타입</td>
             <td>사용자 ID: id\
-                단말기 ID: terminalId</td>
+                단말기 ID: tid</td>
         </tr>
         <tr>
             <td>id</td>
