@@ -103,7 +103,7 @@ const API = axios.create({
             <td>description</td>
             <td className={'text-center'}>Y</td>
             <td>String</td>
-            <td>결과문구</td>
+            <td>결과문구 요약</td>
             <td>-</td>
         </tr>
         </tbody>
@@ -195,7 +195,6 @@ if (res.code != null) {
     </tbody>
 </table>
 </Frame>
-
 <Frame>
 ### Response Schema
 결과 값에 들어 있는 필드는 다음과 같습니다.
@@ -329,7 +328,7 @@ if (res.code != null) {
             <td>description</td>
             <td className={'text-center'}>Y</td>
             <td>String</td>
-            <td>결과문구</td>
+            <td>결과문구 요약</td>
             <td>-</td>
         </tr>
         <tr>
@@ -396,6 +395,89 @@ if (res.code != null) {
             <td>String</td>
             <td>쿠폰상태</td>
             <td>쿠폰 현재 상태 표기</td>
+        </tr>
+        </tbody>
+    </table>
+</Frame>
+
+## 쿠폰 수정하기
+발권된 쿠폰의 상태를 수정할 수 있습니다.
+<br/>
+<strong style={"color: green"}>PATCH</strong> /`{couponNo}`/type/`{type}`/`{id}`/status/`{couponStatus}`
+<Frame>
+    ```ts
+    const res = await API.get("/{couponNo}/type/{type}/{id}/status/{couponStatus}");
+    ```
+</Frame>
+<Frame>
+    ### Request Schema
+    <table>
+        <thead>
+        <th>필드명</th>
+        <th className={'text-center'}>필수</th>
+        <th>타입</th>
+        <th>설명</th>
+        <th>비고</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>couponNo</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>쿠폰번호</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>인증타입</td>
+            <td>사용자 ID: id\
+                단말기 ID: terminalId</td>
+        </tr>
+        <tr>
+            <td>id</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>고유 ID</td>
+            <td>사용자 ID\
+                단말기 ID</td>
+        </tr>
+        </tbody>
+    </table>
+</Frame>
+<Frame>
+    ### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+    <table>
+        <thead>
+        <th>필드명</th>
+        <th className={'text-center'}>필수</th>
+        <th>타입</th>
+        <th>설명</th>
+        <th>비고</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>code</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>API 결과코드</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>message</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>결과문구</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>description</td>
+            <td className={'text-center'}>Y</td>
+            <td>String</td>
+            <td>결과문구 요약</td>
+            <td>-</td>
         </tr>
         </tbody>
     </table>
