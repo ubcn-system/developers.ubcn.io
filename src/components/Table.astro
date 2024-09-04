@@ -1,0 +1,36 @@
+---
+interface Props {
+    headers: Array<String>;
+    bodys: Array<{
+        title: String;
+        notNull: String;
+        argsType: String;
+        desc: String;
+        etc: String;
+    }>;
+}
+const {headers, bodys} = Astro.props;
+const header = headers.map(item=>(
+    `<th class={"text-center"}>${item}</th>`
+));
+
+const body = bodys.map(item=>(
+    `<tr>
+        <td>${item.title}</td>
+        <td>${item.notNull}</td>
+        <td>${item.argsType}</td>
+        <td>${item.desc}</td>
+        <td>${item.etc}</td>
+    </tr>`
+));
+---
+
+<div>
+    <table>
+        <thead set:html={header}>
+        </thead>
+        <tbody set:html={body}>
+        </tbody>
+    </table>
+</div>
+<br/>

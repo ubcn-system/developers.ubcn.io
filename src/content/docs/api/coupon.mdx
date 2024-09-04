@@ -13,6 +13,7 @@ writtenAt: 2024-08-14
 
 import Button from "/src/components/Button.astro";
 import Frame from "/src/components/Frame.astro";
+import Table from "/src/components/Table.astro";
 
 ## 개요
 <Frame>
@@ -54,24 +55,13 @@ const API = axios.create({
 </Frame>
 <Frame>
     ### Request Schema
-    <table>
-        <thead>
-        <th>필드명</th>
-        <th className={'text-center'}>필수</th>
-        <th>타입</th>
-        <th>설명</th>
-        <th>비고</th>
-        </thead>
-        <tbody>
-        <tr>
-            <td>tid</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>단말기 ID</td>
-            <td>-</td>
-        </tr>
-        </tbody>
-    </table>
+    <Table headers={["필드명", "필수", "타입", "설명", "비고"]}
+           bodys={
+               [
+                   {title: "tid", notNull: "Y", argsType: "String", desc: "단말기 ID", etc: "-"},
+               ]
+           }>
+    </Table>
 </Frame>
 <Frame>
     ### Response Schema
@@ -117,12 +107,13 @@ const API = axios.create({
 ```ts
 const res = await API.post("/issuance",
     {
-        "id": "userID",  //사용자 ID, 유비씨엔 제공
-        "type": "RUSE",   //GIFT: 1회권, RUSE: 금액권
-        "amount": 10000,  //쿠폰 발권 금액
-        "phone": "010-1234-1234", //010-xxxx-xxxx, '-' 를 포함한 13자리의 연락처(쿠폰 수신자용)
-        "sendFlag" : "Y",         //Y: 알림톡 또는 MMS 전송, N: 전송 안함
-        "expireDate" : "20240831" //쿠폰 유효기간
+        "id": "test",              //uid 또는 tid, 유비씨엔 제공
+        "tid": "2000012345",         //uid 또는 tid, 유비씨엔 제공
+        "type": "GIFT",              //GIFT: 1회권, RUSE: 금액권
+        "amount": 10000,             //쿠폰 발권 금액
+        "phone": "010-1234-1234",    //010-xxxx-xxxx, '-' 를 포함한 13자리의 연락처(쿠폰 수신자용)
+        "sendFlag" : "Y",            //Y: 알림톡 또는 MMS 전송, N: 전송 안함
+        "expireDate" : "20240831"    //쿠폰 유효기간
     }
 );
 
@@ -148,9 +139,15 @@ if (res.code != null) {
         <td>id</td>
         <td className={'text-center'}>Y</td>
         <td>String</td>
-        <td>고유 ID</td>
-        <td>사용자 ID\
-            단말기 ID</td>
+        <td>사용자 ID(uid)</td>
+        <td>id 또는 tid 둘 중 하나는 필수</td>
+    </tr>
+    <tr>
+        <td>tid</td>
+        <td className={'text-center'}>Y</td>
+        <td>String</td>
+        <td>단말기 ID(tid)</td>
+        <td>id 또는 tid 둘 중 하나는 필수</td>
     </tr>
     <tr>
         <td>type</td>
@@ -294,7 +291,7 @@ if (res.code != null) {
             <td className={'text-center'}>Y</td>
             <td>String</td>
             <td>인증타입</td>
-            <td>사용자 ID: id\
+            <td>사용자 ID: uid\
                 단말기 ID: tid</td>
         </tr>
         <tr>
@@ -442,7 +439,7 @@ if (res.code != null) {
             <td className={'text-center'}>Y</td>
             <td>String</td>
             <td>인증타입</td>
-            <td>사용자 ID: id\
+            <td>사용자 ID: uid\
                 단말기 ID: tid</td>
         </tr>
         <tr>
