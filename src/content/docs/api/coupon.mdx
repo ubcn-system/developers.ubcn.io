@@ -66,38 +66,15 @@ const API = axios.create({
 <Frame>
     ### Response Schema
     결과 값에 들어 있는 필드는 다음과 같습니다.
-    <table>
-        <thead>
-        <th>필드명</th>
-        <th className={'text-center'}>필수</th>
-        <th>타입</th>
-        <th>설명</th>
-        <th>비고</th>
-        </thead>
-        <tbody>
-        <tr>
-            <td>code</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>API 결과코드</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>message</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>사용자 ID</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>description</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>결과문구 요약</td>
-            <td>-</td>
-        </tr>
-        </tbody>
-    </table>
+    <Table headers={["필드명", "필수", "타입", "설명", "비고"]}
+           bodys={
+               [
+                   {title: "code", notNull: "Y", argsType: "String", desc: "API 결과코드", etc: "-"},
+                   {title: "message", notNull: "Y", argsType: "String", desc: "사용자 ID", etc: "-"},
+                   {title: "description", notNull: "Y", argsType: "String", desc: "결과문구 요약", etc: "-"},
+               ]
+           }>
+    </Table>
 </Frame>
 
 
@@ -125,137 +102,38 @@ if (res.code != null) {
 ```
 </Frame>
 <Frame>
-### Request Schema
-<table>
-    <thead>
-    <th>필드명</th>
-    <th className={'text-center'}>필수</th>
-    <th>타입</th>
-    <th>설명</th>
-    <th>비고</th>
-    </thead>
-    <tbody>
-    <tr>
-        <td>id</td>
-        <td className={'text-center'}>Y</td>
-        <td>String</td>
-        <td>사용자 ID(uid)</td>
-        <td>id 또는 tid 둘 중 하나는 필수</td>
-    </tr>
-    <tr>
-        <td>tid</td>
-        <td className={'text-center'}>Y</td>
-        <td>String</td>
-        <td>단말기 ID(tid)</td>
-        <td>id 또는 tid 둘 중 하나는 필수</td>
-    </tr>
-    <tr>
-        <td>type</td>
-        <td className={'text-center'}>Y</td>
-        <td>String</td>
-        <td>쿠폰 유형</td>
-        <td>GIFT: 1회권\
-            RUSE: 금액권 (최대 사용 회수는 그룹 설정)</td>
-    </tr>
-    <tr>
-        <td>amount</td>
-        <td className={'text-center'}>Y</td>
-        <td>Long</td>
-        <td>발권 금액</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>phone</td>
-        <td className={'text-center'}>N</td>
-        <td>String</td>
-        <td>쿠폰 수신 연락처</td>
-        <td>연락처가 없으면 미전송 발권</td>
-    </tr>
-    <tr>
-        <td>sendFlag</td>
-        <td className={'text-center'}>N</td>
-        <td>String</td>
-        <td>알림톡 발송여부</td>
-        <td>기본값: 전송\
-            Y: 전송\
-            N: 미전송\
-            <code>고객사 자체 QR 을 그리는 경우 sendFlag='N',\
-                phone `필드 미사용` 또는 '000-0000-0000' 기입</code></td>
-    </tr>
-    <tr>
-        <td>expireDate</td>
-        <td className={'text-center'}>N</td>
-        <td>String</td>
-        <td>만료일</td>
-        <td>만료일 당일까지 사용 가능\
-            `필드 미사용`시 그룹 설정을 따름</td>
-    </tr>
-    </tbody>
-</table>
+    ### Request Schema
+    <Table headers={["필드명", "필수", "타입", "설명", "비고"]}
+           bodys={
+               [
+                    {title: "id", notNull: "Y", argsType: "String", desc: "사용자 ID(uid)", etc: "id 또는 tid 둘 중 하나는 필수"},
+                    {title: "tid", notNull: "Y", argsType: "String", desc: "단말기 ID(tid)", etc: "id 또는 tid 둘 중 하나는 필수"},
+                    {title: "type", notNull: "Y", argsType: "String", desc: "쿠폰 유형", etc: "GIFT: 1회권, RUSE: 금액권 (최대 사용 회수는 그룹 설정)"},
+                    {title: "amount", notNull: "Y", argsType: "Long", desc: "발권 금액", etc: "-"},
+                    {title: "phone", notNull: "N", argsType: "String", desc: "쿠폰 수신 연락처", etc: "연락처가 없으면 미전송 발권"},
+                    {title: "sendFlag", notNull: "N", argsType: "String", desc: "알림톡 발송여부", etc: "기본값: 전송, Y: 전송, N: 미전송, <br/>"
+                            + "<code>고객사 자체 QR 을 그리는 경우 <br/>sendFlag='N', phone `필드 미사용` 또는 '000-0000-0000' 기입</code>"},
+                    {title: "expireDate", notNull: "N", argsType: "String", desc: "만료일", etc: "만료일 당일까지 사용 가능, <code>필드 미사용</code>시 그룹 설정을 따름"}
+               ]
+           }>
+    </Table>
 </Frame>
 <Frame>
-### Response Schema
-결과 값에 들어 있는 필드는 다음과 같습니다.
-<table>
-    <thead>
-    <th>필드명</th>
-    <th className={'text-center'}>필수</th>
-    <th>타입</th>
-    <th>설명</th>
-    <th>비고</th>
-    </thead>
-    <tbody>
-    <tr>
-        <td>code</td>
-        <td className={'text-center'}>Y</td>
-        <td>String</td>
-        <td>API 결과코드</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>message</td>
-        <td className={'text-center'}>Y</td>
-        <td>String</td>
-        <td>결과문구</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>description</td>
-        <td className={'text-center'}>Y</td>
-        <td>String</td>
-        <td>쿠폰내용 + "," + 쿠폰 만료일자</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>amount</td>
-        <td className={'text-center'}>N</td>
-        <td>Long</td>
-        <td>발권 금액</td>
-        <td>정상 발권 시 표기</td>
-    </tr>
-    <tr>
-        <td>expireDate</td>
-        <td className={'text-center'}>N</td>
-        <td>String</td>
-        <td>발권된 쿠폰의 유효기간</td>
-        <td>정상 발권 시 표기</td>
-    </tr>
-    <tr>
-        <td>type</td>
-        <td className={'text-center'}>N</td>
-        <td>String</td>
-        <td>쿠폰타입</td>
-        <td>정상 발권 시 표기</td>
-    </tr>
-    <tr>
-        <td>msgSendType</td>
-        <td className={'text-center'}>N</td>
-        <td>String</td>
-        <td>전송유형</td>
-        <td>정상 발권 시 표기</td>
-    </tr>
-    </tbody>
-</table>
+    ### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+    <Table headers={["필드명", "필수", "타입", "설명", "비고"]}
+           bodys={
+               [
+                    {title: "code", notNull: "Y", argsType: "String", desc: "API 결과코드", etc: "-"},
+                    {title: "message", notNull: "Y", argsType: "String", desc: "결과문구", etc: "-"},
+                    {title: "description", notNull: "Y", argsType: "String", desc: "쿠폰내용 + ',' + 쿠폰 만료일자", etc: "-"},
+                    {title: "amount", notNull: "N", argsType: "Long", desc: "발권 금액", etc: "정상 발권 시 표기"},
+                    {title: "expireDate", notNull: "N", argsType: "String", desc: "발권된 쿠폰의 유효기간", etc: "정상 발권 시 표기"},
+                    {title: "type", notNull: "N", argsType: "String", desc: "쿠폰타입", etc: "정상 발권 시 표기"},
+                    {title: "msgSendType", notNull: "N", argsType: "String", desc: "전송유형", etc: "정상 발권 시 표기"}
+               ]
+           }>
+    </Table>
 </Frame>
 
 ## 쿠폰 조회하기
@@ -270,141 +148,38 @@ if (res.code != null) {
 </Frame>
 <Frame>
     ### Request Schema
-    <table>
-        <thead>
-        <th>필드명</th>
-        <th className={'text-center'}>필수</th>
-        <th>타입</th>
-        <th>설명</th>
-        <th>비고</th>
-        </thead>
-        <tbody>
-        <tr>
-            <td>couponNo</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>쿠폰번호</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>type</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>인증타입</td>
-            <td>사용자 ID: uid\
-                단말기 ID: tid</td>
-        </tr>
-        <tr>
-            <td>id</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>고유 ID</td>
-            <td>사용자 ID\
-                단말기 ID</td>
-        </tr>
-        </tbody>
-    </table>
+    <Table headers={["필드명", "필수", "타입", "설명", "비고"]}
+           bodys={
+               [
+                    {title: "couponNo", notNull: "Y", argsType: "String", desc: "쿠폰번호", etc: "-"},
+                    {title: "type", notNull: "Y", argsType: "String", desc: "인증타입", etc: "사용자 ID: uid<br/>단말기 ID: tid"},
+                    {title: "id", notNull: "Y", argsType: "String", desc: "고유 ID", etc: "사용자 ID<br/>단말기 ID"}
+
+               ]
+           }>
+    </Table>
 </Frame>
 <Frame>
     ### Response Schema
     결과 값에 들어 있는 필드는 다음과 같습니다.
-    <table>
-        <thead>
-        <th>필드명</th>
-        <th className={'text-center'}>필수</th>
-        <th>타입</th>
-        <th>설명</th>
-        <th>비고</th>
-        </thead>
-        <tbody>
-        <tr>
-            <td>code</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>API 결과코드</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>message</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>결과문구</td>
-            <td>쿠폰번호</td>
-        </tr>
-        <tr>
-            <td>description</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>결과문구 요약</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>groupName</td>
-            <td className={'text-center'}>N</td>
-            <td>String</td>
-            <td>그룹명</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>merchantName</td>
-            <td className={'text-center'}>N</td>
-            <td>String</td>
-            <td>가맹점명</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>couponNo</td>
-            <td className={'text-center'}>N</td>
-            <td>String</td>
-            <td>쿠폰번호</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>amount</td>
-            <td className={'text-center'}>N</td>
-            <td>Long</td>
-            <td>발권 금액</td>
-            <td>-</td>
-        </tr>
-
-        <tr>
-            <td>phone</td>
-            <td className={'text-center'}>N</td>
-            <td>String</td>
-            <td>수신 연락처</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>regDate</td>
-            <td className={'text-center'}>N</td>
-            <td>String</td>
-            <td>발권일자</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>expireDate</td>
-            <td className={'text-center'}>N</td>
-            <td>String</td>
-            <td>발권된 쿠폰의 유효기간</td>
-            <td>명시된 일자까지 사용 가능</td>
-        </tr>
-        <tr>
-            <td>couponType</td>
-            <td className={'text-center'}>N</td>
-            <td>String</td>
-            <td>쿠폰타입</td>
-            <td>GIFT: 1회권\
-                RUSE: 금액권</td>
-        </tr>
-        <tr>
-            <td>couponStatus</td>
-            <td className={'text-center'}>N</td>
-            <td>String</td>
-            <td>쿠폰상태</td>
-            <td>쿠폰 현재 상태 표기</td>
-        </tr>
-        </tbody>
-    </table>
+    <Table headers={["필드명", "필수", "타입", "설명", "비고"]}
+           bodys={
+               [
+                   {title: "code", notNull: "Y", argsType: "String", desc: "API 결과코드", etc: "-"},
+                   {title: "message", notNull: "Y", argsType: "String", desc: "결과문구", etc: "쿠폰번호"},
+                   {title: "description", notNull: "Y", argsType: "String", desc: "결과문구 요약", etc: "-"},
+                   {title: "groupName", notNull: "N", argsType: "String", desc: "그룹명", etc: "-"},
+                   {title: "merchantName", notNull: "N", argsType: "String", desc: "가맹점명", etc: "-"},
+                   {title: "couponNo", notNull: "N", argsType: "String", desc: "쿠폰번호", etc: "-"},
+                   {title: "amount", notNull: "N", argsType: "Long", desc: "발권 금액", etc: "-"},
+                   {title: "phone", notNull: "N", argsType: "String", desc: "수신 연락처", etc: "-"},
+                   {title: "regDate", notNull: "N", argsType: "String", desc: "발권일자", etc: "-"},
+                   {title: "expireDate", notNull: "N", argsType: "String", desc: "발권된 쿠폰의 유효기간", etc: "명시된 일자까지 사용 가능"},
+                   {title: "couponType", notNull: "N", argsType: "String", desc: "쿠폰타입", etc: "GIFT: 1회권<br/>RUSE: 금액권"},
+                   {title: "couponStatus", notNull: "N", argsType: "String", desc: "쿠폰상태", etc: "쿠폰 현재 상태 표기"}
+               ]
+           }>
+    </Table>
 </Frame>
 
 ## 쿠폰 수정하기
@@ -418,85 +193,28 @@ if (res.code != null) {
 </Frame>
 <Frame>
     ### Request Schema
-    <table>
-        <thead>
-        <th>필드명</th>
-        <th className={'text-center'}>필수</th>
-        <th>타입</th>
-        <th>설명</th>
-        <th>비고</th>
-        </thead>
-        <tbody>
-        <tr>
-            <td>couponNo</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>쿠폰번호</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>type</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>인증타입</td>
-            <td>사용자 ID: uid\
-                단말기 ID: tid</td>
-        </tr>
-        <tr>
-            <td>id</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>고유 ID</td>
-            <td>사용자 ID\
-                단말기 ID</td>
-        </tr>
-        <tr>
-            <td>couponStatus</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>쿠폰상태</td>
-            <td>N: 미사용\
-                L: 잠금\
-                D: 기간만료\
-                U: 사용완료\
-                H: 삭제</td>
-        </tr>
-        </tbody>
-    </table>
+    <Table headers={["필드명", "필수", "타입", "설명", "비고"]}
+           bodys={
+               [
+                   {title: "couponNo", notNull: "Y", argsType: "String", desc: "쿠폰번호", etc: "-"},
+                   {title: "type", notNull: "Y", argsType: "String", desc: "인증타입", etc: "사용자 ID: uid<br/>단말기 ID: tid"},
+                   {title: "id", notNull: "Y", argsType: "String", desc: "고유 ID", etc: "사용자 ID<br/>단말기 ID"},
+                   {title: "couponStatus", notNull: "Y", argsType: "String", desc: "쿠폰상태", etc: "N: 미사용<br/>L: 잠금<br/>D: 기간만료<br/>U: 사용완료<br/>H: 삭제"}
+               ]
+           }>
+    </Table>
 </Frame>
 <Frame>
     ### Response Schema
     결과 값에 들어 있는 필드는 다음과 같습니다.
-    <table>
-        <thead>
-        <th>필드명</th>
-        <th className={'text-center'}>필수</th>
-        <th>타입</th>
-        <th>설명</th>
-        <th>비고</th>
-        </thead>
-        <tbody>
-        <tr>
-            <td>code</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>API 결과코드</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>message</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>결과문구</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>description</td>
-            <td className={'text-center'}>Y</td>
-            <td>String</td>
-            <td>결과문구 요약</td>
-            <td>-</td>
-        </tr>
-        </tbody>
-    </table>
+    <Table headers={["필드명", "필수", "타입", "설명", "비고"]}
+           bodys={
+               [
+                    {title: "code", notNull: "Y", argsType: "String", desc: "API 결과코드", etc: "-"},
+                    {title: "message", notNull: "Y", argsType: "String", desc: "결과문구", etc: "-"},
+                    {title: "description", notNull: "Y", argsType: "String", desc: "결과문구 요약", etc: "-"},
+
+               ]
+           }>
+    </Table>
 </Frame>
