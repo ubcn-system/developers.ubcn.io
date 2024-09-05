@@ -8,6 +8,7 @@ writtenAt: 2024-09-04
 import Badge from "/src/components/Badge.astro";
 import Figure from "/src/components/Figure.astro";
 import newFormImg from "../_assets/2024-09-05-1.jpg"
+import excelImg from "../_assets/2024-09-05-2.png"
 import Frame from "/src/components/Frame.astro";
 
 <Frame>
@@ -24,3 +25,13 @@ import Frame from "/src/components/Frame.astro";
     DDC 여부에 대한 값이 기존 'Y/N' 이었으나 'E/D' 로 되는 부분을 수정하였어요.\
     잘못 변경된 데이터는 일괄로 변경하였습니다.
 </Frame>
+
+<Frame>
+    <Badge style={'web'}>MultiVM</Badge>
+    ## ✔️MultiVM 업데이트
+    ### 1. 엑셀 저장시 취소 및 취소일시 추가
+    <Figure src={excelImg} caption={"취소 및 취소일시 예시"} width={400}/>
+
+    매출관리 -> 거래내역 -> 엑셀저장 시 필드에 '취소 및 취소일시' 정보를 추가 했어요.
+</Frame>
+
