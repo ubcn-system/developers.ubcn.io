@@ -1,36 +1,27 @@
 ---
 layout: /src/layouts/release-notes/Layout.astro
-title: 2024-09-10 업데이트
-releasedAt: 2024-09-10
-writtenAt: 2024-09-10
+title: 2024-09-11 업데이트
+releasedAt: 2024-09-11
+writtenAt: 2024-09-11
 ---
 
 import Badge from "/src/components/Badge.astro";
 import Figure from "/src/components/Figure.astro";
-import Image1 from "../_assets/2024-09-05-1.jpg"
-import Image2 from "../_assets/2024-09-10-1.png"
-import Image3 from "../_assets/2024-09-10-2.png"
+import Image1 from "../_assets/2024-09-11-1.png"
+import Image2 from "../_assets/2024-09-11-2.png"
 import Frame from "/src/components/Frame.astro";
 
 <Frame>
-    <Badge style={'web'}>BIZ</Badge>
-    ## ✔️BIZ 신청서 우편번호 기능 추가
+    <Badge style={'web'}>MultiVM</Badge>
+    ## ✔️MVP(MultiVM) 업데이트 사항
 
-    ### BIZ 웹에서 우편번호찾기 기능이 추가되었습니다.
+    ### ️1. 결제 수단에 `사원카드` 타입을 추가 했어요.
+    <Figure src={Image1} caption={"결제 수단 사원카드 추가"} width={800}/>
 
-    <Figure src={Image1} caption={"우편번호찾기 기능 추가 전"} width={800}/>
-    <br/>
-    <Figure src={Image2} caption={"우편번호찾기 기능 추가 후"} width={500}/>
-    <br/>
-    <Figure src={Image3} caption={"기능 상세"} width={500}/>
-    <br/>
+    ### ️2. MVP 웹에서 발생한 에러 사항을 수정 했어요.
 
-    유비씨엔의 각종 신청서에 우편변호찾기 기능이 추가되었습니다.
-    <br/>
-    (카드결제단말기 신청, 네이버페이 가맹희망 신청, 단말기 명의변경 신청)
-    <br/>
-    추가된 기능은 다음과 같습니다. 단말기 신규 등록 신청서 외에도 다양한 신청서에 우편번호찾기 기능이 추가되었습니다.
-
-
+   광고 등록 시 파일명이 `.`이 포함되면 에러가 발생하는 점을 수정 했어요.<br/>
+   파일명이 무엇이든 등록 가능해요.
+   <Figure src={Image2} caption={"광고 파일명 에러 수정"} width={350}/>
 
 </Frame>
