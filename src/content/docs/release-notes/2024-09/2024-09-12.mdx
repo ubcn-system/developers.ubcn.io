@@ -8,6 +8,8 @@ writtenAt: 2024-09-06
 import Badge from "/src/components/Badge.astro";
 import Figure from "/src/components/Figure.astro";
 import Image1 from "../_assets/2024-09-12-1.png"
+import Image2 from "../_assets/2024-09-12-2.png"
+import Image3 from "../_assets/2024-09-12-3.png"
 import Frame from "/src/components/Frame.astro";
 
 <Frame>
@@ -39,4 +41,18 @@ import Frame from "/src/components/Frame.astro";
     + 조회 기간에 입력 가능한 자릿수 제한을 추가했어요.
     <br/>
     <br/>
+</Frame>
+
+
+<Frame>
+    <Badge style={'web'}>MultiVM</Badge>
+    ## ✔️MVP(MultiVM) 업데이트 사항
+
+    ### ️1. 상품 등록 시 상품 타입을 선택할 수 있어요.
+    + `일반/쿠폰/배달` 상품으로 구분하며, 기본값은 일반 상품이에요.
+    + 상품 타입은 `마스터 상품 정보`에서만 변경이 가능해요.
+    <Figure src={Image2} caption={"추가된 상품 타입 선택"} width={350}/>
+    <br />
+    + 일괄 업로드 시 엑셀 등록 필드가 추가되었으며, `필수 입력값`이에요.
+     <Figure src={Image3} caption={"일괄 업드로 엑셀 필드"} width={800}/>
 </Frame>
