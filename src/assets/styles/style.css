@@ -110,6 +110,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #000000;
 }
 
+.sl-markdown-content :is(img, picture, video, canvas, svg, iframe):not(:where(.not-content *)){
+  border: 1px solid #f3f3f3;
+}
+
 :where(.astro-3ii7xxms)[aria-current=page], :where(.astro-3ii7xxms)[aria-current=page]:hover, :where(.astro-3ii7xxms)[aria-current=page]:focus {
   font-weight: 600;
   color: rgb(234 88 12 / var(--un-text-opacity));

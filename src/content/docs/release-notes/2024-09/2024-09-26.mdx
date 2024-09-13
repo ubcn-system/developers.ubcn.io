@@ -8,6 +8,8 @@ writtenAt: 2024-09-13
 import Badge from "/src/components/Badge.astro";
 import Figure from "/src/components/Figure.astro";
 import Image1 from "../_assets/2024-09-12-1.png"
+import Image2 from "../_assets/2024-09-26-1.png"
+import Image3 from "../_assets/2024-09-26-2.png"
 import Frame from "/src/components/Frame.astro";
 
 <Frame>
@@ -35,8 +37,22 @@ import Frame from "/src/components/Frame.astro";
     + 미사용 스타일 CSS 가 제거되었어요.
     + 조회 기간에 입력 가능한 자릿수 제한을 추가했어요.
 
-    ### 4. 서비스 코인 (2024.10.07~2024.10.31)
-    {/*+ 서비스 코인에 대한 API 기능이 추가되었어요.*/}
+    ### 4. 사용자 권한 표기 추가
+    <Figure src={Image2} caption={"사이드바"} width={300}/>
+    - VMMS 페이지의 좌측에 계정에 할당된 권한 정보가 추가 표기했어요.
+        - 권한 정보는 계정에 할당된 권한을 표기하며, 해당 권한에 따라 페이지 접근이 제한될 수 있어요.
+
+    ### 5. VAN 가맹점의 'EDC입금' 내용 추가
+    <Figure src={Image3} caption={"VAN 가맹점의 EDC 거래 매입거절 건"} width={300}/>
+    - VAN 가맹점은 각 카드사로부터 직접 가맹점의 매출을 입금받아요.
+    - 일부 카드사에서는 가맹점의 부담을 줄이기 위해 VAN 사로 입금 정보를 전달하지 않는 대신 별도 수수료를 부과하지 않아요.
+    - VMMS 에서는 VAN사로부터 입금 결과를 수신받지 못해 기존에는 `매입거절` 로 표기하고 있었는데, VAN 사에서 `EDC입금` 이라는 상태로 문구를 변경함에 따라
+    함께 변경하였어요.
+    - 카드사에서 직접 입금한 것인지 확인할 수 있도록 했어요.
+    - EDC 특약 가맹점 여부를 확인할 수 있게 되었어요.
+    - `EDC입금`상태를 조회하시려면 `매입거절`을 체크 후 조회해주세요.
+
+    ### 6. 서비스 코인 (2024.10.07~2024.10.31)
     + 서비스 코인에 대한 API 기능이 추가 예정이에요.
     + 서비스 코인을 사용할 수 있는 계정을 구분할 수 있도록 권한 기능이 개발될 예정이에요.
         + 권한이 있는 사용자만 사용할 수 있어요.
@@ -44,6 +60,5 @@ import Frame from "/src/components/Frame.astro";
         + 서비스 코인은 단말기를 통한 결제 이후 기기 오동작으로 상품이 미투출 또는 미동작 시에\
         사용자에게 직전 결제 금액만큼 다시 무상으로 제공하기 위해 개발되는 기능이에요.
 
-    <br/>
     <br/>
 </Frame>
