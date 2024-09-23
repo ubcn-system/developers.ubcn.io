@@ -9,6 +9,7 @@ import Badge from "/src/components/Badge.astro";
 import Figure from "/src/components/Figure.astro";
 import Image1 from "../_assets/2024-09-23-1.png"
 import Image2 from "../_assets/2024-09-23-2.png"
+import Image3 from "../_assets/2024-09-23-3.png"
 import Frame from "/src/components/Frame.astro";
 
 <Frame>
@@ -20,5 +21,15 @@ import Frame from "/src/components/Frame.astro";
         <Figure src={Image1} caption={"알림톡 기능 추가"} width={700}/>
         <Figure src={Image2} caption={"실제 전송된 알림톡"} width={250}/>
     </div>
+    <br/>
+</Frame>
+
+<Frame>
+    <Badge style={'web'}>MVP(MultiVM)</Badge>
+    ### 광고 수정 시 에러 보정
+    + 광고 수정 시 광고 이미지가 보이지 않거나 광고가 수정되지 않는 에러를 수정 했어요.
+    + 에러 없이 광고 수정 및 등록이 가능해요.
+
+    <Figure src={Image3} caption={"광고 수정 예시 화면"} width={250}/>
     <br/>
 </Frame>
