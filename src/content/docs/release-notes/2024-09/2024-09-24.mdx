@@ -1,0 +1,27 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2024-09-24 업데이트
+releasedAt: 2024-09-24
+writtenAt: 2024-09-24
+---
+
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "../_assets/2024-09-24-1.png"
+import Image2 from "../_assets/2024-09-24-2.png"
+import Frame from "/src/components/Frame.astro";
+
+<Frame>
+    <Badge style={'web'}>MVP(MultiVM)</Badge>
+    ### 1. 상품 정보 다운로드 필드 추가
+    + 상품 마스터 정보 다운로드 시 상품코드 및 상품 구분을 추가했어요.
+
+    <Figure src={Image1} caption={"상품 마스터 정보 다운로드"} width={1000}/>
+    <br/>
+
+    ### 2. 거래내역 매출 저장 시 필드 추가
+    + 거래내역 매출 정보 다운로드 시 결제 수단을 추가했어요.
+
+    <Figure src={Image2} caption={"거래내역 다운로드"} width={1000}/>
+    <br/>
+</Frame>
