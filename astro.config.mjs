@@ -42,6 +42,11 @@ export default defineConfig({
                             autogenerate: {directory: 'release-notes/2024-09'},
                             collapsed: false
                         },
+                        {
+                            label: '2024년 10월',
+                            autogenerate: {directory: 'release-notes/2024-10'},
+                            collapsed: false
+                        },
                     ],
                 },
                 {label: 'API', autogenerate: {directory: 'api'}, collapsed: false},
