@@ -20,7 +20,13 @@ export default defineConfig({
             social: {
                 github: 'https://github.com/ubcn-system/developers.ubcn.io',
             },
-            defaultLocale: 'kr',
+            defaultLocale: 'root',
+            locales: {
+                root: {
+                    label: '한국어',
+                    lang: 'ko',
+                }
+            },
             sidebar: [
                 {
                     label: '릴리즈노트',
