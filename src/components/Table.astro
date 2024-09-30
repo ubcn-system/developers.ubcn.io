@@ -1,33 +1,32 @@
 ---
 interface Props {
-    headers: Array<String>;
-    bodys: Array<{
-        title: String;
-        notNull: String;
-        argsType: String;
-        desc: String;
-        etc: String;
-    }>;
+  headers: Array<String>;
+  bodys: Array<{
+    title: String;
+    notNull: String;
+    argsType: String;
+    desc: String;
+    etc: String;
+  }>;
 }
 const {headers, bodys} = Astro.props;
-const header = headers.map(item=>(
-    `<th class={"text-center"}>${item}</th>`
+const header = headers.map(item => (
+    `<th class={"text-center"} title=${item.key}>${item.value}</th>`
 ));
 
-const body = bodys.map(item=>(
-    `<tr>
-        <td>${item.title}</td>
-        <td>${item.notNull}</td>
-        <td>${item.argsType}</td>
-        <td>${item.desc}</td>
-        <td>${item.etc}</td>
-    </tr>`
-));
+const body = bodys.reduce((acc, row) => {
+    const cells = headers.map(headerItem => {
+        const cell = row.find(cell => cell[headerItem.key]);
+        return cell ? `<td class={"text-center"}>${cell[headerItem.key]}</td>` : "<td></td>";
+    }).join("");
+    return `${acc}<tr>${cells}</tr>`;
+}, "");
+
 ---
 
 <div>
     <table>
-        <thead set:html={header}>
+        <thead set:html={header} title-length={headers.length}>
         </thead>
         <tbody set:html={body}>
         </tbody>
