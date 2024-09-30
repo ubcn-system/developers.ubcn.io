@@ -11,16 +11,16 @@ interface Props {
 }
 const {headers, bodys} = Astro.props;
 const header = headers.map(item => (
-    `<th class={"text-center"} title=${item.key}>${item.value}</th>`
-));
+    `<th class={"text-center"} title=${Object.keys(item)[0]}>${item[Object.keys(item)[0]]}</th>`
+)).join("");
 
-const body = bodys.reduce((acc, row) => {
-    const cells = headers.map(headerItem => {
-        const cell = row.find(cell => cell[headerItem.key]);
-        return cell ? `<td class={"text-center"}>${cell[headerItem.key]}</td>` : "<td></td>";
-    }).join("");
-    return `${acc}<tr>${cells}</tr>`;
-}, "");
+const body = bodys
+.map((row) => {
+    return `<tr>${row
+    .map((cell) => `<td>${Object.values(cell)[0]}</td>`)
+    .join("")}</tr>`;
+})
+.join("");
 
 ---
 
