@@ -1,0 +1,31 @@
+---
+layout: /src/layouts/api/Layout.astro
+title: 코드 정리
+sidebar:
+    order: 5
+#    badge:
+#        text: New
+#        variant: tip
+description: API 에서 전달되는 응답 코드에 대한 설명입니다.
+releasedAt: 2024-08-14
+writtenAt: 2024-08-14
+---
+
+
+import Frame from "/src/components/Frame.astro";
+import Table from "/src/components/Table.astro";
+
+<Frame>
+    ### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+
+    <Table
+        headers={[{"code": "코드"}, {"desc": "설명"}]}
+        bodys={
+            [
+                [{"code": "0000"}, {"desc": "성공"},],
+                [{"code": "9999"}, {"desc": "실패"},],
+            ]
+        }>
+    </Table>
+</Frame>

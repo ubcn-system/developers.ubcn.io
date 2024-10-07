@@ -1,33 +1,32 @@
 ---
 interface Props {
-    headers: Array<String>;
-    bodys: Array<{
-        title: String;
-        notNull: String;
-        argsType: String;
-        desc: String;
-        etc: String;
-    }>;
+  headers: Array<String>;
+  bodys: Array<{
+    title: String;
+    notNull: String;
+    argsType: String;
+    desc: String;
+    etc: String;
+  }>;
 }
 const {headers, bodys} = Astro.props;
-const header = headers.map(item=>(
-    `<th class={"text-center"}>${item}</th>`
-));
+const header = headers.map(item => (
+    `<th class={"text-center"} title=${Object.keys(item)[0]}>${item[Object.keys(item)[0]]}</th>`
+)).join("");
 
-const body = bodys.map(item=>(
-    `<tr>
-        <td>${item.title}</td>
-        <td>${item.notNull}</td>
-        <td>${item.argsType}</td>
-        <td>${item.desc}</td>
-        <td>${item.etc}</td>
-    </tr>`
-));
+const body = bodys
+.map((row) => {
+    return `<tr>${row
+    .map((cell) => `<td>${Object.values(cell)[0]}</td>`)
+    .join("")}</tr>`;
+})
+.join("");
+
 ---
 
 <div>
     <table>
-        <thead set:html={header}>
+        <thead set:html={header} title-length={headers.length}>
         </thead>
         <tbody set:html={body}>
         </tbody>

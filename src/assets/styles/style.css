@@ -32,7 +32,7 @@ html, :host {
   -webkit-tap-highlight-color: transparent
 }
 header{
-  height: 3.5rem !important;
+  height: 4rem !important;
 }
 
 header img{
@@ -270,6 +270,20 @@ progress {
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
   font: inherit
+}
+
+button:where{
+  position: fixed;
+  top: calc((var(--sl-nav-height) - var(--sl-menu-button-size)) / 2);
+  inset-inline-end: var(--sl-nav-pad-x);
+  z-index: var(--sl-z-index-navbar);
+  border: 0;
+  border-radius: 50%;
+  width: var(--sl-menu-button-size);
+  height: var(--sl-menu-button-size);
+  padding: .5rem !important;
+  box-shadow: var(--sl-shadow-md);
+  cursor: pointer;
 }
 
 /*summary {
