@@ -1,6 +1,6 @@
 ---
 layout: /src/layouts/api/Layout.astro
-title: 거래내역 요청 API
+title: 거래내역 요청
 sidebar:
     order: 2
 #    badge:
@@ -12,10 +12,15 @@ writtenAt: 2024-08-01
 ---
 
 import Button from "/src/components/Button.astro";
+import Frame from "/src/components/Frame.astro";
+import Table from "/src/components/Table.astro";
 
+<Frame>
 유비씨엔 API를 이용하여 서비스를 테스트 할 수 있습니다. 서비스 테스트를 위해서는 API 호출이 필요합니다.
-<br/>
+</Frame>
 
+## 기본 호출 구문
+<Frame>
 ```ts
 
 const API = axios.create({
@@ -37,251 +42,322 @@ if (res.code != null) {
 }
 
 ```
-<br/>
-## Schema
-결과 값에 들어 있는 필드는 다음과 같습니다.
-<table>
-    <thead>
-    <th>필드명</th>
-    <th>상세필드명</th>
-    <th>타입</th>
-    <th>설명</th>
-    <th>비고</th>
-    </thead>
-    <tbody>
-    <tr>
-        <td>decription</td>
-        <td>-</td>
-        <td>String</td>
-        <td>API 상세설명</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>message</td>
-        <td>-</td>
-        <td>String</td>
-        <td>응답 메시지</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>type</td>
-        <td>-</td>
-        <td>String</td>
-        <td>API 유형</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>salesDate</td>
-        <td>-</td>
-        <td>String</td>
-        <td>요청일자</td>
-        <td>YYYYMMDD</td>
-    </tr>
-    <tr>
-        <td rowSpan={34}>salesList</td>
-        <td>transactionDate</td>
-        <td>String</td>
-        <td>매출일자</td>
-        <td>YYYYMMDD</td>
-    </tr>
-    <tr>
-        <td>transactionNo</td>
-        <td>String</td>
-        <td>거래고유번호</td>
-        <td>UBCn 거래번호 (PK)</td>
-    </tr>
-    <tr>
-        <td>terminalId</td>
-        <td>String</td>
-        <td>단말기 ID</td>
-        <td>UBCn 단말기 ID</td>
-    </tr>
-    <tr>
-        <td>terminalCode</td>
-        <td>String</td>
-        <td>단말기 코드</td>
-        <td>가맹점 관리 단말기 코드</td>
-    </tr>
-    <tr>
-        <td>placeCode</td>
-        <td>String</td>
-        <td>위치코드(점포코드)</td>
-        <td>점포코드</td>
-    </tr>
-    <tr>
-        <td>placeNo</td>
-        <td>String</td>
-        <td>위치순번(POS번호)</td>
-        <td>POS번호</td>
-    </tr>
-    <tr>
-        <td>terminalTransSeq</td>
-        <td>String</td>
-        <td>단말기 거래 번호</td>
-        <td>단말기 거래 번호</td>
-    </tr>
-    <tr>
-        <td>tranDate</td>
-        <td>String</td>
-        <td>거래일자</td>
-        <td>거래일자(YYYYMMDD)</td>
-    </tr>
-    <tr>
-        <td>tranTime</td>
-        <td>String</td>
-        <td>거래시간</td>
-        <td>거래시간(HH24MISS)</td>
-    </tr>
-    <tr>
-        <td>payStep</td>
-        <td>String</td>
-        <td>거래 종류</td>
-        <td>1:거래, 2:취소</td>
-    </tr>
-    <tr>
-        <td>payType</td>
-        <td>String</td>
-        <td>지불 종류</td>
-        <td>1:현금, 2:신용카드, 3:선불카드</td>
-    </tr>
-    <tr>
-        <td>cardCode</td>
-        <td>String</td>
-        <td>카드사 코드</td>
-        <td>카드사 코드 참고</td>
-    </tr>
-    <tr>
-        <td>purchaseCode</td>
-        <td>String</td>
-        <td>매입사 코드</td>
-        <td>매입사 코드 참고</td>
-    </tr>
-    <tr>
-        <td>vanCode</td>
-        <td>String</td>
-        <td>VAN사 코드</td>
-        <td>VAN사 코드 참고</td>
-    </tr>
-    <tr>
-        <td>cardNo</td>
-        <td>String</td>
-        <td>카드번호</td>
-        <td>마스킹된 카드번호</td>
-    </tr>
-    <tr>
-        <td>approvalNo</td>
-        <td>String</td>
-        <td>승인번호</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>approvalDate</td>
-        <td>String</td>
-        <td>승인일자</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>approvalTime</td>
-        <td>String</td>
-        <td>승인시간</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>orgTransactionDate</td>
-        <td>String</td>
-        <td>원거래일자</td>
-        <td>취소시 원거래 일자</td>
-    </tr>
-    <tr>
-        <td>orgTerminalTransSeq</td>
-        <td>String</td>
-        <td>원거래 단말기 거래 번호</td>
-        <td>취소시 단말기 거래 번호</td>
-    </tr>
-    <tr>
-        <td>orgApprovalNo</td>
-        <td>String</td>
-        <td>원거래 승인번호</td>
-        <td>취소시 원거래 승인번호</td>
-    </tr>
-    <tr>
-        <td>colNo</td>
-        <td>String</td>
-        <td>자판기 컬럼</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>productCode</td>
-        <td>String</td>
-        <td>상품코드</td>
-        <td>상품(바)코드</td>
-    </tr>
-    <tr>
-        <td>productName</td>
-        <td>String</td>
-        <td>상품명</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>count</td>
-        <td>String</td>
-        <td>판매수량</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>price</td>
-        <td>String</td>
-        <td>판매단가</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>salesPrice</td>
-        <td>String</td>
-        <td>판매금액</td>
-        <td>판매수량 * 판매단가</td>
-    </tr>
-    <tr>
-        <td>discount</td>
-        <td>String</td>
-        <td>할인금액</td>
-        <td>할인 결제시(현재 지원 안함)</td>
-    </tr>
-    <tr>
-        <td>point</td>
-        <td>String</td>
-        <td>사용포인트</td>
-        <td>포인트 혼용 결제시 (현재 지원 안함)</td>
-    </tr>
-    <tr>
-        <td>amount</td>
-        <td>String</td>
-        <td>결제금액</td>
-        <td>판매금액 - 할인금액 - 포인트</td>
-    </tr>
-    <tr>
-        <td>beforeBalance</td>
-        <td>String</td>
-        <td>사용전금액</td>
-        <td>티머니/캐시비 사용전 잔액</td>
-    </tr>
-    <tr>
-        <td>afterBalance</td>
-        <td>String</td>
-        <td>사용후금액</td>
-        <td>티머니/캐시비 사용후 잔액</td>
-    </tr>
-    <tr>
-        <td>purchaseExpDate</td>
-        <td>String</td>
-        <td>매입 예정일</td>
-        <td>카드결제 시 매입 예정일</td>
-    </tr>
-    <tr>
-        <td>payExpDate</td>
-        <td>String</td>
-        <td>입금 예정일</td>
-        <td>카드결제시 입금 예정일</td>
-    </tr>
-    </tbody>
-</table>
+</Frame>
+
+<Frame>
+    ### Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+    <Table
+        headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+            {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+        bodys={
+            [
+                [
+                    {"title": "decription"},
+                    {"subTitle": "-"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "API 상세설명"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "message"},
+                    {"subTitle": "-"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "응답 메시지"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "type"},
+                    {"subTitle": "-"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "API 유형"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "salesDate"},
+                    {"subTitle": "-"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "요청일자"},
+                    {"etc": "YYYYMMDD"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "transactionDate"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "매출일자"},
+                    {"etc": "YYYYMMDD"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "transactionNo"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "거래고유번호"},
+                    {"etc": "UBCn 거래번호 (PK)"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "terminalId"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "단말기 ID"},
+                    {"etc": "UBCn 단말기 ID"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "terminalCode"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "단말기 코드"},
+                    {"etc": "가맹점 관리 단말기 코드"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "placeCode"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "위치코드(점포코드)"},
+                    {"etc": "점포코드"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "placeNo"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "위치순번(POS번호)"},
+                    {"etc": "POS번호"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "terminalTransSeq"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "단말기 거래 번호"},
+                    {"etc": "단말기 거래 번호"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "tranDate"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "거래일자"},
+                    {"etc": "거래일자(YYYYMMDD)"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "tranTime"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "거래시간"},
+                    {"etc": "거래시간(HH24MISS)"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "payStep"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "거래 종류"},
+                    {"etc": "1:거래, 2:취소"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "payType"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "지불 종류"},
+                    {"etc": "1:현금, 2:신용카드, 3:선불카드"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "cardCode"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "카드사 코드"},
+                    {"etc": "카드사 코드 참고"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "purchaseCode"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "매입사 코드"},
+                    {"etc": "매입사 코드 참고"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "vanCode"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "VAN사 코드"},
+                    {"etc": "VAN사 코드 참고"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "cardNo"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "카드번호"},
+                    {"etc": "마스킹된 카드번호"}
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "approvalNo"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "승인번호"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "approvalDate"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "승인일자"},
+                    {"etc": "YYYYMMDD"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "approvalTime"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "승인시간"},
+                    {"etc": "HH24MISS"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "orgTransactionDate"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "원거래일자"},
+                    {"etc": "취소시 원거래 일자"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "orgTerminalTransSeq"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "원거래 단말기 거래 번호"},
+                    {"etc": "취소시 단말기 거래 번호"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "orgApprovalNo"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "원거래 승인번호"},
+                    {"etc": "취소시 원거래 승인번호"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "colNo"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "자판기 컬럼"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "productCode"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "상품코드"},
+                    {"etc": "상품(바)코드"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "productName"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "상품명"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "count"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "판매수량"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "price"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "판매단가"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "salesPrice"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "판매금액"},
+                    {"etc": "판매수량 * 판매단가"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "discount"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "할인금액"},
+                    {"etc": "할인 결제시(현재 지원 안함)"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "point"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "사용포인트"},
+                    {"etc": "포인트 혼용 결제시 (현재 지원 안함)"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "amount"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "결제금액"},
+                    {"etc": "판매금액 - 할인금액 - 포인트"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "beforeBalance"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "사용전금액"},
+                    {"etc": "티머니/캐시비 사용전 잔액"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "afterBalance"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "사용후금액"},
+                    {"etc": "티머니/캐시비 사용후 잔액"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "purchaseExpDate"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "매입 예정일"},
+                    {"etc": "카드결제 시 매입 예정일"},
+                ],
+                [
+                    {"title": "salesList"},
+                    {"subTitle": "payExpDate"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "입금 예정일"},
+                    {"etc": "카드결제시 입금 예정일"},
+                ],
+            ]
+        }>
+    </Table>
+</Frame>
 {/*<Button url={"https://devapi.ubcn.co.kr:17881/list/noticeList"} title={"테스트 버튼"}/>*/}

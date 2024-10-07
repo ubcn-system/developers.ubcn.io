@@ -1,6 +1,6 @@
 ---
 layout: /src/layouts/api/Layout.astro
-title: 쿠폰 API
+title: 쿠폰
 sidebar:
     order: 4
 #    badge:
@@ -11,7 +11,6 @@ releasedAt: 2024-08-14
 writtenAt: 2024-08-14
 ---
 
-import Button from "/src/components/Button.astro";
 import Frame from "/src/components/Frame.astro";
 import Table from "/src/components/Table.astro";
 
@@ -68,5 +67,398 @@ const API = axios.create({
                 ]
             ]
         }>
+    </Table>
+</Frame>
+<Frame>
+    ### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+    <Table
+        headers={[{"title": "필드명"}, {"notNull": "필수"},
+            {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+        bodys={
+            [
+                [
+                    {"title": "code"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "API 결과코드"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "message"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "사용자 ID"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "description"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "결과문구 요약"},
+                    {"etc": "-"},
+                ],
+            ]
+        }>
+    </Table>
+</Frame>
+
+## 쿠폰 발권하기
+<Frame>
+    <strong style={"color: green"}>POST</strong> /issuance
+    ```ts
+    const res = await API.post("/issuance",
+        {
+            "id": "test",              //uid 또는 tid, 유비씨엔 제공
+            "tid": "2000012345",         //uid 또는 tid, 유비씨엔 제공
+            "type": "GIFT",              //GIFT: 1회권, RUSE: 금액권
+            "amount": 10000,             //쿠폰 발권 금액
+            "phone": "010-1234-1234",    //010-xxxx-xxxx, '-' 를 포함한 13자리의 연락처(쿠폰 수신자용)
+            "sendFlag" : "Y",            //Y: 알림톡 또는 MMS 전송, N: 전송 안함
+            "expireDate" : "20240831"    //쿠폰 유효기간, 기본값으로 설정된 유효 기간을 사용할 경우 해당 필드를 제거해주세요.
+        }
+    );
+
+    // 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
+    if (res.code != null) {
+        return alert(res.decription);
+    }
+
+    ```
+</Frame>
+<Frame>
+    ### Request Schema
+    <Table
+        headers={[{"title": "필드명"}, {"notNull": "필수"},
+            {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+        bodys={
+            [
+                [
+                    {"title": "id"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "사용자 ID(uid)"},
+                    {"etc": "id 또는 tid 둘 중 하나는 필수"},
+                ],
+                [
+                    {"title": "tid"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "단말기 ID(tid)"},
+                    {"etc": "id 또는 tid 둘 중 하나는 필수"},
+                ],
+                [
+                    {"title": "type"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "쿠폰 유형"},
+                    {"etc": "GIFT: 1회권, RUSE: 금액권 (최대 사용 회수는 그룹 설정)"},
+                ],
+                [
+                    {"title": "amount"},
+                    {"notNull": "Y"},
+                    {"argsType": "Long"},
+                    {"desc": "발권 금액"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "phone"},
+                    {"notNull": "N"},
+                    {"argsType": "String"},
+                    {"desc": "쿠폰 수신 연락처"},
+                    {"etc": "연락처가 없으면 미전송 발권"},
+                ],
+                [
+                    {"title": "sendFlag"},
+                    {"notNull": "N"},
+                    {"argsType": "String"},
+                    {"desc": "알림톡 발송여부"},
+                    {"etc": "기본값: 전송, Y: 전송, N: 미전송, <br/>"
+                        + "<code>고객사 자체 QR 을 그리는 경우 <br/>sendFlag='N', phone `필드 미사용` 또는 '000-0000-0000' 기입</code>"},
+                ],
+                [
+                    {"title": "expireDate"},
+                    {"notNull": "N"},
+                    {"argsType": "String"},
+                    {"desc": "만료일"},
+                    {"etc": "만료일 당일까지 사용 가능, <code>필드 미사용</code>시 그룹 설정을 따름"},
+                ],
+            ]
+        }>
+    </Table>
+</Frame>
+<Frame>
+    ### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+    <Table headers={[{"title": "필드명"}, {"notNull": "필수"},
+        {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+           bodys={
+               [
+                   [
+                       {"title": "code"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "API 결과코드"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "message"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "결과문구"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "description"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "쿠폰내용 + ',' + 쿠폰 만료일자"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "amount"},
+                       {"notNull": "N"},
+                       {"argsType": "Long"},
+                       {"desc": "발권 금액"},
+                       {"etc": "정상 발권 시 표기"},
+                   ],
+                   [
+                       {"title": "expireDate"},
+                       {"notNull": "N"},
+                       {"argsType": "String"},
+                       {"desc": "발권된 쿠폰의 유효기간"},
+                       {"etc": "정상 발권 시 표기"},
+                   ],
+                   [
+                       {"title": "type"},
+                       {"notNull": "N"},
+                       {"argsType": "String"},
+                       {"desc": "쿠폰타입"},
+                       {"etc": "정상 발권 시 표기"},
+                   ],
+                   [
+                       {"title": "msgSendType"},
+                       {"notNull": "N"},
+                       {"argsType": "String"},
+                       {"desc": "전송유형"},
+                       {"etc": "정상 발권 시 표기"},
+                   ],
+               ]
+           }>
+    </Table>
+</Frame>
+## 쿠폰 조회하기
+발권된 쿠폰의 현재 상태를 조회할 수 있습니다.
+<br/>
+<strong style={"color: green"}>GET</strong> /`{couponNo}`/type/`{type}`/`{id}`
+<Frame>
+    ```ts
+    //쿠폰 번호로 쿠폰의 현재 상태를 조회합니다.
+    const res = await API.get("/{couponNo}/type/{type}/{id}");
+    ```
+</Frame>
+<Frame>
+    ### Request Schema
+    <Table headers={[{"title": "필드명"}, {"notNull": "필수"},
+        {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+           bodys={
+               [
+                   [
+                       {"title": "couponNo"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "쿠폰번호"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "type"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "인증타입"},
+                       {"etc": "사용자 ID: uid<br/>단말기 ID: tid"},
+                   ],
+                   [
+                       {"title": "id"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "고유 ID"},
+                       {"etc": "사용자 ID<br/>단말기 ID"},
+                   ],
+               ]
+           }>
+    </Table>
+</Frame>
+<Frame>
+    ### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+    <Table headers={[{"title": "필드명"}, {"notNull": "필수"},
+        {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+           bodys={
+               [
+                   [
+                       {"title": "code"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "API 결과코드"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "message"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "결과문구"},
+                       {"etc": "쿠폰번호"},
+                   ],
+                   [
+                       {"title": "description"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "결과문구 요약"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "groupName"},
+                       {"notNull": "N"},
+                       {"argsType": "String"},
+                       {"desc": "그룹명"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "merchantName"},
+                       {"notNull": "N"},
+                       {"argsType": "String"},
+                       {"desc": "가맹점명"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "couponNo"},
+                       {"notNull": "N"},
+                       {"argsType": "String"},
+                       {"desc": "쿠폰번호"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "amount"},
+                       {"notNull": "N"},
+                       {"argsType": "Long"},
+                       {"desc": "발권 금액"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "phone"},
+                       {"notNull": "N"},
+                       {"argsType": "String"},
+                       {"desc": "수신 연락처"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "regDate"},
+                       {"notNull": "N"},
+                       {"argsType": "String"},
+                       {"desc": "발권일자"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "expireDate"},
+                       {"notNull": "N"},
+                       {"argsType": "String"},
+                       {"desc": "발권된 쿠폰의 유효기간"},
+                       {"etc": "명시된 일자까지 사용 가능"},
+                   ],
+                   [
+                       {"title": "couponType"},
+                       {"notNull": "N"},
+                       {"argsType": "String"},
+                       {"desc": "쿠폰타입"},
+                       {"etc": "GIFT: 1회권<br/>RUSE: 금액권"},
+                   ],
+                   [
+                       {"title": "couponStatus"},
+                       {"notNull": "N"},
+                       {"argsType": "String"},
+                       {"desc": "쿠폰상태"},
+                       {"etc": "쿠폰 현재 상태 표기"},
+                   ],
+               ]
+           }>
+    </Table>
+</Frame>
+## 쿠폰 수정하기
+발권된 쿠폰의 상태를 수정할 수 있습니다.
+<br/>
+<strong style={"color: green"}>PATCH</strong> /`{couponNo}`/type/`{type}`/`{id}`/status/`{couponStatus}`
+<Frame>
+    ```ts
+    const res = await API.get("/{couponNo}/type/{type}/{id}/status/{couponStatus}");
+    ```
+</Frame>
+<Frame>
+    ### Request Schema
+    <Table headers={[{"title": "필드명"}, {"notNull": "필수"},
+        {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+           bodys={
+               [
+                   [
+                       {"title": "couponNo"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "쿠폰번호"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "type"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "인증타입"},
+                       {"etc": "사용자 ID: uid<br/>단말기 ID: tid"},
+                   ],
+                   [
+                       {"title": "id"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "고유 ID"},
+                       {"etc": "사용자 ID<br/>단말기 ID"},
+                   ],
+                   [
+                       {"title": "couponStatus"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "쿠폰상태"},
+                       {"etc": "N: 미사용<br/>L: 잠금<br/>D: 기간만료<br/>U: 사용완료<br/>H: 삭제"},
+                   ],
+               ]
+           }>
+    </Table>
+</Frame>
+<Frame>
+    ### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+    <Table headers={[{"title": "필드명"}, {"notNull": "필수"},
+        {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+           bodys={
+               [
+                   [
+                       {"title": "code"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "API 결과코드"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "message"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "결과문구"},
+                       {"etc": "-"},
+                   ],
+                   [
+                       {"title": "description"},
+                       {"notNull": "Y"},
+                       {"argsType": "String"},
+                       {"desc": "결과문구 요약"},
+                       {"etc": "-"},
+                   ],
+               ]
+           }>
     </Table>
 </Frame>
