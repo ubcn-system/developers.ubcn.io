@@ -46,7 +46,7 @@ export default defineConfig({
                         {
                             label: '2024년 9월',
                             autogenerate: {directory: 'release-notes/2024-09'},
-                            collapsed: false
+                            collapsed: true
                         },
                         {
                             label: '2024년 10월',
