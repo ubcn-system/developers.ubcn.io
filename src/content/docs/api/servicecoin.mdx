@@ -10,3 +10,129 @@ description: 서비스 코인과 관련된 API 기능을 제공합니다.
 releasedAt: 2024-10-15
 writtenAt: 2024-10-15
 ---
+
+import Frame from "/src/components/Frame.astro";
+import Table from "/src/components/Table.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/serviceCoin.png";
+
+<Frame>
+    서비스 코인의 존재 유무 확인을 할 수 있습니다.
+    <br/>
+    - 서비스 코인은 가맹점주가 `웹`을 통해 등록하며, 등록된 코인은 단말기에서 `특정 버튼(터치)`을 통해 사용 가능합니다.
+    - 서비스 코인은 최초 등록 후, `10분` 동안만 사용 가능합니다.
+    - 서비스 코인은 `단말기 ID`를 기준으로 조회할 수 있습니다.
+    <Figure src={Image1} caption={"단말기 내 화면"} width={600}/>
+    <br/>
+
+    서비스 코인을 이용하기 위해서는 머신기와 단말기 사이의 `전용 펌웨어 개발`이 필요하기 때문에 별도 <strong>계약</strong>이 필요합니다.
+</Frame>
+<br/>
+
+## 기본 호출 구문
+<Frame>
+    ```ts
+    const API = axios.create({
+    baseURL: `http://api.ubcn.co.kr/pay/servicecoin/tid/{tid}`,
+    headers: {
+    "Access-Control-Allow-Origin": "*",
+    "company": "{company}", //유비씨엔 발급
+    "token"  : "{token}",     //유비씨엔 발급
+},
+});
+    ```
+</Frame>
+
+## 서비스 코인 존재여부 조회하기
+단말기 ID 를 통해 단말기 ID 에 등록된 서비스 코인을 조회할 수 있습니다.
+<br/>
+<strong style={"color: green"}>GET</strong> /pay/servicecoin/tid/`{tid}`
+<Frame>
+    ```ts
+    //유비씨엔(주)에서 제공하는 단말기 ID를 기준으로 사용자 계정 정보를 조회합니다.
+    const res = await API.get("/user/search/tid/{tid}");
+    ```
+</Frame>
+<Frame>
+    ### Request Schema
+    <Table
+        headers={[{"title": "필드명"}, {"notNull": "필수"},
+            {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+        bodys={
+            [
+                [
+                    {"title": "tid"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "단말기 ID"},
+                    {"etc": "-"},
+                ]
+            ]
+        }>
+    </Table>
+</Frame>
+<Frame>
+    ### Response Schema
+    응답 결과의 필드는 다음과 같으며, 결과 값이 `정상`일 때와 `비정상`일 때의 필드가 다릅니다.
+
+    #### 정상결과
+    <Table
+        headers={[{"title": "필드명"}, {"notNull": "필수"},
+            {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+        bodys={
+            [
+                [
+                    {"title": "tid"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "요청 단말기 ID"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "amount"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "등록된 서비스 코인 금액"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "expireDate"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "만료일자"},
+                    {"etc": "-"},
+                ],
+            ]
+        }>
+    </Table>
+    #### 비정상
+    <Table
+        headers={[{"title": "필드명"}, {"notNull": "필수"},
+            {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+        bodys={
+            [
+                [
+                    {"title": "code"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "API 결과코드"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "message"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "결과문구"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "description"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "결과문구 요약"},
+                    {"etc": "-"},
+                ],
+            ]
+        }>
+    </Table>
+</Frame>
