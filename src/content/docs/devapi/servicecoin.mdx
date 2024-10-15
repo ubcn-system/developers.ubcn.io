@@ -33,7 +33,7 @@ import Image1 from "./_assets/serviceCoin.png";
 <Frame>
     ```ts
     const API = axios.create({
-        baseURL: `http://api.ubcn.co.kr/pay/servicecoin/tid/{tid}`,
+        baseURL: `http://api.ubcn.co.kr/pay/servicecoin`,
         headers: {
             "Access-Control-Allow-Origin": "*",
             "company": "{company}", //유비씨엔 발급
@@ -50,7 +50,7 @@ import Image1 from "./_assets/serviceCoin.png";
 <Frame>
     ```ts
     //유비씨엔(주)에서 제공하는 단말기 ID를 기준으로 서비스 코인을 조회합니다.
-    const res = await API.get("/pay/servicecoin/tid/{tid}");
+    const res = await API.get("/tid/{tid}");
     ```
 </Frame>
 <Frame>
@@ -143,7 +143,7 @@ import Image1 from "./_assets/serviceCoin.png";
 <strong style={"color: green"}>POST</strong> /pay/servicecoin
 <Frame>
     ```ts
-    const res = await API.post("/pay/servicecoin",
+    const res = await API.post("/",
     {
         "tid" : "{tid}",
         "amount": "{amount}",
@@ -238,7 +238,7 @@ import Image1 from "./_assets/serviceCoin.png";
 <strong style={"color: green"}>DELETE</strong> /pay/servicecoin
 <Frame>
     ```ts
-    const res = await API.delete("/pay/servicecoin/tid/{tid}");
+    const res = await API.delete("/tid/{tid}");
     ```
 </Frame>
 <Frame>
