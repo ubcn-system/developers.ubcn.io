@@ -1,0 +1,38 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2024-10-17 업데이트
+releasedAt: 2024-10-17
+writtenAt: 2024-10-17
+---
+
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "../_assets/2024-10-10-1.png"
+import Frame from "/src/components/Frame.astro";
+
+<Frame>
+    <Badge style={'api'}>API</Badge>
+    ## ✔️서비스 코인 기능 추가
+    결제 후 미투출에 대한 대응을 위해 서비스 코인 기능이 추가 되었어요.\
+    해당 기능을 이용하기 위해 별도의 계약이 필요하며 지원하는 단말기에서만 사용 가능합니다.
+    <br/>
+    *지원 가능 기종(현재일 기준):
+    - UVM-300AI
+    - UVM-500
+    <div style={"display: flex;"}>
+        <Figure src={"https://ubcn.co.kr/data/product2/2105060024_M1.jpg"}
+                caption={"UVM-300AI"}/>
+        <Figure src={"https://ubcn.co.kr/data/product2/2204080002_M1.jpg"}
+                caption={"UVM-500"}/>
+    </div>
+    <br/>
+</Frame>
+<Frame>
+    <Badge style={'web'}>vmms</Badge>
+    ## ✔️공지사항
+    - 신규 공지사항이 추가되었어요.
+    <Figure src={Image1} caption={"신규 공지사항"} width={1200}/>
+    <Badge style={'web'}>BIZ</Badge>
+    ## ✔️BIZ 단말기 로그조회 기간 검색 추가
+    - BIZ 단말기 로그조회에서 기간 검색이 가능하도록 기능이 추가되었어요.
+</Frame>
