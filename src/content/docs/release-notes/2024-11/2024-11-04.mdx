@@ -11,6 +11,10 @@ writtenAt: 2024-11-04
 
 import Badge from "/src/components/Badge.astro";
 import Frame from "/src/components/Frame.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "../_assets/2024-11-04-01.png"
+import Image2 from "../_assets/2024-11-04-02.png"
+import Image3 from "../_assets/2024-11-04-03.png"
 
 <Frame>
     <Badge style={'web'}>VMMS</Badge>
@@ -22,4 +26,25 @@ import Frame from "/src/components/Frame.astro";
     <a class="inline-flex items-center px-6" target="_blank" href="https://blog.naver.com/ubcnsales/223164815635">
         <span> [제품소개] 사원카드(빙고 웰포인트 시스템) </span>
     </a>
+</Frame>
+
+<Frame>
+    <Badge style={'web'}>MultiVM</Badge>
+    ## ✔️ 1. 거래내역 데이터 VMMS와 동기화
+    #### 기존에 자판기와 VMMS 두 곳에서 진행하던 동기화를 VMMS만 진행해요.
+    + 사원카드 거래를 VMMS로 넣어줌으로써 자판기에서 사원카드 거래를 받아오지 않아요.
+    + 기존에 가끔 발생하던 `데이터 중복 등 문제를 해결` 할 수 있어요.
+    <br />
+
+    ## ✔️ 2. 매출 집계에 조직, 설치위치명 추가
+    <Figure src={Image1} caption={"매출집계 화면"} width={1000}/>
+    <br/>
+
+    ## ✔️ 3. 안보이던 슬롯 정보를 수정하고, 슬롯 분할 정보를 추가 했어요.
+    + 슬롯 분할 정보를 볼 수 있어요.
+    <Figure src={Image2} caption={"슬로정보 화면"} width={1000}/>
+
+    ## ✔️ 4. 자판기 상품 정보 등에 정렬 조건을 추가 했어요.
+    <Figure src={Image3} caption={"자판기 마스터 상품 정보 화면"} width={1000}/>
+    <br/>
 </Frame>
