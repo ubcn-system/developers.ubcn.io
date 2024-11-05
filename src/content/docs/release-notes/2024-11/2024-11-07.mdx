@@ -1,0 +1,60 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2024-11-07 업데이트
+sidebar:
+    badge:
+        text: New
+        variant: tip
+releasedAt: 2024-11-04
+writtenAt: 2024-11-04
+---
+
+import Badge from "/src/components/Badge.astro";
+import Frame from "/src/components/Frame.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "../_assets/2024-11-05-01.png"
+import Image2 from "../_assets/2024-11-05-02.png"
+import Image3 from "../_assets/2024-11-05-03.png"
+import Image4 from "../_assets/2024-11-05-04.png"
+
+
+<Frame>
+    <Badge style={'web'}>VMMS</Badge>
+    ## ✔️집계단위 텍스트 변경, '단말기별'로 조회시 검색결과에 소계 보이지 않게 처리
+        #### 1. VMMS 자판기 매출정보 - 매출집계 에서 집계단위 텍스트를 변경했어요.
+
+        <Figure src={Image1} caption={"기존 집계단위"} width={1000}/>
+
+        ###### 일별 -> 단말기 일별
+        ###### 월별 -> 단말기 월별
+        ###### 자판기별 -> 단말기별
+
+        <Figure src={Image2} caption={"변경된 집계단위"} width={1000}/>
+            <br/>
+
+        #### 2. '단말기별'로 조회시 기존에 나왔던  소계를 보이지 않게 처리했어요.
+        <Figure src={Image3} caption={"기존 결과화면"} width={1000}/>
+            <br/>
+
+        <Figure src={Image4} caption={"변경된 결과화면"} width={1000}/>
+            <br/>
+
+         #### 기존 화면 : 검색결과에 소계, 합계 둘 다 보였어요.
+         #### 변경된 화면 : 소계를 안보이게 처리 후 합계만 보이게 했어요.
+         ## 기존엔 단말기 일별(기존 일별)과 동일한 데이터가 조회되어  중복이 발생하였어요.
+         ## 이러한 문제를 해결하고 더 보기 편한 데이터를 제공하기 위해 소계를 제거하게 되었어요.
+
+
+
+        + 해당 변경점은 2024년 11월 07일 VMMS 정기 업데이트때 적용돼요.
+
+
+    <a class="inline-flex items-center px-6" target="_blank" href="https://blog.naver.com/ubcnsales/223164815635">
+        <span> 자판기 매출정보 - 매출집계 </span>
+    </a>
+</Frame>
+
+<Frame>
+    <Badge style={'web'}>MultiVM</Badge>
+
+</Frame>
