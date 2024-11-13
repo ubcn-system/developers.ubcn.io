@@ -8,6 +8,7 @@ writtenAt: 2024-11-13
 import Badge from "/src/components/Badge.astro";
 import Figure from "/src/components/Figure.astro";
 import Image1 from "./_assets/2024-11-13-1.png"
+import Image2 from "./_assets/2024-11-13-2.png"
 import Frame from "/src/components/Frame.astro";
 
 <Frame>
@@ -19,8 +20,12 @@ import Frame from "/src/components/Frame.astro";
     - `취소`는 매출에서 제외되고 별도로 표시해요.
     - `취소`에는 `취소를 요청한 일시`를 기준으로 계산해요. (11월 06일 거래를 11월 13일에 취소한 경우 11월 13일에 표시해요.)
     <Figure src={Image1} caption={"신규 공지사항"} width={300}/>
+</Frame>
 
+<Frame>
     <Badge style={'web'}>vmms</Badge>
-    ## ✔️
-
+    ## ✔️매출집계 엑셀 다운로드
+    매출집계의 '단말기 일별' 엑셀 다운로드 시 소계가 표기되도록 개선되었어요.
+    소계는 조직별 소계와 일자별 소계로 나눠서 표기돼요.
+    <Figure src={Image2} caption={"일별 엑셀 다운로드"} width={1000}/>
 </Frame>
