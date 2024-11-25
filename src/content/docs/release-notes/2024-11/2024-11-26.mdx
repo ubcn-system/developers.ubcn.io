@@ -1,0 +1,19 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2024-11-26 업데이트
+releasedAt: 2024-11-26
+writtenAt: 2024-11-26
+---
+
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2024-11-26-1.png"
+import Frame from "/src/components/Frame.astro";
+
+<Frame>
+    <Badge style={'web'}>vmms</Badge>
+    ## ✔️매출달력
+    `매출달력`에서 일자를 클릭하면 거래구분 별 매출집계를 볼 수 있도록 업데이트 되었어요.
+    - `취소`에는 `취소를 요청한 일시`를 기준으로 계산해요. (11월 06일 거래를 11월 13일에 취소한 경우 11월 13일에 표시해요.)
+    <Figure src={Image1} caption={"매출달력 상세조회"} width={500}/>
+</Frame>
