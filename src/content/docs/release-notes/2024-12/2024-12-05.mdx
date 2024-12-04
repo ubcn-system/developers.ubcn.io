@@ -1,6 +1,6 @@
 ---
 layout: /src/layouts/release-notes/Layout.astro
-title: 2024-12-05 업데이트(예정)
+title: 2024-12-05 업데이트
 releasedAt: 2024-12-05
 writtenAt: 2024-12-05
 ---
@@ -9,6 +9,7 @@ import Badge from "/src/components/Badge.astro";
 import Figure from "/src/components/Figure.astro";
 import Image1 from "./_assets/2024-12-05-01.png"
 import Image2 from "./_assets/2024-12-05-02.png"
+import Image3 from "./_assets/2024-12-05-03.png"
 import Frame from "/src/components/Frame.astro";
 
 <Frame>
@@ -21,4 +22,14 @@ import Frame from "/src/components/Frame.astro";
 
     `상세조회(매출리포트)`에서 결제 방법을 더 다양하게 표기하도록 개선되었어요.
     <Figure src={Image2} caption={"매출달력 상세조회"} width={500}/>
+
+    ## ✔️문구변경
+    '자판기'의 범위가 확장됨에 따라 기존의 '자판기' 라는 명칭에서 '머신기' 로 변경하기로 하였어요.\
+    가맹점주께서 최대한 혼동하지 않도록 조금씩, 천천히 변경할 예정이에요.
+
+    ## ✔️거래내역 상세
+    `거래내역 상세` 화면에 '머신기 모델' 정보가 추가되었어요.\
+    같은 장소에 여러 단말기를 사용하는 경우, `머신기 모델`을 통해 어떤  모델인지 확인할 수 있어요.\
+    (`머신기 모델` 은 `운영자판기 관리` 페이지의 `머신기 모델`을 의미해요.)
+    <Figure src={Image3} caption={"거래내역 상세조회"} width={500}/>
 </Frame>

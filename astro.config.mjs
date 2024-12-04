@@ -51,12 +51,12 @@ export default defineConfig({
                         {
                             label: '2024년 10월',
                             autogenerate: {directory: 'release-notes/2024-10'},
-                            collapsed: false
+                            collapsed: true
                         },
                         {
                             label: '2024년 11월',
                             autogenerate: {directory: 'release-notes/2024-11'},
-                            collapsed: false
+                            collapsed: true
                         },
                         {
                             label: '2024년 12월',
