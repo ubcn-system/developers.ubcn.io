@@ -1,0 +1,40 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2024-12-18 업데이트
+releasedAt: 2024-12-18
+writtenAt: 2024-12-18
+---
+
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2024-12-16-01.png"
+import Image2 from "./_assets/2024-12-16-02.png"
+import Image3 from "./_assets/2024-12-16-03.png"
+import Image4 from "./_assets/2024-12-16-04.png"
+import Frame from "/src/components/Frame.astro";
+
+<Frame>
+    <Badge style={'web'}>vmms</Badge>
+    ## ✔️운영자판기 관리
+    ### `모델선택`
+    * 멀티 및 빙고 시리스 자판기 모델은 선택이 가능해요.
+    나머지 자판기는 기존과 동일하게 직접 입력해요.
+    <Figure src={Image1} caption={"운영 자판기 등록"} width={400}/><br />
+
+    ### `검색 조건 유지`
+    * 운영자판기 상세 -> 목록 클릭 시 초기화되던 조회 정보를 다시 불러와요.
+    <Figure src={Image2} caption={"목록 클릭 시 기존 검색 화면 유지"} width={800}/><br />
+
+    ## 가동 상태 조회
+    ### `1펄스 모드 추가`
+    * 기존에 선택박스만 사용 가능하던 단말기도 1펄스 모드 사용이 가능해요
+    <Figure src={Image3} caption={"1펄스 모드 추가 예시 화면"} width={800}/><br />
+</Frame>
+
+<Frame>
+    <Badge style={'web'}>mvmms</Badge>
+        ### `1펄스 모드 추가`
+        * vmms와 동일하게 모바일 vmms에서도 기존에 선택박스만 사용 가능하던 단말기도 1펄스 모드 사용이 가능해요
+        <Figure src={Image4} caption={"모바일 vmms 1펄스 모드 추가 예시 화면"} width={400}/><br />
+
+</Frame>
