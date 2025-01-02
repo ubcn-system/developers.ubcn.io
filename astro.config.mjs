@@ -34,33 +34,13 @@ export default defineConfig({
                     /*autogenerate: {directory: 'release-notes'},*/
                     items: [
                         {
-                            label: '2024년 7월',
-                            autogenerate: {directory: 'release-notes/2024-07'},
+                            label: '2024년',
+                            autogenerate: {directory: 'release-notes/2024'},
                             collapsed: true
                         },
                         {
-                            label: '2024년 8월',
-                            autogenerate: {directory: 'release-notes/2024-08'},
-                            collapsed: true
-                        },
-                        {
-                            label: '2024년 9월',
-                            autogenerate: {directory: 'release-notes/2024-09'},
-                            collapsed: true
-                        },
-                        {
-                            label: '2024년 10월',
-                            autogenerate: {directory: 'release-notes/2024-10'},
-                            collapsed: true
-                        },
-                        {
-                            label: '2024년 11월',
-                            autogenerate: {directory: 'release-notes/2024-11'},
-                            collapsed: true
-                        },
-                        {
-                            label: '2024년 12월',
-                            autogenerate: {directory: 'release-notes/2024-12'},
+                            label: '2025년 1월',
+                            autogenerate: {directory: 'release-notes/2025-01'},
                             collapsed: false
                         },
                     ],
