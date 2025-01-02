@@ -1,0 +1,25 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2025-01-08 업데이트
+releasedAt: 2025-01-08
+writtenAt: 2025-01-02
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2025-01-08-01.png"
+
+<Frame>
+    <Badge style={'web'}>biz</Badge>
+    ## ✔️신용카드 거래내역 조회
+    ### 1. 상점 ID 추가
+    거래내역 목록에 `상점 ID` 가 추가되었어요.
+
+    기존에 표기되던 항목 중, 필요가 없었던 `할부` 항목을 지우고, `상점 ID` 를 추가해 거래를 더욱 손쉽게 확인할 수 있도록 했어요.
+    <Figure src={Image1} caption={"상점 ID 추가"} width={400}/><br />
+
+    ### 2. 상점 ID 입력 글자수 제한
+    상점 ID 의 최대 입력 가능 글자수를 10자로 제한했어요.
+
+</Frame>
