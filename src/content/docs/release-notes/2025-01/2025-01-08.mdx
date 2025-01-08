@@ -9,17 +9,33 @@ import Frame from "/src/components/Frame.astro";
 import Badge from "/src/components/Badge.astro";
 import Figure from "/src/components/Figure.astro";
 import Image1 from "./_assets/2025-01-08-01.png"
+import Image2 from "./_assets/2025-01-08-02.png"
+
+<Frame>
+    <Badge style={'web'}>vmms</Badge>
+    ## ✔️메인페이지
+    ### 팝업 모달창 변경
+            기존 다중 이미지 모달창에서 Swiper형 모달창으로 변경했어요. 이로 인해 여러 개의 공지사항 이미지가 존재해도 더욱 편리하게 확인할 수 있어요.
+    <br/>
+    ## ✔️소속, 계정관리
+    ### 미사용(사용중지) 정보 표기
+    사용을 중지한 소속, 계정, 상품, 이벤트 등의 정보에는 목록 내 `미사용` 표기 또는 '색상표기' 를 진행하여
+    더욱 손쉽게 확인할 수 있도록 했어요.
+    <Figure src={Image1} caption={"상점 ID 추가"} width={300}/><br />
+    ## ✔️거래 상세내역
+    ### 취소 기능 수정
+            카드사에서 '이미 취소된 거래' 의 응답이 수신되면, 기존 거래가 '취소' 가 아닌 경우에 한해 , '취소' 상태로 변경되도록 수정했어요.
+</Frame>
 
 <Frame>
     <Badge style={'web'}>biz</Badge>
     ## ✔️신용카드 거래내역 조회
-    ### 1. 상점 ID 추가
+    ### 상점 ID 추가
     거래내역 목록에 `상점 ID` 가 추가되었어요.
 
     기존에 표기되던 항목 중, 필요가 없었던 `할부` 항목을 지우고, `상점 ID` 를 추가해 거래를 더욱 손쉽게 확인할 수 있도록 했어요.
-    <Figure src={Image1} caption={"상점 ID 추가"} width={400}/><br />
-
-    ### 2. 상점 ID 입력 글자수 제한
+    <Figure src={Image2} caption={"상점 ID 추가"} width={400}/><br />
+    ## ✔️단말기 정보변경, 단말기 명의변경
+    ### 상점 ID 입력 글자수 제한
     상점 ID 의 최대 입력 가능 글자수를 10자로 제한했어요.
-
 </Frame>
