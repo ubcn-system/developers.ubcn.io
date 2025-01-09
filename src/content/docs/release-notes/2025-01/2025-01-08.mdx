@@ -12,6 +12,7 @@ import Image1 from "./_assets/2025-01-08-01.png"
 import Image2 from "./_assets/2025-01-08-02.png"
 import Image3 from "./_assets/2025-01-08-03.png"
 import Image4 from "./_assets/2025-01-08-04.png"
+import Image5 from "./_assets/2025-01-08-05.png"
 
 <Frame>
     <Badge style={'web'}>vmms</Badge>
@@ -53,5 +54,10 @@ import Image4 from "./_assets/2025-01-08-04.png"
 
     3.등록되지 않은 슬롯 정보 표시<br />
     자판기와 동일하게 빈 슬롯은 `Not Set`으로 표시해요.
-    <Figure src={Image4} caption={"빈 슬롯 표시 예시"} width={600}/>
+    <Figure src={Image4} caption={"빈 슬롯 표시 예시"} width={600}/><br />
+
+    4.판매중지 및 슬롯병합 표시
+    각각 기존 `판매안함` -> `판매중지`, `슬롯분할` -> `슬롯병합`으로 문구를 변경했어요.<br />
+    사용자 편의를 위해 비활성화 슬롯에 대한 디자인(블러처리 및 문구 크기를 조정)을 변경 했어요.
+    <Figure src={Image5} caption={"비활성화 슬롯 표시 예시"} width={600}/>
 </Frame>
