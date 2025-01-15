@@ -1,0 +1,63 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2025-01-08 업데이트
+releasedAt: 2025-01-08
+writtenAt: 2025-01-02
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2025-01-08-01.png"
+import Image2 from "./_assets/2025-01-08-02.png"
+import Image3 from "./_assets/2025-01-08-03.png"
+import Image4 from "./_assets/2025-01-08-04.png"
+import Image5 from "./_assets/2025-01-08-05.png"
+
+<Frame>
+    <Badge style={'web'}>vmms</Badge>
+    ## ✔️메인페이지
+    ### 팝업 모달창 변경
+            기존 다중 이미지 모달창에서 Swiper형 모달창으로 변경했어요. 이로 인해 여러 개의 공지사항 이미지가 존재해도 더욱 편리하게 확인할 수 있어요.
+    <br/>
+    ## ✔️소속, 계정관리
+    ### 미사용(사용중지) 정보 표기
+    사용을 중지한 소속, 계정, 상품, 이벤트 등의 정보에는 목록 내 `미사용` 표기 또는 '색상표기' 를 진행하여
+    더욱 손쉽게 확인할 수 있도록 했어요.
+    <Figure src={Image1} caption={"상점 ID 추가"} width={300}/><br />
+    ## ✔️거래 상세내역
+    ### 취소 기능 수정
+            카드사에서 '이미 취소된 거래' 의 응답이 수신되면, 기존 거래가 '취소' 가 아닌 경우에 한해 , '취소' 상태로 변경되도록 수정했어요.
+</Frame>
+
+<Frame>
+    <Badge style={'web'}>biz</Badge>
+    ## ✔️신용카드 거래내역 조회
+    ### 상점 ID 추가
+    거래내역 목록에 `상점 ID` 가 추가되었어요.
+
+    기존에 표기되던 항목 중, 필요가 없었던 `할부` 항목을 지우고, `상점 ID` 를 추가해 거래를 더욱 손쉽게 확인할 수 있도록 했어요.
+    <Figure src={Image2} caption={"상점 ID 추가"} width={400}/><br />
+    ## ✔️단말기 정보변경, 단말기 명의변경
+    ### 상점 ID 입력 글자수 제한
+    상점 ID 의 최대 입력 가능 글자수를 10자로 제한했어요.
+</Frame>
+
+<Frame>
+    <Badge style={'web'}>MultiVM</Badge>
+    ## ✔️슬롯 현황
+    ### 슬롯현황 제공 정보 변경
+    1.`전체` 현황 확인 시 동일한 상품은 재고수를 합산으로 보여줘요.<br />
+    2.추가로 슬롯이 병합된 상품이나 판매하지 않는 상품은 `전체`조회 시 보이지 않아요.<br />
+    ex) 최대 재고 10개인 16개 상품 3개 등록 시 화면<br />
+    <Figure src={Image3} caption={"재고 수 합산"} width={600}/><br />
+
+    3.등록되지 않은 슬롯 정보 표시<br />
+    자판기와 동일하게 빈 슬롯은 `Not Set`으로 표시해요.
+    <Figure src={Image4} caption={"빈 슬롯 표시 예시"} width={600}/><br />
+
+    4.판매중지 및 슬롯병합 표시
+    각각 기존 `판매안함` -> `판매중지`, `슬롯분할` -> `슬롯병합`으로 문구를 변경했어요.<br />
+    사용자 편의를 위해 비활성화 슬롯에 대한 디자인(블러처리 및 문구 크기를 조정)을 변경 했어요.
+    <Figure src={Image5} caption={"비활성화 슬롯 표시 예시"} width={600}/>
+</Frame>
