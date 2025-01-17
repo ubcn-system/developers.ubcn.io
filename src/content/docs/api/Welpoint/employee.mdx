@@ -1,0 +1,505 @@
+---
+layout: /src/layouts/api/Layout.astro
+title: 사원관리 요청
+sidebar:
+    order: 2
+#    badge:
+#        text: New
+#        variant: tip
+description: 사원카드의 사원관리와 관련된 API 기능을 제공합니다.
+releasedAt: 2025-01-17
+writtenAt: 2025-01-17
+---
+
+import Button from "/src/components/Button.astro";
+import Frame from "/src/components/Frame.astro";
+import Table from "/src/components/Table.astro";
+
+<Frame>
+사원카드 API를 이용하여 사원의 관리를 요청 할 수 있습니다. 서비스 테스트를 위해서는 API 호출이 필요합니다.
+</Frame>
+
+## 기본 호출 구문
+<Frame>
+```ts
+
+const API = axios.create({
+  baseURL: `http://api.ubcn.co.kr/api`,
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    "PER-ID": "{유출금지}",
+    "PER-TOKEN": "{유출금지}",
+  },
+  body: {
+    "params" : "params data",
+    ...,
+  },
+});
+
+// post 요청만을 지원합니다.
+const res = await API.post("/well/client/{service}"); // {service}에 따라 구분됩니다.
+console.log(res.data);
+
+// 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
+if (res.code != null) {
+  return alert(res.decription);
+}
+
+```
+</Frame>
+
+
+## 사용자 정보 조회
+<Frame>
+### 호출구문
+```ts
+
+const API = axios.create({
+        baseURL: `http://api.ubcn.co.kr/api`,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "PER-ID": "{유출금지}",
+            "PER-TOKEN": "{유출금지}",
+        },
+});
+
+    // post 요청만을 지원합니다.
+    // {cardNo} : 조회하고자 하는 사원의 카드번호
+    // {payment} : 조회하고자 하는 사원카드의 결제 방식("QR" 혹은 "Barcode")
+    const res = await API.post("/well/client/{cardNo}/{payment}");
+    console.log(res.data);
+
+    // 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
+    if (res.code != null) {
+        return alert(res.decription);
+}
+```
+<br/>
+### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+<Table
+    headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+        {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+    bodys={[
+        [
+            {"title": "code"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "결과 코드"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "message"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "응답 메시지"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "seq"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "int"},
+            {"desc": "seq"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "name"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "고객사명"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "tranOption"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "정책"},
+            {"etc": "'0 : 가용마일리지 초과 허용, 1 : 가용마일리지 초과 불허용"},
+        ],
+        [
+            {"title": "validity"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "유효성체크값"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "perisisType"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "연동타입"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "perisisComp"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "연동ID"},
+            {"etc": "-"},
+        ],
+    ]}>
+</Table>
+</Frame>
+
+
+## 사용자 정보 등록
+<Frame>
+### Request Schema
+요청에서 필요로 하는 필드는 다음과 같습니다.
+<Table
+    headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+        {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+    bodys={[
+        [
+            {"title": "employeeList"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "Array"},
+            {"desc": "등록하고자 하는 사원 Array"},
+            {"etc": "객체 리스트"},
+        ],
+    ]}>
+</Table>
+
+#### employeeList 내부 필드 설명
+employeeList는 사원의 배열로, 내부 객체는 다음과 같은 필드를 포함합니다.
+    <Table
+        headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+            {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+        bodys={[
+            [
+                {"title": "userCardNo"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "사원 카드번호"},
+                {"etc": "최대 19자리"},
+            ],
+            [
+                {"title": "userNo"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "사원 번호"},
+                {"etc": "-"},
+            ],
+            [
+                {"title": "vm"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "초기 복지금액"},
+                {"etc": "-"},
+            ],
+        ]}>
+    </Table>
+
+
+### 호출 구문
+```ts
+const API = axios.create({
+    baseURL: `http://api.ubcn.co.kr/api`,
+    headers: {
+        "Access-Control-Allow-Origin": "*",
+        "PER-ID": "{유출금지}",
+        "PER-TOKEN": "{유출금지}",
+    },
+});
+
+const bodyData = [
+    {
+        "userCardNo" : "1198609522000000001",
+        "userNo" : "UBCN001",
+        "vm" : "10000"
+    }, ...,
+]
+
+// post 요청만을 지원합니다.
+// {payment} : 조회하고자 하는 사원카드의 결제 방식("QR" 혹은 "Barcode")
+const res = await API.post("/well/client/regist/{payment}", bodyData);
+console.log(res.data);
+
+// 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
+if (res.code != null) {
+    return alert(res.decription);
+}
+```
+<br/>
+### Response Schema
+결과 값에 들어 있는 필드는 다음과 같습니다.
+<Table
+    headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+        {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+    bodys={[
+        [
+            {"title": "code"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "결과 코드"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "message"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "응답 메시지"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "seq"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "int"},
+            {"desc": "seq"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "name"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "고객사명"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "tranOption"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "정책"},
+            {"etc": "'0 : 가용마일리지 초과 허용, 1 : 가용마일리지 초과 불허용"},
+        ],
+        [
+            {"title": "validity"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "유효성체크값"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "perisisType"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "연동타입"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "perisisComp"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "연동ID"},
+            {"etc": "-"},
+        ],
+    ]}>
+</Table>
+</Frame>
+
+## 사용자 정보 변경
+<Frame>
+### Request Schema
+    요청에서 필요로 하는 필드는 다음과 같습니다.
+<Table
+    headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+        {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+    bodys={[
+        [
+            {"title": "seq"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "사원 SEQ"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "userCardNo"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "사원 카드번호"},
+            {"etc": "최대 19자리"},
+        ],
+        [
+            {"title": "userNo"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "사원 번호"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "vm"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "복지금액"},
+            {"etc": "입력한 값으로 복지금액이 변경됩니다."},
+        ],
+    ]}>
+</Table>
+
+### 호출 구문
+```ts
+const API = axios.create({
+    baseURL: `http://api.ubcn.co.kr/api`,
+    headers: {
+       "Access-Control-Allow-Origin": "*",
+       "PER-ID": "{유출금지}",
+       "PER-TOKEN": "{유출금지}",
+    },
+});
+
+const bodyData = {
+    "seq" : "1",
+    "userCardNo" : "1198609522000001",
+    "userNo" : "UBCN002",
+    "vm" : "20000"
+}
+
+// post 요청만을 지원합니다.
+// {payment} : 조회하고자 하는 사원카드의 결제 방식("QR" 혹은 "Barcode")
+const res = await API.post("/well/client/modify/{payment}", bodyData);
+console.log(res.data);
+
+// 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
+if (res.code != null) {
+    return alert(res.decription);
+}
+    ```
+    <br/>
+### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+<Table
+    headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+        {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+    bodys={[
+        [
+            {"title": "code"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "결과 코드"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "message"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "응답 메시지"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "seq"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "int"},
+            {"desc": "seq"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "name"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "고객사명"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "tranOption"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "정책"},
+            {"etc": "'0 : 가용마일리지 초과 허용, 1 : 가용마일리지 초과 불허용"},
+        ],
+        [
+            {"title": "validity"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "유효성체크값"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "perisisType"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "연동타입"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "perisisComp"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "연동ID"},
+            {"etc": "-"},
+        ],
+    ]}>
+</Table>
+</Frame>
+
+## 사용자 사용해지
+<Frame>
+### 호출구문
+```ts
+
+const API = axios.create({
+    baseURL: `http://api.ubcn.co.kr/api`,
+    headers: {
+        "Access-Control-Allow-Origin": "*",
+        "PER-ID": "{유출금지}",
+        "PER-TOKEN": "{유출금지}",
+    },
+});
+
+// post 요청만을 지원합니다.
+// {seq} : 해지하고자 하는 사원 SEQ
+const res = await API.post("/well/client/delete/{seq}");
+console.log(res.data);
+
+// 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
+if (res.code != null) {
+    return alert(res.decription);
+}
+```
+<br/>
+### Response Schema
+결과 값에 들어 있는 필드는 다음과 같습니다.
+<Table
+    headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+        {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+    bodys={[
+        [
+            {"title": "code"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "결과 코드"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "message"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "응답 메시지"},
+            {"etc": "-"},
+        ],
+    ]}>
+</Table>
+</Frame>

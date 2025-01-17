@@ -1,0 +1,180 @@
+---
+layout: /src/layouts/api/Layout.astro
+title: 거래내역 요청
+sidebar:
+    order: 3
+#    badge:
+#        text: New
+#        variant: tip
+description: 사원카드 거래와 관련된 API 기능을 제공합니다.
+releasedAt: 2025-01-17
+writtenAt: 2025-01-17
+---
+
+import Button from "/src/components/Button.astro";
+import Frame from "/src/components/Frame.astro";
+import Table from "/src/components/Table.astro";
+
+<Frame>
+사원카드 API를 이용하여 거래내역을 요청 할 수 있습니다. 서비스 테스트를 위해서는 API 호출이 필요합니다.
+</Frame>
+
+## 기본 호출 구문
+<Frame>
+```ts
+
+const API = axios.create({
+  baseURL: `http://api.ubcn.co.kr/api`,
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    "PER-ID": "{유출금지}",
+    "PER-TOKEN": "{유출금지}",
+  },
+});
+
+// post 요청만을 지원합니다.
+// {date}는 "YYYYMMDD" 형식을 따릅니다.
+const res = await API.post("/well/sales/{date}");
+console.log(res.data);
+
+// 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
+if (res.code != null) {
+  return alert(res.decription);
+}
+
+```
+</Frame>
+
+<Frame>
+    ### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+    <Table
+        headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+            {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+        bodys={[
+            [
+                {"title": "code"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "결과 코드"},
+                {"etc": "-"},
+            ],
+            [
+                {"title": "message"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "응답 메시지"},
+                {"etc": "-"},
+            ],
+            [
+                {"title": "findCnt"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "int"},
+                {"desc": "조회결과 개수"},
+                {"etc": "-"},
+            ],
+            [
+                {"title": "foundList"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "Array"},
+                {"desc": "조회된 리스트 (거래내역 배열)"},
+                {"etc": "객체 리스트"},
+            ],
+        ]}>
+    </Table>
+</Frame>
+
+<Frame>
+    ### foundList 내부 필드 설명
+    foundList는 거래내역의 배열로, 내부 객체는 다음과 같은 필드를 포함합니다.
+    <Table
+        headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+            {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+        bodys={[
+            [
+                {"title": "tranDate"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "거래일자"},
+                {"etc": "YYYYMMDD"},
+            ],
+            [
+                {"title": "tsType"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "사용이력 구분"},
+                {"etc": "-"},
+            ],
+            [
+                {"title": "tsNo"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "거래번호"},
+                {"etc": "-"},
+            ],
+            [
+                {"title": "terminalID"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "단말기 ID"},
+                {"etc": "-"},
+            ],
+            [
+                {"title": "cardNo"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "카드번호"},
+                {"etc": "-"},
+            ],
+            [
+                {"title": "vmOut"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "복지금 사용액"},
+                {"etc": "-"},
+            ],
+            [
+                {"title": "vColumn"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "자판기컬럼"},
+                {"etc": "-"},
+            ],
+            [
+                {"title": "pName"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "상품명"},
+                {"etc": "-"},
+            ],
+            [
+                {"title": "originDate"},
+                {"subTitle": "-"},
+                {"notNull": "N"},
+                {"argsType": "String"},
+                {"desc": "취소 원거래일"},
+                {"etc": "-"},
+            ],
+            [
+                {"title": "originTsNo"},
+                {"subTitle": "-"},
+                {"notNull": "N"},
+                {"argsType": "String"},
+                {"desc": "취소 원거래번호"},
+                {"etc": "-"},
+            ],
+        ]}>
+    </Table>
+</Frame>

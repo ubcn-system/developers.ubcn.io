@@ -2,7 +2,7 @@
 layout: /src/layouts/api/Layout.astro
 title: 코드 정리
 sidebar:
-    order: 2
+    order: 3
 #    badge:
 #        text: New
 #        variant: tip
@@ -68,6 +68,7 @@ import Table from "/src/components/Table.astro";
                 [{"code": "ERR_211"}, {"message": "지원하지 않는 날짜 형식"}, {"description": "날짜 형식을 확인하시기 바랍니다."},],
                 [{"code": "ERR_212"}, {"message": "지원하지 않는 시간 형식"}, {"description": "시간 형식을 확인하시기 바랍니다."},],
                 [{"code": "ERR_213"}, {"message": "지원하지 않는 연락처 형식"}, {"description": "연락처 형식을 확인하시기 바랍니다."},],
+                [{"code": "ERR_214"}, {"message": "결제수단 오입력"}, {"description": "결제수단{payment}은 'QR' 혹은 'Barcode'만을 입력해주시길 바랍니다."},],
                 [{"code": "ERR_401"}, {"message": "최소 값 기준치 미달"}, {"description": "최소 기준에 미달합니다."},],
                 [{"code": "ERR_402"}, {"message": "최대 값 기준치 초과"}, {"description": "최대 기준을 초과합니다."},],
                 [{"code": "9999"}, {"message": "쿠폰 발권 실패"}, {"description": "재발권 요청이 필요합니다."},],

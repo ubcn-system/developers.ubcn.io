@@ -1,0 +1,108 @@
+---
+title: 토큰발행
+sidebar:
+    order: 1
+---
+
+import Frame from "/src/components/Frame.astro";
+import Table from "/src/components/Table.astro";
+
+<Frame>
+    사원카드 결제로부터 발생한 매출 데이터와 사원의 관리를 API 형태로 제공합니다.(유상: 커스텀, 무상: 기본)
+</Frame>
+<Frame>
+    ### 사전 준비 사항
+    유비씨엔의 사원카드 API를 사용하기 위해서는 먼저, 고객사 고유ID인 `PER-ID`와 암호화 된 `PER-TOKEN`을 발급받아야 합니다.
+
+    `PER-ID`는 유비씨엔 관리자에게 문의하여 발급받을 수 있으며 `PER-TOKEN`은 발급 받은 `PER-ID`를 통해 발급 가능합니다.
+</Frame>
+<Frame>
+    ### Request Header Schema
+    <table>
+        <thead>
+            <th class={"text-center"}>Key</th>
+            <th class={"text-center"}>필수</th>
+            <th class={"text-center"}>타입</th>
+            <th class={"text-center"}>설명</th>
+            <th class={"text-center"}>비고</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td class={"text-center"}>PER-ID</td>
+            <td class={"text-center"}>Y</td>
+            <td class={"text-center"}>String</td>
+            <td class={"text-center"}>API 연동 ID</td>
+            <td class={"text-center"}>UBCn 시스템개발부에서 제공</td>
+        </tr>
+        </tbody>
+    </table>
+</Frame>
+<Frame>
+    ### 토큰발행 API 호출 방법
+    API 호출 방법은 다음과 같습니다.
+```ts
+
+const API = axios.create({
+  baseURL: `http://api.ubcn.co.kr/api`,
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    "PER-ID": "유출금지"
+  },
+});
+
+// post만을 지원합니다.
+const res = await API.post("/well/auth/token");
+console.log(res.data);
+
+// 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
+if (res.code != null) {
+  return alert(res.decription);
+}
+
+```
+</Frame>
+
+<Frame>
+    ### Response Schema
+    결과 값에 들어 있는 필드는 다음과 같습니다.
+    <Table
+        headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+            {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+        bodys={
+            [
+                [
+                    {"title": "code"},
+                    {"subTitle": "-"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "결과 코드"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "message"},
+                    {"subTitle": "-"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "응답 메시지"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "PER-TOKEN"},
+                    {"subTitle": "-"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "토큰값"},
+                    {"etc": "-"},
+                ],
+                [
+                    {"title": "PER-ID"},
+                    {"subTitle": "-"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "API 연동 ID"},
+                    {"etc": "-"},
+                ],
+            ]
+        }>
+    </Table>
+</Frame>
