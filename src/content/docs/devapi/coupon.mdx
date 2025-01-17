@@ -34,14 +34,14 @@ const API = axios.create({
     baseURL: `http://api.ubcn.co.kr/membership/coupon`,
     headers: {
         "Access-Control-Allow-Origin": "*",
-        "company": "{company}", //유비씨엔 발급
-        "token"  : "{token}",     //유비씨엔 발급
+        "company": "{company}",
+        "token"  : "{token}",
     },
 });
 ```
 </Frame>
 
-## 계정 조회하기
+## ✔️계정 조회하기
 단말기 ID 를 통해 단말기 ID 와 매칭된 계정을 조회할 수 있습니다.
 <br/>
 <strong style={"color: green"}>GET</strong> /user/search/tid/`{tid}`
@@ -52,7 +52,7 @@ const API = axios.create({
 ```
 </Frame>
 <Frame>
-    ### Request Schema
+    ### 📤Request Schema
     <Table
         headers={[{"title": "필드명"}, {"notNull": "필수"},
             {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
@@ -70,30 +70,27 @@ const API = axios.create({
     </Table>
 </Frame>
 <Frame>
-    ### Response Schema
+    ### 📥Response Schema
     결과 값에 들어 있는 필드는 다음과 같습니다.
     <Table
-        headers={[{"title": "필드명"}, {"notNull": "필수"},
+        headers={[{"title": "필드명"},
             {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
         bodys={
             [
                 [
                     {"title": "code"},
-                    {"notNull": "Y"},
                     {"argsType": "String"},
                     {"desc": "API 결과코드"},
                     {"etc": "-"},
                 ],
                 [
                     {"title": "message"},
-                    {"notNull": "Y"},
                     {"argsType": "String"},
                     {"desc": "사용자 ID"},
                     {"etc": "-"},
                 ],
                 [
                     {"title": "description"},
-                    {"notNull": "Y"},
                     {"argsType": "String"},
                     {"desc": "결과문구 요약"},
                     {"etc": "-"},
@@ -103,19 +100,20 @@ const API = axios.create({
     </Table>
 </Frame>
 
-## 쿠폰 발권하기
+## ✔️쿠폰 발권하기
 <Frame>
     <strong style={"color: green"}>POST</strong> /issuance
     ```ts
     const res = await API.post("/issuance",
         {
-            "id": "test",              //uid 또는 tid, 유비씨엔 제공
-            "tid": "2000012345",         //uid 또는 tid, 유비씨엔 제공
-            "type": "GIFT",              //GIFT: 1회권, RUSE: 금액권
-            "amount": 10000,             //쿠폰 발권 금액
-            "phone": "010-1234-1234",    //010-xxxx-xxxx, '-' 를 포함한 13자리의 연락처(쿠폰 수신자용)
-            "sendFlag" : "Y",            //Y: 알림톡 또는 MMS 전송, N: 전송 안함
-            "expireDate" : "20240831"    //쿠폰 유효기간, 기본값으로 설정된 유효 기간을 사용할 경우 해당 필드를 제거해주세요.
+            "id": "test",
+            "tid": "2000012345",
+            "type": "GIFT",
+            "free": "Y",
+            "amount": 10000,
+            "phone": "010-1234-1234",
+            "sendFlag" : "Y",
+            "expireDate" : "20240831"
         }
     );
 
@@ -127,7 +125,7 @@ const API = axios.create({
     ```
 </Frame>
 <Frame>
-    ### Request Schema
+    ### 📤Request Schema
     <Table
         headers={[{"title": "필드명"}, {"notNull": "필수"},
             {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
@@ -153,6 +151,13 @@ const API = axios.create({
                     {"argsType": "String"},
                     {"desc": "쿠폰 유형"},
                     {"etc": "GIFT: 1회권, RUSE: 금액권 (최대 사용 회수는 그룹 설정)"},
+                ],
+                [
+                    {"title": "free"},
+                    {"notNull": "Y"},
+                    {"argsType": "String"},
+                    {"desc": "유/무상여부"},
+                    {"etc": "Y: 무상제공, N: 유상판매"},
                 ],
                 [
                     {"title": "amount"},
@@ -188,57 +193,50 @@ const API = axios.create({
     </Table>
 </Frame>
 <Frame>
-    ### Response Schema
+    ### 📥Response Schema
     결과 값에 들어 있는 필드는 다음과 같습니다.
-    <Table headers={[{"title": "필드명"}, {"notNull": "필수"},
+    <Table headers={[{"title": "필드명"},
         {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
            bodys={
                [
                    [
                        {"title": "code"},
-                       {"notNull": "Y"},
                        {"argsType": "String"},
                        {"desc": "API 결과코드"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "message"},
-                       {"notNull": "Y"},
                        {"argsType": "String"},
                        {"desc": "결과문구"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "description"},
-                       {"notNull": "Y"},
                        {"argsType": "String"},
                        {"desc": "쿠폰내용 + ',' + 쿠폰 만료일자"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "amount"},
-                       {"notNull": "N"},
                        {"argsType": "Long"},
                        {"desc": "발권 금액"},
                        {"etc": "정상 발권 시 표기"},
                    ],
                    [
                        {"title": "expireDate"},
-                       {"notNull": "N"},
                        {"argsType": "String"},
                        {"desc": "발권된 쿠폰의 유효기간"},
                        {"etc": "정상 발권 시 표기"},
                    ],
                    [
                        {"title": "type"},
-                       {"notNull": "N"},
                        {"argsType": "String"},
                        {"desc": "쿠폰타입"},
                        {"etc": "정상 발권 시 표기"},
                    ],
                    [
                        {"title": "msgSendType"},
-                       {"notNull": "N"},
                        {"argsType": "String"},
                        {"desc": "전송유형"},
                        {"etc": "정상 발권 시 표기"},
@@ -247,7 +245,7 @@ const API = axios.create({
            }>
     </Table>
 </Frame>
-## 쿠폰 조회하기
+## ✔️쿠폰 조회하기
 발권된 쿠폰의 현재 상태를 조회할 수 있습니다.
 <br/>
 <strong style={"color: green"}>GET</strong> /`{couponNo}`/type/`{type}`/`{id}`
@@ -258,7 +256,7 @@ const API = axios.create({
     ```
 </Frame>
 <Frame>
-    ### Request Schema
+    ### 📤Request Schema
     <Table headers={[{"title": "필드명"}, {"notNull": "필수"},
         {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
            bodys={
@@ -289,92 +287,86 @@ const API = axios.create({
     </Table>
 </Frame>
 <Frame>
-    ### Response Schema
+    ### 📥Response Schema
     결과 값에 들어 있는 필드는 다음과 같습니다.
-    <Table headers={[{"title": "필드명"}, {"notNull": "필수"},
+    <Table headers={[{"title": "필드명"},
         {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
            bodys={
                [
                    [
                        {"title": "code"},
-                       {"notNull": "Y"},
                        {"argsType": "String"},
                        {"desc": "API 결과코드"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "message"},
-                       {"notNull": "Y"},
                        {"argsType": "String"},
                        {"desc": "결과문구"},
                        {"etc": "쿠폰번호"},
                    ],
                    [
                        {"title": "description"},
-                       {"notNull": "Y"},
                        {"argsType": "String"},
                        {"desc": "결과문구 요약"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "groupName"},
-                       {"notNull": "N"},
                        {"argsType": "String"},
                        {"desc": "그룹명"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "merchantName"},
-                       {"notNull": "N"},
                        {"argsType": "String"},
                        {"desc": "가맹점명"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "couponNo"},
-                       {"notNull": "N"},
                        {"argsType": "String"},
                        {"desc": "쿠폰번호"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "amount"},
-                       {"notNull": "N"},
                        {"argsType": "Long"},
                        {"desc": "발권 금액"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "phone"},
-                       {"notNull": "N"},
                        {"argsType": "String"},
                        {"desc": "수신 연락처"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "regDate"},
-                       {"notNull": "N"},
                        {"argsType": "String"},
                        {"desc": "발권일자"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "expireDate"},
-                       {"notNull": "N"},
                        {"argsType": "String"},
                        {"desc": "발권된 쿠폰의 유효기간"},
                        {"etc": "명시된 일자까지 사용 가능"},
                    ],
                    [
                        {"title": "couponType"},
-                       {"notNull": "N"},
                        {"argsType": "String"},
                        {"desc": "쿠폰타입"},
                        {"etc": "GIFT: 1회권<br/>RUSE: 금액권"},
                    ],
                    [
+                       {"title": "free"},
+                       {"argsType": "String"},
+                       {"desc": "유/무상여부"},
+                       {"etc": "Y: 무상제공, N: 유상판매"},
+                   ],
+                   [
                        {"title": "couponStatus"},
-                       {"notNull": "N"},
                        {"argsType": "String"},
                        {"desc": "쿠폰상태"},
                        {"etc": "쿠폰 현재 상태 표기"},
@@ -383,7 +375,7 @@ const API = axios.create({
            }>
     </Table>
 </Frame>
-## 쿠폰 수정하기
+## ✔️쿠폰 수정하기
 발권된 쿠폰의 상태를 수정할 수 있습니다.
 <br/>
 <strong style={"color: green"}>PATCH</strong> /`{couponNo}`/type/`{type}`/`{id}`/status/`{couponStatus}`
@@ -393,7 +385,7 @@ const API = axios.create({
     ```
 </Frame>
 <Frame>
-    ### Request Schema
+    ### 📤Request Schema
     <Table headers={[{"title": "필드명"}, {"notNull": "필수"},
         {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
            bodys={
@@ -431,29 +423,26 @@ const API = axios.create({
     </Table>
 </Frame>
 <Frame>
-    ### Response Schema
+    ### 📥Response Schema
     결과 값에 들어 있는 필드는 다음과 같습니다.
-    <Table headers={[{"title": "필드명"}, {"notNull": "필수"},
+    <Table headers={[{"title": "필드명"},
         {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
            bodys={
                [
                    [
                        {"title": "code"},
-                       {"notNull": "Y"},
                        {"argsType": "String"},
                        {"desc": "API 결과코드"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "message"},
-                       {"notNull": "Y"},
                        {"argsType": "String"},
                        {"desc": "결과문구"},
                        {"etc": "-"},
                    ],
                    [
                        {"title": "description"},
-                       {"notNull": "Y"},
                        {"argsType": "String"},
                        {"desc": "결과문구 요약"},
                        {"etc": "-"},
