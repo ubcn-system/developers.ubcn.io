@@ -1,0 +1,29 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2025-02-05 업데이트
+releasedAt: 2025-02-05
+writtenAt: 2025-02-05
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2025-02-05-01.png";
+import Image2 from "./_assets/2025-02-05-02.jpg";
+
+
+<Frame>
+    <Badge style={'web'}>신청서</Badge>
+    ## ✔️단말기 신청서 모델 추가
+    ### 신규 단말기 모델 <b>`UVM-1000`</b> 추가
+            신규 단말기 모델로 `UVM-1000`을 신청서에서 선택하실 수 있어요. <br />
+            `UVM-1000` 모델에 대해 궁금하시다면 `UVM-1000` 이미지를 클릭하여 확인해보실 수 있으세요.
+            <div style={"display: flex;"}>
+                <Figure src={Image1} caption={"단말기 신청서"} width={500}/>
+                <a href={"https://blog.naver.com/ubcnsales/223747091164"} target="_blank" style={"margin-left: 4px;"}>
+                    <Figure src={Image2} caption={"UVM-1000"} width={600}/>
+                </a>
+            </div>
+    <br/>
+</Frame>
+
