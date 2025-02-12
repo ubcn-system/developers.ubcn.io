@@ -1,13 +1,18 @@
 ---
 layout: /src/layouts/release-notes/Layout.astro
-title: 2025-02-07 업데이트
+title: 2025-02-12 업데이트
 releasedAt: 2025-02-12
-writtenAt: 2025-02-07
+writtenAt: 2025-02-12
 ---
 
 
 import Frame from "/src/components/Frame.astro";
 import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2025-02-12-01.png"
+import Image2 from "./_assets/2025-02-12-02.png"
+import Image3 from "./_assets/2025-02-12-03.png"
+import Image4 from "./_assets/2025-02-12-04.png"
 
 
 <Frame>
@@ -18,3 +23,23 @@ import Badge from "/src/components/Badge.astro";
     <br/>
 </Frame>
 
+
+<Frame>
+    <Badge style={'web'}>mobileVMMS</Badge>
+    ## ✔️ 취소 기능 추가
+    * 모바일 VMMS에 취소기능이 추가되었어요.
+    <Figure src={Image1} caption={"취소 기능 추가"} width={300}/>
+    <br/>
+
+    ## ✔️ 서비스코인 기능 추가
+    * 모바일 VMMS에 서비스 코인 기능이 추가되었어요.
+    <Figure src={Image2} caption={"서비스 코인 기능 추가"} width={300}/>
+    <br/>
+
+    ## ✔️ 조직 검색 기능 수정
+    * 조직 검색 기능을 VMMS와 동일하게 수정 했어요.
+    * 상위 조직부터 순차적으로 검색 가능해요.
+    <Figure src={Image3} caption={"수저 전 검색 방법"} width={300}/>
+    <Figure src={Image4} caption={"수정 후 검색 방법"} width={300}/>
+    <br/>
+</Frame>
