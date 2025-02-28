@@ -14,14 +14,39 @@ const header = headers.map(item => (
     `<th class={"text-center"} title=${Object.keys(item)[0]}>${item[Object.keys(item)[0]]}</th>`
 )).join("");
 
+const titleCounts = bodys.reduce((acc, row) => {
+  const title = row[0].title;
+  acc[title] = (acc[title] || 0) + 1;
+  return acc;
+}, {});
+
+
 const body = bodys
+  .map((row, rowIndex) => {
+    return `<tr>${row
+      .map((cell, cellIndex) => {
+        if (cellIndex === 0) {
+          const rowspan = titleCounts[cell.title] > 1 ? ` class="rowspan-group" rowspan="${titleCounts[cell.title]}"` : "";
+          if (rowIndex === 0 || bodys[rowIndex - 1][0].title !== cell.title) {
+            return `<td ${rowspan}>${Object.values(cell)[0]}</td>`;
+          } else {
+            return "";
+          }
+        } else {
+          return `<td>${Object.values(cell)[0]}</td>`;
+        }
+      })
+      .join("")}</tr>`;
+  })
+  .join("");
+
+/*const body = bodys
 .map((row) => {
     return `<tr>${row
-    .map((cell) => `<td>${Object.values(cell)[0]}</td>`)
+    .map((cell) => `<td class="table-td">${Object.values(cell)[0]}</td>`)
     .join("")}</tr>`;
 })
-.join("");
-
+.join("");*/
 ---
 
 <div>
