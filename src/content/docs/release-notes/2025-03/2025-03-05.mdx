@@ -1,0 +1,31 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2025-03-05 업데이트
+releasedAt: 2025-03-05
+writtenAt: 2025-03-05
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2025-03-05-01.png";
+import Image2 from "./_assets/2025-03-05-02.png";
+import Image3 from "./_assets/2025-03-05-03.png";
+
+
+<Frame>
+    <Badge style={'web'}>MultiVM</Badge>
+    ## ✔️ 펌웨어 다운 여부 추가
+    자판기에 요청한 펌웨어 버전과 현재 자판기의 펌웨어 버전을 확인 가능해요
+    <Figure src={Image2} caption={"펌웨어 버전 확인"} width={500}/><br/>
+
+    ## ✔️ 광고 다운 여부 추가
+    자판기에서 광고를 다운 받았는지 상태를 확인 가능해요.
+    <Figure src={Image1} caption={"광고 - 자판기 상세 조회"} width={500}/><br/>
+
+    ## ✔️ 상태 정보 추가
+    자판기의 현재 상태 정보 확인 기능을 추가 했어요.
+    * 상태정보는 정상, 에러(에러로 인해 중지), 정지(관리자가 중지)가 있어요
+    <Figure src={Image3} caption={"상태정보 확인"} width={800}/><br/>
+</Frame>
+
