@@ -1,0 +1,23 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2025-03-19 업데이트
+releasedAt: 2025-03-19
+writtenAt: 2025-03-19
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2025-03-19-01.png";
+
+
+<Frame>
+    <Badge style={'web'}>VMMS</Badge>
+    ## ✔️ 한국도로공사 조직 코드 등록 기능 추가
+    * 한국도로공사와 연동을 위한 조직 코드를 등록 기능을 추가했어요. 한국도로공사 조직 등록 시에만 표출돼요.<br/>
+    * `OPER_CD + BPLC_CD(뒤에서5자리)`로 등록하며, 해당 코드는 한국도로공사 측에서 제공하는 정보를 입력해요.<br/>
+        ex) OPER_CD = <strong>00026</strong>, BPLC_CD = 00000<strong>00002</strong> => `0002600002`
+    <Figure src={Image1} caption={"조직 코드 등록"} width={800}/><br/>
+
+</Frame>
+
