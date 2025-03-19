@@ -9,6 +9,7 @@ import Frame from "/src/components/Frame.astro";
 import Badge from "/src/components/Badge.astro";
 import Figure from "/src/components/Figure.astro";
 import Image1 from "./_assets/2025-03-19-01.png";
+import Image2 from "./_assets/2025-03-19-02.png";
 
 
 <Frame>
@@ -18,6 +19,14 @@ import Image1 from "./_assets/2025-03-19-01.png";
     * `OPER_CD + BPLC_CD(뒤에서5자리)`로 등록하며, 해당 코드는 한국도로공사 측에서 제공하는 정보를 입력해요.<br/>
         ex) OPER_CD = <strong>00026</strong>, BPLC_CD = 00000<strong>00002</strong> => `0002600002`
     <Figure src={Image1} caption={"조직 코드 등록"} width={800}/><br/>
+
+</Frame>
+
+<Frame>
+    <Badge style={'web'}>Biz</Badge>
+    ## ✔️ VMMS단말기등록 기본값으로 체크표시
+    * 기존에는 VMMS단말기등록을 체크 해야지 보였지만 이제는 기본값으로 체크가 되어서 보여져요<br/>
+    <Figure src={Image2} caption={"단말기정보등록"} width={800}/><br/>
 
 </Frame>
 
