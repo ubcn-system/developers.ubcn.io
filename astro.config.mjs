@@ -46,12 +46,12 @@ export default defineConfig({
                         {
                             label: '2025년 2월',
                             autogenerate: {directory: 'release-notes/2025-02'},
-                            collapsed: false
+                            collapsed: true
                         },
                         {
                             label: '2025년 3월',
                             autogenerate: {directory: 'release-notes/2025-03'},
-                            collapsed: false
+                            collapsed: true
                         },
                         {
                             label: '2025년 4월',
