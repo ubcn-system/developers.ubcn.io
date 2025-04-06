@@ -2,7 +2,7 @@
 layout: /src/layouts/release-notes/Layout.astro
 title: 2025-04-09 업데이트
 releasedAt: 2025-04-09
-writtenAt: 2025-04-09
+writtenAt: 2025-04-03
 ---
 
 import Frame from "/src/components/Frame.astro";
@@ -11,9 +11,21 @@ import Figure from "/src/components/Figure.astro";
 import Image1 from "./_assets/2025-04-09-01.png";
 
 <Frame>
-        <Badge style={'web'}>MultiVM</Badge>
-        ## ✔️ 시스템 공지사항 페이지 추가
-        * 시스템 공지사항 페이지를 추가했어요. 해당 페이지는 시스템 계정에만 표시되며, 내부적으로 공유가 필요한 자료를 작성해요.<br/>
-        <Figure src={Image1} caption={"시스템 공지사항 페이지 화면"} width={800}/><br/>
+    <Badge style={'web'}>VMMS</Badge>
+    ## ✔️ 명칭 변경 '캐시비' -> '이즐'
+    `캐시비` 사가 `로카모빌리티`로, `로카모빌리티`가 `이동의 즐거움`으로 사명을 변경함에 따라<br/>
+    카드사/매입사/거래수단 등 기존 `캐시비` 를 사용했던 모든 명칭을 에서 `이즐`로 변경했어요.<br/>
+    <Figure src={Image1} caption={"조직 코드 등록"} width={500}/><br/>
+
+    ## ✔️ 자판기 매출정보 > 마감현황 페이지 개선
+    마감현황 페이지에서는 많은 정보를 표기하고 있다보니 페이지에서 조회를 하면 너무 느렸어요.<br/>
+    함께 표기되는 정보(매입청구, 입금)는 현재 별도 페이지(매출집계, 입금현황)를 통해 제공하고 있으므로 해당 페이지 내용에서 제거하기로 했어요.
+        <Figure src={Image1} caption={"조직 코드 등록"} width={500}/><br/>
+    <Badge style={'web'}>MultiVM</Badge>
+    ## ✔️ 시스템 공지사항 페이지 추가
+    * 시스템 공지사항 페이지를 추가했어요. 해당 페이지는 시스템 계정에만 표시되며, 내부적으로 공유가 필요한 자료를 작성해요.<br/>
+    <Figure src={Image1} caption={"시스템 공지사항 페이지 화면"} width={800}/><br/>
 </Frame>
+
+
 
