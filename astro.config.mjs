@@ -61,6 +61,7 @@ export default defineConfig({
                     ],
                 },
                 {label: 'API', autogenerate: {directory: 'api'}, collapsed: false},
+                {label: '공지사항', autogenerate: {directory: 'notice'}, collapsed: false},
             ],
         })
         ,
