@@ -1,0 +1,26 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2025-04-30 업데이트
+releasedAt: 2025-04-30
+writtenAt: 2025-04-28
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2025-04-09-01.png";
+
+<Frame>
+    <Badge style={'web'}>VMMS</Badge>
+    ## ✔️ 자판기 매출정보 > 마감현황 페이지 개선 및 중복 데이터 제거
+    기존에는 입금 데이터를 표기하고 있다보니 페이지 조회 자체가 느렸어요.<br/>
+    별도 페이지(매출집계, 입금현황)를 통해 제공하고 있으므로 해당 페이지 내용에서 제거하였어요.
+    <Badge style={'web'}>MultiVM</Badge>
+
+    ## ✔️ 취소내역 반영
+        * 거래내역, 매출집계, 마감현황, 입금현황 페이지에서 취소내역 확인이 가능해요.<br/>
+
+    ## ✔️ 서비스 단위 확장
+        간편결제, 선불 결제에 한해 일괄로 묶었던 단위를 각 입금 매입사 별로 구분했어요.<br/>
+
+</Frame>
