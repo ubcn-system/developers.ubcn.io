@@ -1,0 +1,94 @@
+---
+title: ''
+template: splash
+pagefind: false
+head:
+  # Use a custom <title> tag
+  - tag: title
+---
+
+import Figure from "/src/components/Figure.astro";
+import Image01 from "./_assets/deposit_flow.png";
+import { Aside } from '@astrojs/starlight/components';
+
+<br/>
+    # 💵️ 입금현황
+<Figure src={Image01} caption={""} width={500} border={'none'}/>
+## 입금까지의 과정
+    카드사에서 승인된 거래는 전산 마감(VMMS) 이후 지원하는 `PG사`/`VAN사`로 거래 매입을 진행하고 있어요.<br/>
+    이렇게 매입된 거래는 매일 새벽, `PG 사`/`VAN 사` 로부터
+    `매입결과`와 `입금결과` 데이터를  수신받아 반영하고 있어요. (입금 순서: 거래 -> 마감 -> 매입(마감 후에만 매입가능) -> 입금)<br/>
+<br/>
+-   PG 사 종류 //입금일: 거래일 + 5 영업일(고정)
+    - 코세스(한국신용카드결제)
+    - 나이스페이먼츠
+    - 토스페이먼츠
+
+- VAN 사 종류 //입금일: 거래일(당일) ~ 최대 +4영업일
+    - 코세스
+    - 나이스페이먼츠 //구)제이티넷
+
+- 간편결제사 //입금일: 페이코를 제외하고, 가맹점에 따라 상이
+    - 카카오페이 카드
+    - 카카오페이 머니
+    - 페이코 //입금일: 거래일 + 5 영업일(고정)
+    - 네이버페이
+- 선불사 종류
+    - 티머니 //입금일: 거래일 + 2 영업일(고정)
+    - 이즐(구)캐시비) //입금일: 거래일 + 2 영업일(고정)
+    - 레일플러스 //입금일: 거래일 + 3 영업일(고정)
+
+<br/>
+  시스템 설정(가맹점 요청 또는 `PG/VAN사` 처리 오류) 에 의해 마감 또는 매입이 보류되거나,<br/>
+`카드사` 또는 `PG/VAN사` 이슈 또는 가맹점 사정으로 인해 매입거절 또는 결과를 수신받지 못할 경우에는<br/>
+해당 거래 건에 대해 `PG/VAN사`와 양사 검토 후에 재매입을 진행하고 있어요.<br/><br/>
+이 과정은 배치를 통해 자동으로 진행되기 때문에 `최대 일주일`까지 소요될 수 있습니다.
+<br/>
+
+<Aside>입금현황 페이지는 매일 오전 09:30 ~ 11:30 사이에 업데이트 됩니다.</Aside>
+
+# Q&A
+    #### Q1. 입금금액이 왜 다른가요?
+<hr/>
+    - `PG사`의 경우, 주로 동일하지만 연휴가 길거나 월말/월초에 연휴가 포함된 경우 PG사 재량에 따라 사전에 입금하는 경우가 있어요.
+이 경우, 실제 입금일자와 금액은 PG사를 통해서만 확인 가능해요.<br/>
+    - `VAN사`의 경우, `카드사`와 `가맹점`의 계약관계에 따라 입금일자, 수수료가 달라져요<br/>
+    연 매출에 따른 영세 사업자가 분류가 입금 시, 자동으로 계산되고, EDC 특약가맹 등에 따라 `매입결과` 또는 `입금결과`를 주지 않는 등
+    `카드사`의 재량에 따라 수수료가 달라질 수 있어요.<br/>
+<br/>
+<Aside type="tip">
+    VAN 사 중 가맹점과 EDC 특약을 맺은 일부 카드사는 거래승인일을 기준으로 자체 매입을 진행해요.<br/>
+이 경우, VMMS 거래내역에서는 EDC입금(결과 미수신으로 인한 매입거절)으로 처리될 수 있어요.<br/>
+통장에는 입금이 완료되지만 VMMS에는 입금으로 표기되지 않는 경우가 발생할 수 있어요.<br/>
+    원치 않는 경우, 카드사에 직접 EDC특약 해지를 요청주셔야해요.<br/>
+</Aside>
+
+<hr/>
+<br/>
+    내가 가맹한 정보가 `PG사`인지 `VAN사`인지 모르신다면, 통장에 입금된 입금처를 확인해보시면 좋아요.<br/>
+    `PG사` 의 경우, `한국신용카드결제(주)`, `나이스페이먼츠`, `토스페이먼츠` 중 하나로 입금처가 보일거고, <br/>
+    `VAN사` 의 경우, 각 `카드사명` 또는 `가맹점명` 으로 보일 거에요. (명칭은 달라질 수 있습니다.)<br/><br/>
+    그래도 헷갈리신다면 아래 링크를 통해 사업자 번호와 함께 PG/VAN 여부를 문의해주세요!
+<br/>
+<a href="http://pf.kakao.com/_Ihxlbj/chat">
+    <img src="https://image.ubcn.co.kr/b_230809_1.jpg" alt="온라인상담카톡" style="width: 230px;margin-left: 5px;padding: 5px;"/>
+</a>
+<br/>
+<hr/>
+
+<Aside>Some content in an aside.</Aside>
+
+<Aside type="caution">Some cautionary content.</Aside>
+
+<Aside type="tip">
+
+Other content is also supported in asides.
+
+```js
+// A code snippet, for example.
+```
+
+</Aside>
+
+<Aside type="danger">Do not give your password to anyone.</Aside>
+

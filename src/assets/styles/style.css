@@ -2746,3 +2746,6 @@ img, video {
 .z-selected-tab {
   z-index: 1
 }
+.bg-gray {
+  background: #d5d5d5 !important;
+}
