@@ -1454,6 +1454,8 @@ img, video {
   background-color: #cbd5e140;
   color: #eb5757;
   word-break: break-all;
+  font-size: 16px;
+  font-weight: bold;
 }
 .sl-markdown-content table:not(footer table) th{
   padding: .5rem;

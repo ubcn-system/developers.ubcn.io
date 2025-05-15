@@ -56,11 +56,19 @@ export default defineConfig({
                         {
                             label: '2025년 4월',
                             autogenerate: {directory: 'release-notes/2025-04'},
+                            collapsed: true
+                        }, {
+                            label: '2025년 5월',
+                            autogenerate: {directory: 'release-notes/2025-05'},
                             collapsed: false
                         },
                     ],
                 },
-                {label: 'API', autogenerate: {directory: 'api'}, collapsed: false},
+                {
+                    label: 'API',
+                    autogenerate: {directory: 'api'},
+                    collapsed: false
+                },
             ],
         })
         ,
