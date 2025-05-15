@@ -1,0 +1,23 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2025-05-14 업데이트
+releasedAt: 2025-05-14
+writtenAt: 2025-05-12
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2025-05-14-01.png";
+import Image2 from "./_assets/2025-05-14-02.png";
+
+<Frame>
+    <Badge style={'web'}>VMMS</Badge>
+    ## ✔️ 자판기 매출정보 > 입금현황 표기 항목 변경
+    일부 간편결제의 경우, `PG/VAN사` 에서 간편결제의 매입사를 구분하여, 입금결과를 전송할 때 매입사를 함께 전달해주고 있어요<br/>
+    전달받은 매입사를 기준으로 원거래를 아래와 같이 세분화하여 구분했어요<br/><br/>
+    그리고 선불 매입사와 관련하여 거래량에 따라 약간의 순서 변경이 있어요.<br/>
+    이즐, 레일플러스, 티머니 -> 티머니, 이즐, 레일플러스
+    <Figure src={Image2} caption={"입금현황 이전 표기 항목"} width={1000}/><br/>
+    <Figure src={Image1} caption={"입금현황 변경 표기 항목"} width={1000}/><br/>
+</Frame>
