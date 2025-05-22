@@ -1,0 +1,28 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2025-05-21 업데이트
+releasedAt: 2025-05-21
+writtenAt: 2025-05-22
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2025-05-21-01.png";
+import Image2 from "./_assets/2025-05-21-02.png";
+import Image3 from "./_assets/2025-05-21-03.png";
+
+<Frame>
+    <Badge style={'web'}>VMMS</Badge>
+    ## ✔️ 운영 자판기 관리 > `상품 관리` 페이지 신설
+    `운영 자판기 관리 상세` 페이지에서 진행하던 `상품 관리`를 별도의 페이지로 분리하여 신설하였어요. <br/>
+    <Figure src={Image1} caption={"운영 자판기 관리 버튼 표기"} width={450}/><br/>
+
+    `상품 관리` 페이지에서는 상품만을 중점적으로 관리하실 수 있어요. <br/>
+    <Figure src={Image2} caption={"상품 관리"} width={1000}/><br/>
+
+    기존의 `운영 자판기 관리 상세` 페이지는 자판기와 설치위치를 중점적으로 수정하실 수 있게 구성하였어요.
+    <Figure src={Image3} caption={"상품 관리"} width={1000}/><br/>
+
+
+</Frame>
