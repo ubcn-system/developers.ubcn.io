@@ -1,0 +1,32 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2025-06-17 업데이트
+releasedAt: 2025-06-17
+writtenAt: 2025-06-17
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2025-06-17-01.png";
+import Image2 from "./_assets/2025-06-17-02.png";
+import Image3 from "./_assets/2025-06-17-03.png";
+
+<Frame>
+    <Badge style={'web'}>MultiVM</Badge>
+    ## ✔️ 이력 관리 -> 쿠폰 현황 페이지 생성
+    * 상품 구매를 위한쿠폰 발급 페이지를 신설했어요.<br/>
+    * 쿠폰 조회, 발급, 삭제가 가능해요.<br/>
+    {<Figure src={Image1} caption={"쿠폰 현황 화면"} width={800}/>}<br/>
+
+    ### ✔️ 쿠폰 발급 방법
+    * 소속과 조직을 선택 시 상품 목록이 나오고, 전화번호와 발급할 상품/수량을 선택해요.<br/>
+    * 쿠폰 발급 시 입력한 전화번호로 쿠폰 알림톡을 전송해요.(현재 테스트 기간으로 알림톡 미발송 - 7월 실 반영 예정)<br/>
+    {<Figure src={Image2} caption={"쿠폰 발급 화면"} width={500}/>}<br/>
+
+    ### ✔️ 쿠폰 조회 및 삭제
+    * 화면 우측에서 발급한 쿠폰 조회 및 삭제가 가능해요.<br/>
+    * 삭제 할 쿠폰을 선택하고, 삭제 버튼을 클릭 해요.<br/>
+    {<Figure src={Image3} caption={"쿠폰 조회/삭제 화면"} width={500}/>}<br/>
+
+</Frame>
