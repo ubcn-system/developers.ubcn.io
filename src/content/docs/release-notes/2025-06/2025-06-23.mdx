@@ -1,0 +1,22 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2025-06-23 업데이트
+releasedAt: 2025-06-23
+writtenAt: 2025-06-23
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2025-06-23-01.png";
+import Image2 from "./_assets/2025-06-23-02.png";
+
+<Frame>
+    <Badge style={'web'}>Welpoint</Badge>
+    ## ✔️ 사용자 관리 UI 개선
+    사용자 관리의 버튼 위치를 변경하였으며 묶음을 통해 UI를 개선하였어요.<br/>
+    카테고리 별로 묶어 버튼의 역할을 명확히 하여 좀 더 편리하게 사용하실 수 있게 됩니다.<br/>
+        <Figure src={Image1} caption={"변경 전 버튼 UI"} width={800}/>
+        <Figure src={Image2} caption={"변경 후 버튼 UI"} width={800}/>
+
+</Frame>
