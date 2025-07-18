@@ -60,19 +60,23 @@ export default defineConfig({
                         }, {
                             label: '2025년 5월',
                             autogenerate: {directory: 'release-notes/2025-05'},
-                            collapsed: false
+                            collapsed: true
                         }, {
                             label: '2025년 6월',
                             autogenerate: {directory: 'release-notes/2025-06'},
+                            collapsed: true
+                        }, {
+                            label: '2025년 7월',
+                            autogenerate: {directory: 'release-notes/2025-07'},
                             collapsed: false
                         },
                     ],
                 },
-                {
+                /*{
                     label: 'API',
                     autogenerate: {directory: 'api'},
                     collapsed: false
-                },
+                },*/
             ],
         })
         ,
