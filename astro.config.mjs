@@ -68,6 +68,10 @@ export default defineConfig({
                         }, {
                             label: '2025년 7월',
                             autogenerate: {directory: 'release-notes/2025-07'},
+                            collapsed: true
+                        }, {
+                            label: '2025년 8월',
+                            autogenerate: {directory: 'release-notes/2025-08'},
                             collapsed: false
                         },
                     ],
