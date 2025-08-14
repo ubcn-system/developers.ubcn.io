@@ -1,0 +1,35 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2025-08-14 업데이트
+releasedAt: 2025-08-14
+writtenAt: 2025-08-14
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import Image1 from "./_assets/2025-08-14-01.png";
+import Image2 from "./_assets/2025-08-14-02.png";
+import Image3 from "./_assets/2025-08-14-03.png";
+
+<Frame>
+    <Badge style={'web'}>VMMS</Badge>
+    ## ✔️ 운영자판기 -> 일괄조직루트변경 버튼 신설
+    * 조직 일괄 변경 및 거래이동 기능을 신설했어요.<br/>(현재 해당 버튼은 시스템 관리자 계정에서만 제공하며, 추후 일반 사용자에게도 제공 예정이에요.)<br/>
+    * 다량의 단말기를 한번에 조직 이동 및 거래이동이 가능해요.<br/>
+    * 우선적으로 소속을 선택 해야해요.<br/>
+    {<Figure src={Image1} caption={"일괄조직루트이동 버튼"} width={800}/>}<br/>
+
+    * 본인이 선택한 소속이 고정되고, 본인이 소유한 단말기 리스트가 보여요.<br/>
+    {<Figure src={Image2} caption={"모달 화면"} width={800}/>}<br/>
+
+    ## 사용 방법<br/>
+    * 이동할 조직을 선택해요.<br/>
+    * 단말기 선택 및 거래이동 여부, 거래이동 일시 등을 입력해요.<br/>
+    * `+` 버튼 클릭 시 `단말기 정보를 제외한 값들은 복사`돼요.
+    <br/>(복사한 값은 변경 가능하며, 복사를 원치 않을 경우 값 입력전에 `+` 버튼을 클릭해요.)<br/>
+    * `-` 버튼 클릭 시 입력한 정보는 제거돼요.<br/>
+    * 거래일시는 달력을 선택하여 입력 가능하고, `거래이동 가능 기간은 이번달 내로 제한`되어있어요. (매출 정보 요약을 위함)<br/>
+    * 거래 이동 가능한 경우는 단말기에 등록된 `사업자 정보와 일치하는 거래만 이동 가능`해요.<br/>(다른 사업자로 발생한 거래는 이동이 불가능해요.)<br/>
+    {<Figure src={Image3} caption={"사용 방법"} width={800}/>}<br/>
+</Frame>
