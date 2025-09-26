@@ -1,0 +1,29 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2025-09-02 업데이트
+releasedAt: 2025-09-02
+writtenAt: 2025-09-02
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+
+<Frame>
+    <Badge style={'web'}>VMMS</Badge>
+    ## ✔️ 정책 변경에 따른 설치위치 분리기능 개편
+    * 아래의 경우, 설치위치가 자동으로 개편됩니다.<br/>
+        - '조직 루트' 또는 '담당자' 변경 시 원거래 보존을 위해 자동 구분.
+</Frame>
+<Frame>
+    ## Q. 왜 정책을 변경하게 되었나요?
+    가맹점에서는 `PG 사`, `VAN사`, `카드사`에서 발행한 `세금계산서`를 기준으로 대사자료를 비교하고 있어요.<br/>
+    매출전표(승인전표와 취소전표)를 보존하며, 회계적 원칙을 적용하여 대사 이용에 불편함이 없도록 변경하였어요.<br/><br/>
+
+    특히 `VAN` 가맹점의 경우 수수료 혜택을 위해 `카드사`(매입사) 에서 결과를 공유하지 않고 직접 정산 처리하거나 <br/>
+    올바르지 않은 수수료 정보를 보내줄 때가 있어요. <br/><br/>
+    이에 따라 매출전표를 대상으로 원거래를 추적할 수 있어야 하기 때문에 원거래를 구분하게 되었습니다.
+    - 승인거래와 취소거래를 별도로 구분
+    - 당시의 가맹 그룹 정보와 현재의 가맹 그룹 정보가 변경될 경우, 강제 구분
+
+</Frame>
