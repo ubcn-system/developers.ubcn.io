@@ -78,8 +78,8 @@ export default defineConfig({
                             autogenerate: {directory: 'release-notes/2025-09'},
                             collapsed: true
                         }, {
-                            label: '2025년 10월',
-                            autogenerate: {directory: 'release-notes/2025-10'},
+                            label: '2025년 11월',
+                            autogenerate: {directory: 'release-notes/2025-11'},
                             collapsed: true
                         },
                     ],
