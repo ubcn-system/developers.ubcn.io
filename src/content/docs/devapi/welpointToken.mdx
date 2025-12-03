@@ -8,11 +8,11 @@ import Frame from "/src/components/Frame.astro";
 import Table from "/src/components/Table.astro";
 
 <Frame>
-    사원카드 결제로부터 발생한 매출 데이터와 사원의 관리를 API 형태로 제공합니다.
+    웰포인트 API 호출에 있어 필수적인 토큰 발행을 위한 API 입니다.
 </Frame>
 <Frame>
     ### 사전 준비 사항
-    유비씨엔의 사원카드 API를 사용하기 위해서는 먼저, 고객사 고유ID인 `PER-ID`와 암호화 된 `PER-TOKEN`을 발급받아야 합니다.
+    유비씨엔의 웰포인트 API를 사용하기 위해서는 먼저, 고객사 고유ID인 `PER-ID`와 암호화 된 `PER-TOKEN`을 발급받아야 합니다.
 
     `PER-ID`는 유비씨엔 관리자에게 문의하여 발급받을 수 있으며 `PER-TOKEN`은 발급 받은 `PER-ID`를 통해 발급 가능합니다.
 </Frame>
@@ -38,7 +38,7 @@ import Table from "/src/components/Table.astro";
     </table>
 </Frame>
 <Frame>
-    ### 토큰발행 API 호출 방법
+    ### 토큰발행 API 호출 방법(예시)
     API 호출 방법은 다음과 같습니다.
 ```ts
 
