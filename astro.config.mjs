@@ -13,7 +13,7 @@ export default defineConfig({
             },
             logo: {
                 light: './src/assets/logo/ubcn-logo-text.png',
-                dark: './src/assets/logo/ubcn-logo-white.png',
+                dark: './src/assets/logo/ubcn-logo-text.png',
             },
             favicon: '/favicon.png',
             customCss: ['./src/assets/styles/style.css'],
