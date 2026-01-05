@@ -39,49 +39,16 @@ export default defineConfig({
                             collapsed: true
                         },
                         {
-                            label: '2025년 1월',
-                            autogenerate: {directory: 'release-notes/2025-01'},
+                            label: '2025년',
+                            autogenerate: {directory: 'release-notes/2025'},
                             collapsed: true
                         },
                         {
-                            label: '2025년 2월',
-                            autogenerate: {directory: 'release-notes/2025-02'},
-                            collapsed: true
+                            label: '2026년 1월',
+                            autogenerate: {directory: 'release-notes/2026-01'},
+                            collapsed: false
                         },
-                        {
-                            label: '2025년 3월',
-                            autogenerate: {directory: 'release-notes/2025-03'},
-                            collapsed: true
-                        },
-                        {
-                            label: '2025년 4월',
-                            autogenerate: {directory: 'release-notes/2025-04'},
-                            collapsed: true
-                        }, {
-                            label: '2025년 5월',
-                            autogenerate: {directory: 'release-notes/2025-05'},
-                            collapsed: true
-                        }, {
-                            label: '2025년 6월',
-                            autogenerate: {directory: 'release-notes/2025-06'},
-                            collapsed: true
-                        }, {
-                            label: '2025년 7월',
-                            autogenerate: {directory: 'release-notes/2025-07'},
-                            collapsed: true
-                        }, {
-                            label: '2025년 8월',
-                            autogenerate: {directory: 'release-notes/2025-08'},
-                            collapsed: true
-                        }, {
-                            label: '2025년 9월',
-                            autogenerate: {directory: 'release-notes/2025-09'},
-                            collapsed: true
-                        }, {
-                            label: '2025년 11월',
-                            autogenerate: {directory: 'release-notes/2025-11'},
-                            collapsed: true
-                        },
+
                     ],
                 },
                 /*{
