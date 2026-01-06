@@ -3,9 +3,9 @@ title: ''
 template: splash
 pagefind: false
 head:
-  # Use a custom <title> tag
+# Use a custom <title> tag
   - tag: title
-    content: 브라우저 캐시 비우기 및 강력 새로고침 활용하기
+content: 브라우저 캐시 비우기 및 강력 새로고침 활용하기
 ---
 
 
@@ -13,6 +13,11 @@ import Block from "/src/components/Block.astro";
 import Figure from "/src/components/Figure.astro";
 import Image01 from "./_assets/hard-reload.png";
 import Image02 from "./_assets/hard-reload-mobile.png";
+import ImageSamsungInternet01 from "./_assets/samsungInternet/Samsung_Internet_1.png";
+import ImageSamsungInternet02 from "./_assets/samsungInternet/Samsung_Internet_2.png";
+import ImageSamsungInternet03 from "./_assets/samsungInternet/Samsung_Internet_3.png";
+import ImageSamsungInternet04 from "./_assets/samsungInternet/Samsung_Internet_4.png";
+import ImageSamsungInternet05 from "./_assets/samsungInternet/Samsung_Internet_5.png";
 import { Steps } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 
@@ -21,7 +26,7 @@ import { Aside } from '@astrojs/starlight/components';
 위 문제는 대개 웹 캐시로 인해 생기는 문제로, 사용 중인 웹 브라우저의 `캐시를 초기화` 하는 것으로 해결할 수 있습니다.
 <br/>
 <Aside type="danger" title={"주의"}>일반 캐시 초기화 방법의 경우 웹 브라우저에 저장된 계정 정보, 비밀번호 등
-웹사이트 설정도 함께 삭제될 수 있어, 사용자에 따라 매우 곤란해질 수 있습니다.</Aside>
+    웹사이트 설정도 함께 삭제될 수 있어, 사용자에 따라 매우 곤란해질 수 있습니다.</Aside>
 <br/>
 만약 Google 크롬 브라우저를 사용하는 경우 `캐시 비우기` 및 `강력 새로고침`을 사용해 볼 수 있습니다.
 이 기능은 웹 브라우저 전체 설정을 삭제하지 않고, <strong>원하는 페이지의 캐시만 간편하게 초기화</strong>하는 것이 가능합니다.
@@ -38,32 +43,76 @@ import { Aside } from '@astrojs/starlight/components';
 
 ### <strong>사용방법 1.(권장)</strong>
 <Block>
-<Steps>
-1. 내 PC에서 Google 크롬 브라우저를 켭니다.
-2. 반영되지 않거나 동작하지 않는 메뉴(페이지)에 접속합니다.
-3. PC 환경인 경우 키보드에서 아래 단축키를 누릅니다. (모바일의 경우 4번으로 가세요.)<br/>
+    <Steps>
+        1. 내 PC에서 Google 크롬 브라우저를 켭니다.
+        2. 반영되지 않거나 동작하지 않는 메뉴(페이지)에 접속합니다.
+        3. PC 환경인 경우 키보드에서 아래 단축키를 누릅니다. (모바일의 경우 4번으로 가세요.)<br/>
         1. ⓘ 예시 - Windows: `Ctrl` + `Shift` + `R`
         2. ⓘ 예시 - Mac: `Command` + `Shift` + `R` 을 동시에 누릅니다.
-4. 화면을 최상단으로 이동하여 손가락 한 개 또는 두 개를 이용하여 화면 쓸어내리기를 진행합니다.
-    (새로고침이 진행되는지 확인합니다.)
-</Steps>
+        4. 화면을 최상단으로 이동하여 손가락 한 개 또는 두 개를 이용하여 화면 쓸어내리기를 진행합니다.
+        (새로고침이 진행되는지 확인합니다.)
+    </Steps>
     {<Figure src={Image02} caption={"쓸어내리기"} width={300}/>}
 </Block>
 ### <strong>사용방법 2.</strong>
 <Block>
-<Steps>
-1. 내 PC에서 `Google 크롬 브라우저`를 켭니다.
-2. 반영되지 않거나 동작하지 않는 메뉴(페이지)에 접속합니다.
-3. 크롬 브라우저 오른쪽 상단 더보기 아이콘(점 3개)을 클릭합니다.
-4. [도구 더보기 > 개발자 도구]를 클릭해 개발자 도구를 열어줍니다. 또는 아래의 단축키를 사용할 수도 있습니다.<br/>
-    1. ⓘ 예시 - Windows: `F12`
-    2. ⓘ 예시 - Mac: `Command` + `Option` + `I`
+    <Steps>
+        1. 내 PC에서 `Google 크롬 브라우저`를 켭니다.
+        2. 반영되지 않거나 동작하지 않는 메뉴(페이지)에 접속합니다.
+        3. 크롬 브라우저 오른쪽 상단 더보기 아이콘(점 3개)을 클릭합니다.
+        4. [도구 더보기 > 개발자 도구]를 클릭해 개발자 도구를 열어줍니다. 또는 아래의 단축키를 사용할 수도 있습니다.<br/>
+        1. ⓘ 예시 - Windows: `F12`
+        2. ⓘ 예시 - Mac: `Command` + `Option` + `I`
 
-5. 오른쪽에 개발자 도구가 나타나면 크롬 브라우저 왼쪽 상단 새로고침 아이콘에 마우스 포인터를 올립니다.
-6. 마우스 오른쪽 버튼을 클릭합니다.
-7. 다음 그림처럼 새로고침 메뉴가 나타나면 `캐시 비우기 및 강력 새로고침` 항목을 클릭합니다.
-8. 캐시 비우기 및 강력 새로고침 과정이 완료되면, 페이지 내 콘텐츠가 최근 변경한 것들로 적용되었는지 확인합니다.
-</Steps>
-{<Figure src={Image01} caption={"캐시 비우기"} width={300}/>}
-본 방침은 : 2026 년 01 월 01 일 부터 시행됩니다.
+        5. 오른쪽에 개발자 도구가 나타나면 크롬 브라우저 왼쪽 상단 새로고침 아이콘에 마우스 포인터를 올립니다.
+        6. 마우스 오른쪽 버튼을 클릭합니다.
+        7. 다음 그림처럼 새로고침 메뉴가 나타나면 `캐시 비우기 및 강력 새로고침` 항목을 클릭합니다.
+        8. 캐시 비우기 및 강력 새로고침 과정이 완료되면, 페이지 내 콘텐츠가 최근 변경한 것들로 적용되었는지 확인합니다.
+    </Steps>
+    {<Figure src={Image01} caption={"캐시 비우기"} width={300}/>}
 </Block>
+
+
+### <strong>사용방법 3. (삼성인터넷)</strong>
+<Block>
+    <Aside type="note" title={"삼성인터넷 안내사항"}>
+        사용하시는 휴대폰이나 삼성 인터넷 버전에 따라 **화면 모양이나 버튼 위치가 조금씩 다를 수 있습니다.**
+
+        혹시 그림과 다르더라도 당황하지 마시고, **설명에 적힌 글자(메뉴 이름)을 찾아서 눌러주세요.**
+    </Aside>
+    <br/>
+
+    {<Figure src={ImageSamsungInternet01} caption={"화면 오른쪽 아래 메뉴 버튼"} width={300}/>}
+    <Steps>
+        1. 오른쪽 아래 끝에 있는 `석 삼(三)자 모양 버튼`을 누릅니다.
+    </Steps>
+    <br/>
+
+    {<Figure src={ImageSamsungInternet02} caption={"설정(톱니바퀴) 버튼"} width={300}/>}
+    <Steps>
+        2. 나타난 메뉴 중에서 **`설정(톱니바퀴 모양)`** 버튼을 누릅니다.
+    </Steps>
+    <br/>
+
+    {<Figure src={ImageSamsungInternet03} caption={"설정 화면"} width={300}/>}
+    <Steps>
+        3. 화면을 아래로 조금 내려서 `인터넷 사용 기록`을 찾아서 누릅니다.
+    </Steps>
+    <br/>
+
+    {<Figure src={ImageSamsungInternet04} caption={"사용 기록 삭제 선택"} width={300}/>}
+    <Steps>
+        4. 맨 위에 있는 `인터넷 사용 기록 삭제`를 누릅니다.
+    </Steps>
+    <br/>
+
+    {<Figure src={ImageSamsungInternet05} caption={"데이터 삭제 진행하기"} width={300}/>}
+    <Steps>
+        5. `쿠키 및 사이트 데이터`와 `캐시 이미지와 파일` 항목에 체크 표시가 되어 있는지 확인합니다.
+        6. 맨 아래 `데이터 삭제` 버튼을 누릅니다.
+    </Steps>
+    <br/>
+
+    본 방침은 : 2026 년 01 월 01 일 부터 시행됩니다.
+</Block>
+
