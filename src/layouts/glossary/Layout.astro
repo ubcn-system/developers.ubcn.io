@@ -1,0 +1,46 @@
+---
+import Header from '../../components/Header.astro';
+const {frontmatter} = Astro.props;
+const subTitleClass = `my-4 text-xl text-gray`;
+---
+<html>
+<head>
+    <title>{frontmatter.title}</title>
+    <div class={subTitleClass}>
+        <div>{frontmatter.description}</div>
+    </div>
+</head>
+<br/>
+<body>
+<slot/>
+</body>
+<hr/>
+<footer class="footer py-4 grid gap-2">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center justify-evenly gap-4">
+            <div>·</div>
+            <div>더 궁금한 내용이 있으신가요?</div>
+            <div class="text-black underline">
+                            <a href="https://pf.kakao.com/_Ihxlbj/chat">실시간 문의</a></div>
+        </div>
+        <div class="flex items-center justify-evenly gap-4">
+            <div>·</div>
+            <div>가맹·영업 관련 문의가 필요하신가요?</div>
+            <div class="text-black underline">
+                <a href="mailto:sales@ubcn.co.kr">이메일 보내기</a></div>
+        </div>
+    </div>
+    <div class="flex items-center justify-between not-content ">
+        <div class="flex items-center justify-evenly gap-4">
+            <div>·</div>
+            <a class="text-black" href="https://developers.ubcn.co.kr/notice/privacy/">개인정보처리방침</a>
+        </div>
+    </div>
+    <br/>
+</footer>
+</html>
+<style>
+  starlight-toc nav ul {
+    display: none;
+  }
+</style>

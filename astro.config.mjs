@@ -10,6 +10,7 @@ export default defineConfig({
             title: '개발자센터',
             components: {
                 Header: './src/components/Header.astro',
+                PageTitle: './src/components/Title.astro',
             },
             logo: {
                 light: './src/assets/logo/ubcn-logo-text.png',
@@ -28,6 +29,11 @@ export default defineConfig({
                 }
             },
             sidebar: [
+                {
+                    label: '용어사전',
+                    badge: { text: 'New', variant: 'success' },
+                    link: '/glossary/'
+                },
                 {
                     label: '릴리즈노트',
                     collapsed: false,
