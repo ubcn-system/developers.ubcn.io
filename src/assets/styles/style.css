@@ -2444,11 +2444,11 @@ img, video {
 }
 .group[data-active=true] .group-data-\[active\=true\]\:text-orange-5, .data-\[active\=true\]\:text-orange-5[data-active=true], .text-orange-5 {
   --un-text-opacity: 1;
-  color: rgb(249 115 22 / var(--un-text-opacity)) !important;
+  color: #3182fb !important;
 }
 .sl-markdown-content a:not(:where(.not-content *)) {
   --un-text-opacity: 1;
-  color: rgb(249 115 22 / var(--un-text-opacity)) !important;
+  color: #3182fb !important;
 }
 
 .color-white, .text-white {
@@ -2743,4 +2743,7 @@ img, video {
 
 .z-selected-tab {
   z-index: 1
+}
+footer {
+  color: #6b7684;
 }
