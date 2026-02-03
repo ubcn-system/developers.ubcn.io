@@ -1,0 +1,38 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2026-01-29 업데이트
+releasedAt: 2026-01-29
+writtenAt: 2026-01-21
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+
+<Frame>
+
+    <Badge style={'web'}>VMMS</Badge>
+
+    ## ✔️ 엑셀 다운로드 확장자 추가 (CSV)
+
+    * 대용량 데이터 다운로드 시, 표 디자인 처리로 인해 다운로드 시간이 길어지는 문제를 개선하기 위해 디자인 요소가 제거된 csv 확장자를 추가했어요.
+
+    * 1,000건 이상 데이터 다운로드 시, 자동으로 <u>기존 xlsx 확장자에서 csv 확장자로 자동 변환</u>됩니다. 덕분에 다운로드 속도가 500% 가까이 빨라졌어요.
+
+    * 현재 ‘거래내역’, ‘운영머신기관리’ 페이지에 우선 적용되었고, 추후 다른 페이지에도 순차적으로 확대 적용될 예정이에요. <br/><br/>
+
+    ## ✔️ 검색조건-사용자 조회 최대 길이 수정
+
+    * 조회가능한 최대길이가 10자리에서 15자리로 확대했어요. <br/><br/>
+
+    ## ✔️ 소속관리 테이블 헤더 변경
+
+    * 소속관리 테이블 헤더에 불필요한 내용을 제거하고, 기간계연동 항목을 추가했어요.
+
+    <br/><br/>
+
+    ## ✔️ 디자인 파일 추가
+
+    * 자동 디자인 파일이 추가되었어요. 이로 인해 폰트의 크기나 두께, 자간의 간격이 소폭 변경되었어요.
+
+</Frame>
