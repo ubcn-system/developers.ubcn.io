@@ -1,20 +1,71 @@
 ---
 title: 유비씨엔
+head:
+  - tag: title
+    content: 유비씨엔 개발자센터
+description: 유비씨엔 개발자센터
+template: splash
+editUrl: false
+lastUpdated: false
+hero:
+  title: 유비씨엔 개발자센터
+  tagline: 유비씨엔 서비스 문서를 한곳에서 확인하세요.
 ---
 
-유비씨엔 개발자센터를 소개합니다.\
-다양한 정보와 소식들을 한 곳에서 확인하실 수 있습니다.
-
-## ✔️릴리즈 노트
-![](<https://developers.ubcn.co.kr/assets/banner_1920x700.png>)\
-서비스를 유지보수하며 업데이트 된 내용을 공유합니다.
-- 서비스의 변환점이나 추가 개편된 사항 등을 일자별로 확인할 수 있습니다.
 
 
-## ✔️매뉴얼 제공
+import {Card, CardGrid} from '@astrojs/starlight/components';
 
-유비씨엔은 서비스를 이용함에 있어 필요한 매뉴얼을 제공(예정)합니다.
-- 서비스 이용 시 궁금한 사항을 검색하여 조회할 수 있습니다.
+<style>{`
+.hero {
+    padding: 3rem 0;
+    grid-template-columns: auto;
+}
+.title > span {
+    font-weight: 600;
+    font-size: var(--sl-text-h4);
+    color: var(--sl-color-white);
+    line-height: var(--sl-line-height-headings);
+    gap: 1rem;
+    align-items: center;
+}
 
-## ✔️API 제공
-서비스를 이용하며 필요한 API를 제공(예정)합니다.
+.card {
+    --sl-card-border: var(--sl-color-purple);
+    --sl-card-bg: var(--sl-color-purple-low);
+    border: 1px solid var(--sl-color-gray-5);
+    background-color: var(--sl-color-black);
+    padding: clamp(1rem, calc(.125rem + 3vw), 2.5rem);
+    flex-direction: column;
+    gap: clamp(.5rem, calc(.125rem + 1vw), 1rem);
+}
+
+    .sl-markdown-content a:not(:where(.not-content *)) {
+        color: #353841;
+    }
+
+    h1#_top {
+    font-size:clamp(var(--sl-text-3xl),calc(.25rem + 5vw),var(--sl-text-5xl));
+    line-height: var(--sl-line-height-headings);
+    font-weight: 600;
+    color: var(--sl-color-white)
+}`}
+</style>
+
+<CardGrid stagger>
+    <a href={"/glossary"}>
+        <Card title="용어사전" icon="open-book"> 서비스를 이용하면서 자주 접하게 되는 주요 용어를 정리한 용어사전을 제공합니다. 카드 결제, 단말기, 정산 등 기본 개념부터 서비스 전반의 용어를 쉽게 이해할 수 있습니다. </Card>
+    </a>
+    <a href={"/release-notes"}>
+        <Card title="릴리즈 노트" icon="rocket"> 서비스 운영 및 유지보수 과정에서 진행된 업데이트 내용을 공유합니다. 기능 개선, 정책 변경, 주요 개편 사항 등을 일자별로 확인할 수 있습니다. </Card>
+    </a>
+    <a href={"#"}   onClick={(e) => {
+        e.preventDefault();
+        alert("아직 준비 중 입니다.");
+      }}>
+        <Card title="API" icon="document"> 데이터를 json 형태로 수신받기 위한 API를 제공합니다. 현재는 일부 기능에 대해서만 제공 예정이며, 순차적으로 확대할 계획입니다. </Card>
+    </a>
+    <a href={"https://ubcn.notion.site/UBCn-Network-Pay-21930b3d33e24caea25d97d3a314f066?pvs=4"} target="_blank">
+        <Card title="네트워크" icon="puzzle"> 서비스 이용을 위해 제공된 서버의 IP 와 포트 정보를 제공합니다. 방화벽 또는 네트워크 제한이 있는 장소에서 해당 정보를 참고하여 예외로 오픈하실 수 있습니다. </Card>
+    </a>
+</CardGrid>

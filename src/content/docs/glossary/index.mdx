@@ -1,24 +1,89 @@
 ---
 layout: /src/layouts/glossary/Layout.astro
 title: 용어사전
-sidebar:
-    order: 0
+tableOfContents: false
 next: false
 prev: false
 ---
-<h2 style="color: #333d4b;">**용어사전**</h2>
-<div className="flex items-center justify-between">
-    <div>
-        <h3>결제 처리 용어</h3>
-        <a href={"transaction/transaction"}>거래</a>
-    </div>
-    <div>
-        <h3>결제 수단 용어</h3>
-        <a href={"#"}>내용 B</a>
-    </div>
-    <div>
-        <h3>결제 인프라 용어</h3>
-        <a href={"#"}>내용 C</a>
-    </div>
-</div>
+import Frame from "/src/components/Frame.astro";
 
+<style>{
+    `.right-sidebar-container {
+    display: none;}
+    `}
+</style>
+<div>
+    <div className={"mb-16"}>
+        <span className="text-3xl">**용어사전**</span>
+    </div>
+    <Frame>
+        <div className="grid grid-cols-3 justify-between mb-16">
+            <div>
+                <div className={"mb-4"}>
+                    <span className={"text-2xl font-bold"}>결제 처리</span>
+                </div>
+                <div className={"grid gap-3"}>
+                    <a href={"/glossary/transaction/transaction"}>거래</a>
+                    <a href={"/glossary/transaction/approval"}>승인</a>
+                    <a href={"/glossary/transaction/purchase"}>매입</a>
+                    <a href={"/glossary/transaction/receipt"}>정산</a>
+                    <a href={"/glossary/transaction/status"}>거래상태</a>
+                    <a href={"/glossary/transaction/compare"}>거래대사</a>
+                </div>
+            </div>
+            <div>
+                <div className={"mb-4"}>
+                    <span className={"text-2xl font-bold"}>결제 수단</span>
+                </div>
+                <div className={"grid gap-3"}>
+                    <a href={"#"}>신용 결제</a> <a href={"#"}>현금 / 현금영수증(국세청 신고)</a>
+                    <a href={"#"}>간편결제(QR)</a> <a href={"#"}>기타결제(QR/RF)</a> <a href={"#"}>선불 결제</a>
+                    <a href={"#"}>수집</a>
+                </div>
+            </div>
+            <div>
+                <div className={"mb-4"}>
+                    <span className={"text-2xl font-bold"}>결제 인프라</span>
+                </div>
+                <div className={"grid gap-3"}>
+                    <a href={"#"}>카드 BIN</a> <a href={"#"}>PG(전자결제대행서비스)</a>
+                    <a href={"#"}>VAN(부가가치 통신망)</a> <a href={"#"}>카드사 / 발급사 / 매입사</a>
+                </div>
+            </div>
+        </div>
+        <div className="grid grid-cols-3 justify-between mb-16">
+            <div>
+                <div className={"mb-4"}>
+                    <span className={"text-2xl font-bold"}>웹 운영</span>
+                </div>
+                <div className={"grid gap-3"}>
+                    <a href={"#"}>거래</a> <a href={"#"}>승인</a> <a href={"#"}>매입</a>
+                    <a href={"#"}>정산</a> <a href={"#"}>거래상태</a> <a href={"#"}>거래대사</a>
+                </div>
+            </div>
+            <div>
+                <div className={"mb-4"}>
+                    <span className={"text-2xl font-bold"}>전산 공통</span>
+                </div>
+                <div className={"grid gap-3"}>
+                    <a href={"#"}>상점 / 가맹점</a>
+                    <a href={"#"}>가맹 상태</a>
+                    <a href={"#"}>상태 코드</a>
+                    <a href={"#"}>로그 / 이력</a>
+                    <a href={"#"}>배치</a>
+                    <a href={"#"}>연동 / API</a>
+                </div>
+            </div>
+            {/*<div>
+                <div className={"mb-4"}>
+                    <span className={"text-2xl font-bold"}>자주 묻는 질문</span>
+                </div>
+                <div className={"grid gap-3"}>
+                    <a href={"#"}>신용 vs 현금 / QR 결제수단 비교</a>
+                    <a href={"#"}>부가세신고</a>
+                    <a href={"#"}>PG 와 VAN 의 차이</a>
+                </div>
+            </div>*/}
+        </div>
+    </Frame>
+</div>

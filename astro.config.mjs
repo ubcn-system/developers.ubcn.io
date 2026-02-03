@@ -13,14 +13,13 @@ export default defineConfig({
                 PageTitle: './src/components/Title.astro',
             },
             logo: {
-                light: './src/assets/logo/ubcn-logo-text.png',
-                dark: './src/assets/logo/ubcn-logo-text.png',
+                src: './src/assets/logo/ubcn-logo-text.png',
             },
             favicon: '/favicon.png',
             customCss: ['./src/assets/styles/style.css'],
-            social: {
-                github: 'https://github.com/ubcn-system/developers.ubcn.io',
-            },
+            social: [
+                { icon: 'github', label: 'GitHub', href: 'https://github.com/ubcn-system/developers.ubcn.io' },
+                ],
             defaultLocale: 'root',
             locales: {
                 root: {

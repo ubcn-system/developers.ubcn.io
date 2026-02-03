@@ -70,6 +70,10 @@ hr {
   margin-top: 0;
 }
 
+.sl-markdown-content :not(h1, h2, h3, h4, h5, h6, .sl-heading-wrapper) + :is(.sl-heading-wrapper) {
+  margin-top: 0;
+}
+
 /* 고정값 '개요'를 제거하기 위함 */
 starlight-toc ul li:first-child {
   display: none;
@@ -104,8 +108,6 @@ abbr:where([title]) {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-size: inherit;
-  font-weight: inherit;
   margin: 12px 0px !important;
 }
 
@@ -141,7 +143,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   letter-spacing: -.021em !important;
   font-weight: 600 !important;
-  margin: 12px 0px !important;
+  margin: 12px 0 !important;
   scroll-margin-top: 5.2rem !important;
 }
 
@@ -322,6 +324,7 @@ ol, ul, menu {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin: 20px 0;
 }
 
 starlight-tabs [role=tablist]{
@@ -2463,11 +2466,11 @@ img, video {
 }
 .group[data-active=true] .group-data-\[active\=true\]\:text-orange-5, .data-\[active\=true\]\:text-orange-5[data-active=true], .text-orange-5 {
   --un-text-opacity: 1;
-  color: #3182fb !important;
+  color: #3182fb;
 }
 .sl-markdown-content a:not(:where(.not-content *)) {
   --un-text-opacity: 1;
-  color: #3182fb !important;
+  color: #3182fb;
 }
 
 .color-white, .text-white {
