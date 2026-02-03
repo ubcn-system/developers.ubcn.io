@@ -31,7 +31,7 @@ export default defineConfig({
             sidebar: [
                 {
                     label: '용어사전',
-                    badge: { text: 'New', variant: 'success' },
+                    badge: {text: 'New', variant: 'success'},
                     link: '/glossary'
                 },
                 {
@@ -52,6 +52,11 @@ export default defineConfig({
                         {
                             label: '2026년 1월',
                             autogenerate: {directory: 'release-notes/2026-01'},
+                            collapsed: true
+                        },
+                        {
+                            label: '2026년 2월',
+                            autogenerate: {directory: 'release-notes/2026-02'},
                             collapsed: false
                         },
 
