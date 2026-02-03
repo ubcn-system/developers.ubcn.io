@@ -19,7 +19,7 @@
   "page.previousLink": "이전 페이지 보기",
   "page.nextLink": "다음 페이지 보기",
   "page.draft": "This content is a draft and will not be included in production builds.",
-  "404.text": "Page not found. Check the URL or try using the search bar.",
+  "404.text": "존재하지 않는 페이지를 요청하셨거나, 아직 준비 중인 페이지에 접근하셨어요 :)",
   "aside.note": "Note",
   "aside.tip": "Tip",
   "aside.caution": "Caution",
