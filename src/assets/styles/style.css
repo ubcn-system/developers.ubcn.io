@@ -31,8 +31,15 @@ html, :host {
   font-variation-settings: normal;
   -webkit-tap-highlight-color: transparent
 }
-header{
+
+header {
   height: 4rem !important;
+  z-index: 1 !important;
+}
+
+starlight-menu-button svg{
+  height: auto;
+  margin: auto;
 }
 
 header img{
@@ -50,8 +57,7 @@ body {
 }
 
 .main-pane main .content-panel:nth-child(2) {
-  border-top: 0px !important;
-  margin-top: 24px !important;
+  border-top: 0 !important;
 }
 
 hr {
@@ -62,6 +68,11 @@ hr {
 
 .sl-markdown-content :not(a, strong, em, del, span, input, code) + :not(a, strong, em, del, span, input, code, :where(.not-content *)) {
   margin-top: 0;
+}
+
+/* 고정값 '개요'를 제거하기 위함 */
+starlight-toc ul li:first-child {
+  display: none;
 }
 
 starlight-toc nav h2 {
@@ -100,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .main-pane h1, .main-pane h2, .main-pane h3, .main-pane h4, .main-pane h5, .main-pane h6 {
   /*border-bottom: 1px solid #e5e7eb;*/
-  font-weight: 400 !important;
+  font-weight: 400;
 }
 
 .site-title span {
@@ -943,6 +954,14 @@ img, video {
 
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr))
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr))
 }
 
 .grid-rows-1 {

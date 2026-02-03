@@ -32,7 +32,7 @@ export default defineConfig({
                 {
                     label: '용어사전',
                     badge: { text: 'New', variant: 'success' },
-                    link: '/glossary/'
+                    link: '/glossary'
                 },
                 {
                     label: '릴리즈노트',

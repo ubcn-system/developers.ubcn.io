@@ -16,36 +16,31 @@ const shouldRenderSearch =
     localStorage.setItem('starlight-theme', 'light');
   }
 </script>
-<div class="header">
-    <div class="title-wrapper">
+<div class="header flex items-center">
+    <div class="flex items-center justify-start gap-4">
         <SiteTitle {...Astro.props}/>
-        <div class="site-title sl-flex px-5" id="category-group">
+        <div class="items-center site-title sl-flex px-5" id="category-group">
+            <a class="h-full inline-flex items-center px-4" href="/glossary">
+                              <span>
+                                용어사전
+                              </span> </a>
             <a class="h-full inline-flex items-center px-4" href="/release-notes">
                   <span>
                     릴리즈 노트
-                  </span>
-            </a>
-            <a class="h-full inline-flex items-center px-4" href="/api">
+                  </span> </a> <!--<a class="h-full inline-flex items-center px-4" href="/api">
                   <span>
                     API
-                  </span>
-            </a>
-            <a class="h-full inline-flex items-center px-4" target="_blank"
-               href="https://ubcn.notion.site/UBCn-Network-Pay-21930b3d33e24caea25d97d3a314f066?pvs=4">
+                  </span> </a>--> <a class="h-full inline-flex items-center px-4" target="_blank"
+                                     href="https://ubcn.notion.site/UBCn-Network-Pay-21930b3d33e24caea25d97d3a314f066?pvs=4">
                   <span>
-                    Network
-                  </span>
-            </a>
+                    네트워크
+                  </span> </a>
+        </div>
+        <div class="print:hidden">
+          {shouldRenderSearch &&
+              <Search {...Astro.props}/>}
         </div>
     </div>
-
-    <div class="sl-flex print:hidden">
-      {shouldRenderSearch &&
-          <Search {...Astro.props}/>}
-    </div>
-    <!--    <div class="sl-hidden md:sl-flex right-group">
-            <ThemeSelect {...Astro.props} />
-        </div>-->
 </div>
 
 <style>
@@ -55,16 +50,19 @@ const shouldRenderSearch =
     align-items: center;
     height: 100%;
   }
-  @media (min-width: 767.99px){
-    #category-group{
+
+  @media (max-width: 767.99px) {
+    #category-group {
       display: none;
     }
   }
-  @media ( max-width : 991.98px) {
-    #category-group{
-          display: none;
-        }
+
+  @media ( max-width: 991.98px) {
+    #category-group {
+      display: none;
+    }
   }
+
   #category-group > a {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -73,10 +71,10 @@ const shouldRenderSearch =
 
   .title-wrapper {
     /* Prevent long titles overflowing and covering the search and menu buttons on narrow viewports. */
-    overflow: hidden;
+    /*overflow: hidden;*/
   }
 
-  .title-wrapper:not(:where(.sl-flex *)){
+  .title-wrapper:not(:where(.sl-flex *)) {
     /* Prevent long titles overflowing and covering the search and menu buttons on narrow viewports. */
     padding: 100px;
   }

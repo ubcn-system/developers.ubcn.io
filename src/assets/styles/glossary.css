@@ -1,0 +1,18 @@
+
+@media (min-width: 50em) {
+	:root {
+		--sl-nav-height: 4rem;
+		--sl-nav-pad-x: 1.5rem;
+		--sl-text-h1: var(--sl-text-5xl);
+		--sl-text-h2: var(--sl-text-4xl);
+		--sl-text-h3: var(--sl-text-3xl);
+		--sl-text-h4: var(--sl-text-2xl);
+	}
+}
+
+@media (min-width: 72rem) {
+	:root {
+		--sl-content-pad-x: 1.5rem;
+		--sl-mobile-toc-height: 0rem;
+	}
+}

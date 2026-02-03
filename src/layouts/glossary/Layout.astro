@@ -5,6 +5,7 @@ const subTitleClass = `my-4 text-xl text-gray`;
 ---
 <html>
 <head>
+    <link rel="stylesheet" href="/src/assets/styles/glossary.css">
     <title>{frontmatter.title}</title>
     <div class={subTitleClass}>
         <div>{frontmatter.description}</div>
@@ -14,14 +15,13 @@ const subTitleClass = `my-4 text-xl text-gray`;
 <body>
 <slot/>
 </body>
-<hr/>
 <footer class="footer py-4 grid gap-2">
     <div class="flex items-center justify-between">
         <div class="flex items-center justify-evenly gap-4">
             <div>·</div>
             <div>더 궁금한 내용이 있으신가요?</div>
             <div class="text-black underline">
-                            <a href="https://pf.kakao.com/_Ihxlbj/chat">실시간 문의</a></div>
+                <a href="https://pf.kakao.com/_Ihxlbj/chat">실시간 문의</a></div>
         </div>
         <div class="flex items-center justify-evenly gap-4">
             <div>·</div>
@@ -39,8 +39,3 @@ const subTitleClass = `my-4 text-xl text-gray`;
     <br/>
 </footer>
 </html>
-<style>
-  starlight-toc nav ul {
-    display: none;
-  }
-</style>
