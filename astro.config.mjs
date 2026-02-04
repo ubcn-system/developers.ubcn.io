@@ -18,7 +18,6 @@ export default defineConfig({
             favicon: '/favicon.png',
             customCss: ['./src/assets/styles/style.css'],
             social: [
-                { icon: 'github', label: 'GitHub', href: 'https://github.com/ubcn-system/developers.ubcn.io' },
                 ],
             defaultLocale: 'root',
             locales: {

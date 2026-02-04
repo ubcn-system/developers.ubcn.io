@@ -1,19 +1,19 @@
 {
-  "skipLink.label": "Skip to content",
+  "skipLink.label": "스킵하기",
   "search.label": "검색",
-  "search.ctrlKey": "Ctrl",
-  "search.cancelLabel": "Cancel",
-  "search.devWarning": "Search is only available in production builds. \nTry building and previewing the site to test it out locally.",
+  "search.ctrlKey": "",
+  "search.cancelLabel": "취소",
+  "search.devWarning": "검색은 Prod 에서만 가능합니다.",
   "themeSelect.accessibleLabel": "Select theme",
   "themeSelect.dark": "Dark",
   "themeSelect.light": "Light",
   "themeSelect.auto": "Auto",
-  "languageSelect.accessibleLabel": "Select language",
+  "languageSelect.accessibleLabel": "언어 선택",
   "menuButton.accessibleLabel": "메뉴",
   "sidebarNav.accessibleLabel": "메인",
   "tableOfContents.onThisPage": "목차",
   "tableOfContents.overview": "개요",
-  "i18n.untranslatedContent": "This content is not available in your language yet.",
+  "i18n.untranslatedContent": "이 컨텐츠는 해당 언어를 지원하지 않습니다.",
   "page.editLink": "수정하기",
   "page.lastUpdated": "마지막 수정일:",
   "page.previousLink": "이전 페이지 보기",
@@ -25,5 +25,5 @@
   "aside.caution": "Caution",
   "aside.danger": "Danger",
   "fileTree.directory": "Directory",
-  "builtWithStarlight.label": "Built with Starlight"
+  "builtWithStarlight.label": "Built with chris"
 }

@@ -12,24 +12,32 @@ const subTitleClass = `my-4 text-xl text-gray`;
 </head>
 <br/>
 <body>
-<slot/>
+<div class="mb-40">
+    <slot/>
+</div>
 </body>
-<footer>
-    <div class="mt-1 flex flex-col gap-2"></div>
+<hr>
+<footer class="footer py-4 grid gap-2">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center justify-evenly gap-4">
+            <div>·</div>
+            <div>더 궁금한 내용이 있으신가요?</div>
+            <div class="text-black underline">
+                <a href="https://pf.kakao.com/_Ihxlbj/chat">실시간 문의</a></div>
+        </div>
+        <div class="flex items-center justify-evenly gap-4">
+            <div>·</div>
+            <div>가맹·영업 관련 문의가 필요하신가요?</div>
+            <div class="text-black underline">
+                <a href="mailto:sales@ubcn.co.kr">이메일 보내기</a></div>
+        </div>
+    </div>
+    <div class="flex items-center justify-between not-content ">
+        <div class="flex items-center justify-evenly gap-4">
+            <div>·</div>
+            <a class="text-black" href="https://developers.ubcn.co.kr/notice/privacy/">개인정보처리방침</a>
+        </div>
+    </div>
     <br/>
-    <table class="border-separate self-start my-2">
-        <tr>
-            <th class="bg-orange-5 px-4 text-white font-bold text-center">영업 문의</th>
-            <td class="px-4 border-1">sales@ubcn.co.kr</td>
-        </tr>
-        <tr>
-            <th class="bg-orange-5 px-4 text-white font-bold text-center">일반 문의</th>
-            <td class="px-4 border-1">cst@ubcn.co.kr</td>
-        </tr>
-        <tr>
-            <th class="bg-orange-5 px-4 text-white font-bold text-center">기술지원 문의</th>
-            <td class="px-4 border-1">system@ubcn.co.kr</td>
-        </tr>
-    </table>
 </footer>
 </html>

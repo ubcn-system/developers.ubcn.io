@@ -10,6 +10,7 @@ import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 const shouldRenderSearch =
     config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
 ---
+<link rel="stylesheet" href="/src/assets/styles/style.css">
 <script>
   document.documentElement.dataset.theme = 'light';
   if (typeof localStorage !== 'undefined') {
@@ -98,6 +99,15 @@ const shouldRenderSearch =
 
     :global(:root:not([data-has-toc])) {
       --__toc-width: 0rem;
+    }
+
+    .pagefind-ui__search-input {
+      height: calc(64px * var(--pagefind-ui-scale));
+      padding: 0 calc(70px * var(--pagefind-ui-scale)) 0 calc(54px * var(--pagefind-ui-scale));
+      background-color: var(--pagefind-ui-background);
+      border: var(--pagefind-ui-border-width) solid var(--pagefind-ui-border);
+      border-radius: var(--pagefind-ui-border-radius);
+      font-size: calc(21px * var(--pagefind-ui-scale));
     }
 
     .header {

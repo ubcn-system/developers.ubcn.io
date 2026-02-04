@@ -2,7 +2,19 @@
 
 :root{
   --sl-content-width: 50rem !important;
+  --pagefind-ui-scale: .8;
+  --pagefind-ui-primary: #393939;
+  --pagefind-ui-text: #393939;
+  --pagefind-ui-background: #ffffff;
+  --pagefind-ui-border: #eeeeee;
+  --pagefind-ui-tag: #eeeeee;
+  --pagefind-ui-border-width: 2px;
+  --pagefind-ui-border-radius: 8px;
+  --pagefind-ui-image-border-radius: 8px;
+  --pagefind-ui-image-box-ratio: 3 / 2;
 }
+
+
 *, :before, :after {
   box-sizing: border-box;
   border-width: 0;
@@ -64,6 +76,7 @@ hr {
   height: 0;
   color: inherit;
   border-top-width: 1px;
+  margin: 20px 0;
 }
 
 .sl-markdown-content :not(a, strong, em, del, span, input, code) + :not(a, strong, em, del, span, input, code, :where(.not-content *)) {
@@ -75,8 +88,16 @@ hr {
 }
 
 /* 고정값 '개요'를 제거하기 위함 */
-starlight-toc ul li:first-child {
+#starlight__mobile-toc > div > ul > li:first-child, starlight-toc > nav > ul > li:first-child {
   display: none;
+}
+
+a[aria-current='true']{
+  color: #034AD8 !important;
+  font-weight: 500;
+}
+a[aria-current='true']>span{
+  color: inherit;
 }
 
 starlight-toc nav h2 {
@@ -91,7 +112,7 @@ starlight-toc nav h2 {
 
 starlight-toc nav ul li a span {
   --un-text-opacity: 1 !important;
-  color: rgb(100 116 139 / var(--un-text-opacity)) !important;
+  color: rgb(100 116 139 / var(--un-text-opacity));
   font-size: .875rem !important;
   line-height: 1.25rem;
   padding-top: .25rem;
@@ -123,7 +144,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #000000;
 }
 
-/*.sl-markdown-content :is(img, picture, video, canvas, svg, iframe):not(:where(.not-content *)){
+/*.sl-markdown-content :is(img, picture, video, canvas, svg, iFrame):not(:where(.not-content *)){
   border: 1px solid #f3f3f3;
 }*/
 
@@ -155,9 +176,9 @@ h2 {
 
 h3 {
   letter-spacing: -.018em !important;
-  font-weight: 400 !important;
+  font-weight: 600 !important;
   margin: 30px 0px 12px 0px !important;
-  color: #353841 !important;
+  color: #4e5968 !important;
 }
 
 h4 {
@@ -355,11 +376,6 @@ button, [role=button] {
 
 :disabled {
   cursor: default
-}
-
-img, svg, video, canvas, audio, iframe, embed, object {
-  display: block;
-  vertical-align: middle
 }
 
 img, video {
@@ -2766,6 +2782,24 @@ img, video {
 .z-selected-tab {
   z-index: 1
 }
+
 footer {
   color: #6b7684;
+}
+
+.pagination-links a{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: .5rem;
+  width: 100%;
+  flex-basis: calc(50% - .5rem);
+  flex-grow: 1;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: .5rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--sl-color-gray-2);
+  box-shadow: var(--sl-shadow-md);
+  overflow-wrap: anywhere;
 }

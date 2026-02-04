@@ -1,12 +1,11 @@
-
 @media (min-width: 50em) {
 	:root {
 		--sl-nav-height: 4rem;
 		--sl-nav-pad-x: 1.5rem;
-		--sl-text-h1: var(--sl-text-5xl);
+		--sl-text-h1: var(--sl-text-6xl);
 		--sl-text-h2: var(--sl-text-4xl);
-		--sl-text-h3: var(--sl-text-3xl);
-		--sl-text-h4: var(--sl-text-2xl);
+		--sl-text-h3: var(--sl-text-2xl);
+		--sl-text-h4: var(--sl-text-xl);
 	}
 }
 
@@ -15,4 +14,18 @@
 		--sl-content-pad-x: 1.5rem;
 		--sl-mobile-toc-height: 0rem;
 	}
+}
+
+hr {
+	margin: 10px 0 !important;
+}
+
+.level-h2 {
+	margin-top: 10px !important;
+	margin-bottom: 20px !important;
+}
+
+.level-h3 {
+	margin-top: 20px !important;
+	margin-bottom: 20px !important;
 }
