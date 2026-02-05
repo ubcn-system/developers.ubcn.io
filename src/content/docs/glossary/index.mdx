@@ -1,6 +1,6 @@
 ---
 layout: /src/layouts/glossary/Layout.astro
-title: 용어사전
+title: 유비씨엔 용어사전
 tableOfContents: false
 next: false
 prev: false
@@ -9,81 +9,59 @@ import Frame from "/src/components/Frame.astro";
 
 <style>{
     `.right-sidebar-container {
-    display: none;}
-    `}
-</style>
+    display: none;
+  }`
+}</style>
+
 <div>
-    <div className={"mb-16"}>
-        <span className="text-3xl">**용어사전**</span>
+    <div className="mb-6">
+        <span className="text-3xl font-bold">용어사전</span>
     </div>
+
     <Frame>
-        <div className="grid grid-cols-3 justify-between mb-16">
-            <div>
-                <div className={"mb-4"}>
-                    <span className={"text-2xl font-bold"}>결제 처리</span>
-                </div>
-                <div className={"grid gap-3"}>
-                    <a href={"/glossary/transaction/transaction"}>거래</a>
-                    <a href={"/glossary/transaction/approval"}>승인</a>
-                    <a href={"/glossary/transaction/purchase"}>매입</a>
-                    <a href={"/glossary/transaction/receipt"}>정산</a>
-                    <a href={"/glossary/transaction/status"}>거래상태</a>
-                    <a href={"/glossary/transaction/compare"}>거래대사</a>
-                </div>
-            </div>
-            <div>
-                <div className={"mb-4"}>
-                    <span className={"text-2xl font-bold"}>결제 수단</span>
-                </div>
-                <div className={"grid gap-3"}>
-                    <a href={"#"}>신용 결제</a> <a href={"#"}>현금 / 현금영수증(국세청 신고)</a>
-                    <a href={"#"}>간편결제(QR)</a> <a href={"#"}>기타결제(QR/RF)</a> <a href={"#"}>선불 결제</a>
-                    <a href={"#"}>수집</a>
-                </div>
-            </div>
-            <div>
-                <div className={"mb-4"}>
-                    <span className={"text-2xl font-bold"}>결제 인프라</span>
-                </div>
-                <div className={"grid gap-3"}>
-                    <a href={"#"}>카드 BIN</a> <a href={"#"}>PG(전자결제대행서비스)</a>
-                    <a href={"#"}>VAN(부가가치 통신망)</a> <a href={"#"}>카드사 / 발급사 / 매입사</a>
-                </div>
-            </div>
+        <div className="mb-6 text-gray-500">
+            전산 및 결제 시스템에서 사용되는 용어를 가나다순으로 정리했어요.
         </div>
-        <div className="grid grid-cols-3 justify-between mb-16">
-            <div>
-                <div className={"mb-4"}>
-                    <span className={"text-2xl font-bold"}>웹 운영</span>
-                </div>
-                <div className={"grid gap-3"}>
-                    <a href={"#"}>거래</a> <a href={"#"}>승인</a> <a href={"#"}>매입</a>
-                    <a href={"#"}>정산</a> <a href={"#"}>거래상태</a> <a href={"#"}>거래대사</a>
-                </div>
-            </div>
-            <div>
-                <div className={"mb-4"}>
-                    <span className={"text-2xl font-bold"}>전산 공통</span>
-                </div>
-                <div className={"grid gap-3"}>
-                    <a href={"#"}>상점 / 가맹점</a>
-                    <a href={"#"}>가맹 상태</a>
-                    <a href={"#"}>상태 코드</a>
-                    <a href={"#"}>로그 / 이력</a>
-                    <a href={"#"}>배치</a>
-                    <a href={"#"}>연동 / API</a>
-                </div>
-            </div>
-            {/*<div>
-                <div className={"mb-4"}>
-                    <span className={"text-2xl font-bold"}>자주 묻는 질문</span>
-                </div>
-                <div className={"grid gap-3"}>
-                    <a href={"#"}>신용 vs 현금 / QR 결제수단 비교</a>
-                    <a href={"#"}>부가세신고</a>
-                    <a href={"#"}>PG 와 VAN 의 차이</a>
-                </div>
-            </div>*/}
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-6">
+          <a href="/glossary/method/smartpay">간편결제</a>
+          <a href="/glossary/transaction">거래</a>
+          <a href="/glossary/account">계정</a>
+
+          <a href="/glossary/permission">권한</a>
+          <a href="/glossary/payment/confirmed-purchase">구매</a>
+          <a href="/glossary/group">그룹</a>
+
+          <a href="/glossary/device/terminal">단말기</a>
+          <a href="/glossary/system/log">로그 / 이력</a>
+          <a href="/glossary/payment/closing">마감</a>
+
+          <a href="/glossary/device/machine">머신기</a>
+          <a href="/glossary/payment/capture">매입</a>
+          <a href="/glossary/infrastructure/acquirer">매입사</a>
+
+          <a href="/glossary/batch/batch">배치</a>
+          <a href="/glossary/infrastructure/issuer">발급사</a>
+          <a href="/glossary/store">상점</a>
+
+          <a href="/glossary/status">상태정보</a>
+          <a href="/glossary/method/prepaid">선불 결제</a>
+          <a href="/glossary/method/collection">수집</a>
+
+          <a href="/glossary/payment/authorization">승인</a>
+          <a href="/glossary/method/credit-card">신용 결제</a>
+          <a href="/glossary/batch/api">연동 / API</a>
+
+          <a href="/glossary/payment/settlement">정산</a>
+          <a href="/glossary/chain">체인</a>
+          <a href="/glossary/infrastructure/card-bin">카드 BIN</a>
+
+          <a href="/glossary/infrastructure/card-company">카드사</a>
+          <a href="/glossary/method/cash">현금 / 현금영수증(국세청 신고)</a>
+          <a href="/glossary/infrastructure/pg">PG(전자결제대행서비스)</a>
+
+          <a href="/glossary/infrastructure/van">VAN(부가가치 통신망)</a>
         </div>
+
     </Frame>
 </div>
