@@ -1257,6 +1257,22 @@ img, video {
   height: 4rem
 }
 
+.h-32 {
+  height: 8rem
+}
+
+.h-40 {
+  height: 10rem
+}
+
+.h-48 {
+  height: 12rem
+}
+
+.h-64 {
+  height: 16rem
+}
+
 .h-16px {
   height: 16px
 }
@@ -1588,6 +1604,10 @@ img, video {
 
 .items-center {
   align-items: center
+}
+
+.contents-center {
+  align-content: center;
 }
 
 .self-start {
@@ -2003,6 +2023,16 @@ img, video {
   background-color: rgb(192 132 252 / var(--un-bg-opacity))
 }
 
+.bg-primary {
+  --un-bg-opacity: 1;
+    background-color: #034AD8;
+}
+
+.bg-primary-2 {
+  --un-bg-opacity: 1;
+    background-color: #d4e5fa;
+}
+
 .bg-red {
   --un-bg-opacity: 1;
   background-color: rgb(248 113 113 / var(--un-bg-opacity))
@@ -2275,6 +2305,10 @@ img, video {
   text-align: left
 }
 
+.text-right {
+  text-align: right
+}
+
 .indent {
   text-indent: 1.5rem
 }
@@ -2325,21 +2359,32 @@ img, video {
 
 .text-2xl {
   font-size: 1.5rem;
-  line-height: 2rem
+  line-height: 2rem;
 }
 
 .text-3xl {
   font-size: 1.875rem;
-  line-height: 2.25rem
+  line-height: 2.25rem;
+}
+
+.text-5xl {
+  font-size: 2.275rem;
+  line-height: 2.5rem;
+}
+
+.text-6xl {
+  font-size: 3rem;
+  line-height: 3.5rem;
 }
 
 .text-7xl {
   font-size: 4.5rem;
-  line-height: 1
+  line-height: 1;
 }
 
-.text-8 {
-  font-size: 2rem
+text-4xl, .text-8 {
+  font-size: 2rem;
+  line-height: 2.5rem;
 }
 
 .text-base {
@@ -2390,6 +2435,11 @@ img, video {
 .text-gray {
   --un-text-opacity: 1;
   color: rgb(156 163 175 / var(--un-text-opacity))
+}
+
+.text-gray-2 {
+  --un-text-opacity: 1;
+  color: #4e5968;
 }
 
 .text-green-6 {
@@ -2802,4 +2852,14 @@ footer {
   color: var(--sl-color-gray-2);
   box-shadow: var(--sl-shadow-md);
   overflow-wrap: anywhere;
+}
+
+/* md = 768px 이상 */
+@media (min-width: 768px) {
+  .md\:hidden {
+    display: none;
+  }
+  .md\:block {
+    display: block;
+  }
 }
