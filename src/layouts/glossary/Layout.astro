@@ -1,44 +1,49 @@
 ---
 import Header from '../../components/Header.astro';
 const {frontmatter} = Astro.props;
-const subTitleClass = `my-4 text-xl text-gray`;
+const classList = frontmatter.title === "유비씨엔 용어사전" ? `hidden` : 'grid gap-2';
 ---
-<html>
-<head>
-    <link rel="stylesheet" href="/src/assets/styles/glossary.css">
-    <title>{frontmatter.title}</title>
-    <div class={subTitleClass}>
-        <div>{frontmatter.description}</div>
+
+<link rel="stylesheet" href="/src/assets/styles/glossary.css">
+<div class="px-4">
+    <div>
+        <div class={classList}>
+            <a href={"/glossary/"}>＜용어사전으로 돌아가기</a>
+        </div>
+        <div class="bg-primary-2 h-48 rounded mb-4">
+            <div class="text-gray-2 text-6xl font-bold text-center h-full contents-center">{frontmatter.title}</div>
+        </div>
     </div>
-</head>
-<br/>
-<body>
-<div class="mb-40">
-    <slot/>
+
+    <div class="mb-40">
+        <slot/>
+    </div>
+
+    <div class="doc-meta text-right">
+        <span> · </span>
+        <span>Created by <strong>김태우</strong></span>
+    </div>
+    <hr>
+    <footer class="footer grid gap-2">
+        <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 items-center justify-between">
+            <div class="flex items-center justify-between gap-4">
+                <div class="text-sm md:text-xl">더 궁금한 내용이 있으신가요?</div>
+                <div class="text-black underline">
+                    <a href="https://pf.kakao.com/_Ihxlbj/chat">실시간 문의</a>
+                </div>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+                <div class="text-sm md:text-xl">가맹·영업 관련 문의가 필요하신가요?</div>
+                <div class="text-black underline">
+                    <a href="mailto:sales@ubcn.co.kr">이메일 보내기</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center justify-between not-content ">
+            <div class="flex items-center justify-evenly gap-4">
+                <a class="text-sm md:text-xl text-black underline" href="https://developers.ubcn.co.kr/notice/privacy/">개인정보처리방침</a>
+            </div>
+        </div>
+        <br/>
+    </footer>
 </div>
-</body>
-<hr>
-<footer class="footer py-4 grid gap-2">
-    <div class="flex items-center justify-between">
-        <div class="flex items-center justify-evenly gap-4">
-            <div>·</div>
-            <div>더 궁금한 내용이 있으신가요?</div>
-            <div class="text-black underline">
-                <a href="https://pf.kakao.com/_Ihxlbj/chat">실시간 문의</a></div>
-        </div>
-        <div class="flex items-center justify-evenly gap-4">
-            <div>·</div>
-            <div>가맹·영업 관련 문의가 필요하신가요?</div>
-            <div class="text-black underline">
-                <a href="mailto:sales@ubcn.co.kr">이메일 보내기</a></div>
-        </div>
-    </div>
-    <div class="flex items-center justify-between not-content ">
-        <div class="flex items-center justify-evenly gap-4">
-            <div>·</div>
-            <a class="text-black" href="https://developers.ubcn.co.kr/notice/privacy/">개인정보처리방침</a>
-        </div>
-    </div>
-    <br/>
-</footer>
-</html>
