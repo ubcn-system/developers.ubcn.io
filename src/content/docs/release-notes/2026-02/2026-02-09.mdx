@@ -1,0 +1,63 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2026-02-09 업데이트
+releasedAt: 2026-02-09
+writtenAt: 2026-02-09
+---
+
+import Frame from "/src/components/Frame.astro";
+import Badge from "/src/components/Badge.astro";
+import Figure from "/src/components/Figure.astro";
+import AsIsImg01 from "./_assets/asis01.png";
+import ToBeImg01 from "./_assets/tobe01.png";
+import AsIsImg02 from "./_assets/asis02.png";
+import ToBeImg02 from "./_assets/tobe02.png";
+import AsIsImg03 from "./_assets/asis03.png";
+import ToBeImg03 from "./_assets/tobe03.png";
+import noticeTerminalNameImg from "./_assets/noticeTerminalName.png";
+
+<Frame>
+
+    <Badge style={'web'}>MVMMS</Badge>
+
+    ## MVMMS 업데이트
+    <br/>
+
+    ### ✔️ BI(Brand Identity) 적용에 따른 모바일 VMMS 색상 변경
+        * 모바일 VMMS 의 메인 색상이 아래와 같이 변경됩니다.
+    <div style={"display: flex; justify-content: center; gap: 50px;"}>
+        <Figure src={AsIsImg01} caption={"변경 전"} width={300}/>
+        <Figure src={ToBeImg01} caption={"변경 후"} width={300}/>
+    </div>
+    <br/>
+    <br/>
+
+    ### ✔️ 거래내역·매출요약 상세조회 기능 삭제
+    * 모바일 화면에서 더 많은 거래 정보를 조회할 수 있도록 상세조회 기능이 삭제됩니다.<br/>
+    상세조회를 통한 조회가 필요하실 경우 <strong><u><a href={"https://vmms.ubcn.co.kr/"} target={"_blank"}>PC버전 VMMS</a></u></strong> 이용 권장드립니다.
+    <div style={"display: flex; justify-content: center; gap: 50px;"}>
+        <Figure src={AsIsImg02} caption={"변경 전"} width={300}/>
+        <Figure src={ToBeImg02} caption={"변경 후"} width={300}/>
+    </div>
+    <br/>
+    <br/>
+
+    ### ✔️ 캘린더 매출 표기 단위를 '만' 단위로 변경
+    * 일자에 모든 금액을 표기하던 기존 캘린더에서 금액을 '만' 단위로 변경하였어요. <br/>
+    매출액이 클 경우 모바일 화면에서 숫자가 너무 작아지던 문제를 해결하기 위한 변경점이에요.<br/>
+    <strong>단, 매출액이 1만원 이하일 경우 `0만`으로 표기될 수 있어요.</strong>
+    <div style={"display: flex; justify-content: center; gap: 50px;"}>
+        <Figure src={AsIsImg03} caption={"변경 전"} width={300}/>
+        <Figure src={ToBeImg03} caption={"변경 후"} width={300}/>
+    </div>
+    <br/>
+    <br/>
+
+    ### ✔️ 설치위치 검색조건을 단말기명 검색 조건으로 변경
+    * `설치위치` 검색 조건을 `단말기명` 검색 조건으로 변경하였어요. <br/>
+    기존 `설치위치`의 역할을 `단말기명`이 수행하며 <strong>`설치위치`는 정확한 주소지를 입력하게 될 예정이에요.</strong> <br/>
+    보다 정확한 내용은 <strong><u><a href={"https://vmms.ubcn.co.kr/notice/view/441/"} target={"_blank"}>VMMS 공지사항</a></u></strong>을 통해 확인하실 수 있어요.
+    <Figure src={noticeTerminalNameImg} caption={"VMMS 공지사항 일부 캡처 이미지"} width={700}/>
+    <br/>
+    <br/>
+</Frame>
