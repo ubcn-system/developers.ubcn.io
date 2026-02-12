@@ -1,46 +1,19 @@
 ---
+import Footer from '../../components/Footer.astro';
 const {frontmatter} = Astro.props;
-const subTitleClass = `my-4 text-xl text-gray`;
+const classList = frontmatter.title === "유비씨엔 용어사전" ? `hidden` : 'grid gap-2';
 ---
-
-<html>
-<head>
-    <div class={subTitleClass}>
-        <img src="https://developers.ubcn.co.kr/assets/notice_banner_1920x700.png" alt="banner"/>
-        <br>
+<div class="px-4">
+    <div class="bg-primary-2 h-48 rounded mb-4">
+        <div class="text-gray-2 text-5xl font-bold text-center h-full contents-center">{frontmatter.title}</div>
     </div>
-</head>
-<body>
-<div class="mb-40">
-    <slot/>
-    더욱 편리하고 안전한 서비스를 위해 노력하는 유비씨엔이 되겠습니다.<br/>
-    감사합니다.
+    <div class="my-6">
+        <slot/>
+        <p>더욱 편리하고 안전한 서비스를 위해 노력하는 유비씨엔이 되겠습니다.</p>
+        <p>감사합니다.</p>
+        <br/>
+        <img src="https://developers.ubcn.co.kr/assets/logo/ubcn-logo-text.png" alt="banner">
+    </div>
+    <hr>
+    <Footer/>
 </div>
-<br/><br/>
-<img src="https://developers.ubcn.co.kr/assets/logo/ubcn-logo-text.png" alt="banner"/>
-</body>
-<hr>
-<footer class="footer grid gap-2">
-    <div class="flex items-center justify-between">
-        <div class="flex items-center justify-evenly gap-4">
-            <div>·</div>
-            <div>더 궁금한 내용이 있으신가요?</div>
-            <div class="text-black underline">
-                <a href="https://pf.kakao.com/_Ihxlbj/chat">실시간 문의</a></div>
-        </div>
-        <div class="flex items-center justify-evenly gap-4">
-            <div>·</div>
-            <div>가맹·영업 관련 문의가 필요하신가요?</div>
-            <div class="text-black underline">
-                <a href="mailto:sales@ubcn.co.kr">이메일 보내기</a></div>
-        </div>
-    </div>
-    <div class="flex items-center justify-between not-content ">
-        <div class="flex items-center justify-evenly gap-4">
-            <div>·</div>
-            <a class="text-black" href="https://developers.ubcn.co.kr/notice/privacy/">개인정보처리방침</a>
-        </div>
-    </div>
-    <br/>
-</footer>
-</html>

@@ -1,0 +1,19 @@
+---
+import Footer from '../../components/Footer.astro';
+const {frontmatter} = Astro.props;
+---
+
+<link rel="stylesheet" href="/src/assets/styles/style.css">
+<div class="px-4">
+    <div>
+        <div class="bg-primary-2 h-48 rounded mb-4">
+            <div class="text-gray-2 text-6xl font-bold text-center h-full contents-center">{frontmatter.title}</div>
+        </div>
+    </div>
+
+    <div class="mb-40">
+        <slot/>
+    </div>
+    <hr>
+    <Footer/>
+</div>
