@@ -17,8 +17,7 @@ export default defineConfig({
             },
             favicon: '/favicon.png',
             customCss: ['./src/assets/styles/style.css'],
-            social: [
-                ],
+            social: [],
             defaultLocale: 'root',
             locales: {
                 root: {
@@ -38,13 +37,8 @@ export default defineConfig({
                     /*autogenerate: {directory: 'release-notes'},*/
                     items: [
                         {
-                            label: '2024년',
-                            autogenerate: {directory: 'release-notes/2024'},
-                            collapsed: true
-                        },
-                        {
-                            label: '2025년',
-                            autogenerate: {directory: 'release-notes/2025'},
+                            label: 'Legacy',
+                            autogenerate: {directory: 'release-notes/legacy'},
                             collapsed: true
                         },
                         {
@@ -60,11 +54,21 @@ export default defineConfig({
 
                     ],
                 },
-                /*{
+                {
                     label: 'API',
+                    badge: {text: '유료', variant: 'caution'},
                     autogenerate: {directory: 'api'},
-                    collapsed: false
-                },*/
+                    collapsed: true
+                },
+                {
+                    label: '네트워크',
+                    badge: {text: 'link', variant: 'note'},
+                    link: 'https://ubcn.notion.site/UBCn-Network-Pay-21930b3d33e24caea25d97d3a314f066?pvs=4'
+                },
+                {
+                    label: '자주 묻는 질문',
+                    link: '/faq'
+                },
             ],
         })
         ,
