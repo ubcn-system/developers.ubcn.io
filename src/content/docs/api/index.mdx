@@ -1,26 +1,32 @@
 ---
 title: 연동/API
+layout: /src/layouts/api/Layout.astro
 sidebar:
     order: 2
+tableOfContents: false
 ---
 
 import Frame from "/src/components/Frame.astro";
 
+## API 시작하기
+<br/>
+
 <Frame>
     단말기로부터 발생한 매출 데이터와 가맹점 시스템과 연계할 수 있는 부가 서비스들을 API 형태로 제공합니다.<br/>
-    API는 `유상`과 `무상` 서비스로 나뉩니다.<br/><br/>
+    API 서비스는 `유상` 서비스로 진행됩니다.<br/><br/>
+    관련 문의는 <a href="mailto:sales@ubcn.co.kr">영업팀</a>을 통해 문의해주세요.
     - 유상: 당일 거래 포함한 아래 모든 서비스 제공<br/>
     (단, 호출시간으로부터 최대 `5분 전`  거래까지 제공 - 카드사 응답 대기 최대 지연시간)
-    - 무상: 최대 전일자의 마감된 `마감정보` 일별 제공
+    {/*- 무상: 최대 전일자의 마감된 `마감정보` 일별 제공*/}
 </Frame>
 <Frame>
     ### 지원 서비스
     - 거래내역
-        - 거래 상세정보
+        - 거래내역 목록
     - 마감정보
-        - 특정 일자의 마감된 거래들의 집계정보
+        - 특정 일자의 마감된 거래들의 집계정보 목록
     - 상태정보
-        - 단말기의 상태정보 (1시간 마다 단말기에서 발송하는 상태정보 제공)
+        - 단말기의 상태정보 (1시간 마다 단말기에서 발송하는 상태정보 제공) 목록
 
 </Frame>
 <Frame>
@@ -31,15 +37,15 @@ import Frame from "/src/components/Frame.astro";
     ### Request Schema
     <table>
         <thead>
-            <th class={"text-center"}>Content-Type</th>
-            <th class={"text-center"}>company</th>
-            <th class={"text-center"}>token</th>
+            <th className={"text-center"}>Content-Type</th>
+            <th className={"text-center"}>company</th>
+            <th className={"text-center"}>token</th>
         </thead>
         <tbody>
         <tr>
-            <td class={"text-center"}>application/json</td>
-            <td class={"text-center"}>1</td>
-            <td class={"text-center"}>KJK4X3RRpiTr/AjSBI0CeoD/dxT/4qi75NCWSnv1XmfS6ZPXjHOrn1DyOjj3Ig==</td>
+            <td className={"text-center"}>application/json</td>
+            <td className={"text-center blur-xs"}>12345</td>
+            <td className={"text-center blur-xs"}>ABCDEFGHIJKLMNOPQRSTUVWXYZ</td>
         </tr>
         </tbody>
     </table>
@@ -58,7 +64,7 @@ const API = axios.create({
   },
 });
 
-//get, post 모두 지원합니다.
+// 서비스에 따라 `Method` 가 다를 수 있습니다.
 const res = await API.get("{service}");
 console.log(res.data);
 
