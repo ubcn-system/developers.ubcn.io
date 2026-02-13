@@ -28,7 +28,6 @@ export default defineConfig({
             sidebar: [
                 {
                     label: '용어사전',
-                    badge: {text: 'New', variant: 'success'},
                     link: '/glossary'
                 },
                 {
