@@ -8,15 +8,34 @@ prev: false
 import Frame from "/src/components/Frame.astro";
 
 <style>{
-    `.right-sidebar-container {
+    `
+.right-sidebar-container {
     display: none;
-  }`
+}
+.question {
+    color: #4e5968 !important;
+    display: flex;
+    align-items: center;
+}
+.question:hover {
+    background: #f2f4f6;
+    color: #3182fb !important;
+}
+.question::before {
+    display: block;
+    margin-right: 16px;
+    font-weight: 700;
+    color: #b0b8c1;
+    content: "Q";
+}
+`
 }</style>
 
 <div>
     <Frame>
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-y-4 gap-x-6">
-
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-y-2 gap-x-6">
+            <a className="p-2 text-xl rounded-lg question" href="/faq/closing/001">구매 상태인데 아직 매입이 안 된 이유는 무엇인가요?</a>
+            <a className="p-2 text-xl rounded-lg question" href="/faq/settlement/001">정산 금액이 예상과 다른 이유는 무엇인가요?</a>
         </div>
     </Frame>
 </div>
