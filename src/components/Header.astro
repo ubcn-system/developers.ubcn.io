@@ -18,29 +18,40 @@ const shouldRenderSearch =
   }
 </script>
 <div class="header flex items-center">
-    <div class="flex items-center justify-start gap-4">
+    <div>
         <SiteTitle {...Astro.props}/>
-        <div class="items-center site-title sl-flex px-5" id="category-group">
-            <a class="h-full inline-flex items-center px-4" href="/glossary">
-                              <span>
-                                용어사전
-                              </span> </a>
-            <a class="h-full inline-flex items-center px-4" href="/release-notes">
-                  <span>
-                    릴리즈 노트
-                  </span> </a> <!--<a class="h-full inline-flex items-center px-4" href="/api">
-                  <span>
-                    API
-                  </span> </a>--> <a class="h-full inline-flex items-center px-4" target="_blank"
-                                     href="https://ubcn.notion.site/UBCn-Network-Pay-21930b3d33e24caea25d97d3a314f066?pvs=4">
-                  <span>
-                    네트워크
-                  </span> </a>
-        </div>
-        <div class="print:hidden">
-          {shouldRenderSearch &&
-              <Search {...Astro.props}/>}
-        </div>
+    </div>
+    <div class="print:hidden">
+      {shouldRenderSearch &&
+          <Search {...Astro.props}/>}
+    </div>
+    <div class="items-center site-title sl-flex px-5" id="category-group">
+        <a class="h-full inline-flex items-center px-4" href="/glossary">
+          <span class="font-bold">
+            용어사전
+          </span>
+        </a>
+        <a class="h-full inline-flex items-center px-4" href="/release-notes">
+            <span class="font-bold">
+            릴리즈 노트
+          </span>
+        </a>
+        <a class="h-full inline-flex items-center px-4" href="/api">
+            <span class="font-bold">
+            API
+          </span>
+        </a>
+        <a class="h-full inline-flex items-center px-4" target="_blank"
+           href="https://ubcn.notion.site/UBCn-Network-Pay-21930b3d33e24caea25d97d3a314f066?pvs=4">
+          <span class="font-bold text-link">
+            네트워크
+          </span>
+        </a>
+        <a class="h-full inline-flex items-center px-4" href="/faq">
+          <span class="font-bold">
+            자주 묻는 질문
+          </span>
+        </a>
     </div>
 </div>
 
@@ -68,6 +79,10 @@ const shouldRenderSearch =
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .text-link {
+    color: #3182fb;
   }
 
   .title-wrapper {
