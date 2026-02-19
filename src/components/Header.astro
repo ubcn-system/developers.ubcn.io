@@ -12,6 +12,31 @@ const shouldRenderSearch =
 ---
 <link rel="stylesheet" href="/src/assets/styles/style.css">
 <script>
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // 시간 제거
+
+        const threeDaysAgo = new Date(today);
+        threeDaysAgo.setDate(today.getDate() - 3);
+
+        const sidebarContents = document.querySelectorAll(".sidebar-content .top-level li span");
+
+        for (let i = 0; i < sidebarContents.length; i++) {
+            const text = sidebarContents[i].innerText.trim();
+
+            // 문자열에서 yyyy-MM-dd 형식 날짜 추출
+            const match = text.match(/\d{4}-\d{2}-\d{2}/);
+            if (!match) continue;
+
+            const [year, month, day] = match[0].split('-').map(Number);
+            const itemDate = new Date(year, month - 1, day);
+            itemDate.setHours(0, 0, 0, 0);
+
+            if (itemDate >= threeDaysAgo && itemDate <= today) {
+                sidebarContents[i].innerHTML += ' <span class="new-badge">NEW</span>';
+            }
+        }
+  </script>
+<script>
   document.documentElement.dataset.theme = 'light';
   if (typeof localStorage !== 'undefined') {
     localStorage.setItem('starlight-theme', 'light');
