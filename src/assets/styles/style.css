@@ -464,7 +464,7 @@ ol, ul, menu {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 5px 0;
+  margin: 1em 0;
 }
 
 starlight-tabs [role=tablist]{
