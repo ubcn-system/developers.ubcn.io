@@ -12,15 +12,6 @@ import Frame from "/src/components/Frame.astro";
 .right-sidebar-container {
     display: none;
 }
-.question {
-    color: #4e5968 !important;
-    display: flex;
-    align-items: center;
-}
-.question:hover {
-    background: #f2f4f6;
-    color: #3182fb !important;
-}
 .question::before {
     display: block;
     margin-right: 16px;
@@ -37,26 +28,26 @@ import Frame from "/src/components/Frame.astro";
         <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
             <div className="grid gap-y-2">
                 ### 거래
-                <a className="p-2 text-xl rounded-lg question" href="/faq/closing/001">결제가 되었는데 아직 매입이 안 된 이유는 무엇인가요?</a>
-                <a className="p-2 text-xl rounded-lg question" href="/faq/transaction/001">승인됐는데 상품이 나오지 않았어요</a>
-                <a className="p-2 text-xl rounded-lg question" href="/faq/transaction/002">승인 실패가 반복되는 이유는 무엇인가요</a>
-                <a className="p-2 text-xl rounded-lg question" href="/faq/transaction/003">승인취소와 매입취소의 차이는 무엇인가요?</a>
-                <a className="p-2 text-xl rounded-lg question" href="/faq/transaction/004">망상취소는 어떤 경우에 발생하나요?</a>
-                <a className="p-2 text-xl rounded-lg question" href="/faq/transaction/005">지역화폐 거래가 가능한가요?</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/closing/001">결제가 되었는데 아직 매입이 안 된 이유는 무엇인가요?</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/transaction/001">승인됐는데 상품이 나오지 않았어요</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/transaction/002">승인 실패가 반복되는 이유는 무엇인가요</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/transaction/003">승인취소와 매입취소의 차이는 무엇인가요?</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/transaction/004">망상취소는 어떤 경우에 발생하나요?</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/transaction/005">지역화폐 거래가 가능한가요?</a>
             </div>
             <div className="grid gap-y-2">
                 ### 정산
-                <a className="p-2 text-xl rounded-lg question" href="/faq/settlement/001">정산 금액이 예상과 다른 이유는 무엇인가요?</a>
-                <a className="p-2 text-xl rounded-lg question" href="/faq/settlement/002">매입거절 / EDC입금이란 무엇인가요?</a>
-                <a className="p-2 text-xl rounded-lg question" href="/faq/settlement/003">VAN 가맹점과 PG 가맹점의 정산 차이</a>
-                <a className="p-2 text-xl rounded-lg question" href="/faq/settlement/004">공휴일이 포함되면 정산일은 어떻게 계산되나요?</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/settlement/001">정산 금액이 예상과 다른 이유는 무엇인가요?</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/settlement/002">매입거절 / EDC입금이란 무엇인가요?</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/settlement/003">VAN 가맹점과 PG 가맹점의 정산 차이</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/settlement/004">공휴일이 포함되면 정산일은 어떻게 계산되나요?</a>
             </div>
 
             <div className="grid gap-y-2">
                 ### 상태
-                <a className="p-2 text-xl rounded-lg question" href="/faq/status/001">머신기 상태와 웹에 표시되는 상태정보가 다른 이유</a>
-                <a className="p-2 text-xl rounded-lg question" href="/faq/status/002">상태정보는 100% 실시간이 아닌 이유</a>
-                <a className="p-2 text-xl rounded-lg question" href="/faq/status/003">머신기 상태와 웹에 표시되는 상태정보가 다른 이유</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/status/001">머신기 상태와 웹에 표시되는 상태정보가 다른 이유</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/status/002">상태정보는 100% 실시간이 아닌 이유</a>
+                <a className="p-2 text-xl rounded-lg question custom-page-move" href="/faq/status/003">상태정보 전송 주기는 어떻게 되나요?</a>
             </div>
         </div>
     </Frame>

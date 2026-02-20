@@ -68,6 +68,10 @@ export default defineConfig({
                     label: '자주 묻는 질문',
                     link: '/faq'
                 },
+                {
+                    label: '웹 가이드',
+                    link: '/web'
+                },
             ],
         })
         ,

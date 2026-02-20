@@ -1,0 +1,48 @@
+---
+layout: /src/layouts/web/Layout.astro
+title: 웹 가이드
+tableOfContents: false
+next: false
+prev: false
+---
+
+import {Card} from '@astrojs/starlight/components';
+
+<style>{`
+.hero {
+    padding: 3rem 0;
+    grid-template-columns: auto;
+}
+.title > span {
+    font-weight: 600;
+    font-size: var(--sl-text-h4);
+    color: var(--sl-color-white);
+    line-height: var(--sl-line-height-headings);
+    gap: 1rem;
+    align-items: center;
+}
+
+.card {
+    --sl-card-border: var(--sl-color-purple);
+    --sl-card-bg: var(--sl-color-purple-low);
+    border: 1px solid var(--sl-color-gray-5);
+    background-color: var(--sl-color-black);
+    padding: clamp(1rem, calc(.125rem + 3vw), 2.5rem);
+    flex-direction: column;
+    gap: clamp(.5rem, calc(.125rem +ㅊ ㅊ192
+
+    .sl-markdown-content a:not(:where(.not-content *)) {
+        color: #353841;
+    }
+
+    h1#_top {
+    font-size:clamp(var(--sl-text-3xl),calc(.25rem + 5vw),var(--sl-text-5xl));
+    line-height: var(--sl-line-height-headings);
+    font-weight: 600;
+    color: var(--sl-color-white)
+}`}
+</style>
+
+    <a href={"/web/vmms"}>
+        <Card title="VMMS" icon="open-book"> VMMS에 대한 기본적인 설명을 이해할 수 있습니다. </Card>
+    </a>

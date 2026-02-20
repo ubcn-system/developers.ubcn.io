@@ -1,0 +1,48 @@
+---
+layout: /src/layouts/web/Layout.astro
+title: VMMS
+tableOfContents: false
+next: false
+prev: false
+---
+import Frame from "/src/components/Frame.astro";
+
+<style>{
+    `
+.right-sidebar-container {
+    display: none;
+}
+.custom-page-move {
+    color: #4e5968 !important;
+    display: flex;
+    align-items: center;
+}
+.custom-page-move:hover {
+    background: #f2f4f6;
+    color: #3182fb !important;
+}
+`
+}</style>
+
+<div>
+    <Frame>
+        <div className="grid gap-6">
+            <div className="flex flex-row items-center justify-evenly">
+                ### 상품
+                <div>
+                    <a className="p-2 text-xl rounded-lg question custom-page-move" href="#">상품관리</a>
+                </div>
+            </div>
+
+            <div className="flex flex-row items-center justify-evenly">
+                ### 매출
+                <div>
+                    <a className="p-2 text-xl rounded-lg question custom-page-move" href="#">거래내역</a>
+                    <a className="p-2 text-xl rounded-lg question custom-page-move" href="#">매출집계</a>
+                    <a className="p-2 text-xl rounded-lg question custom-page-move" href="#">마감현황</a>
+                    <a className="p-2 text-xl rounded-lg question custom-page-move" href="#">입금현황</a>
+                </div>
+            </div>
+        </div>
+    </Frame>
+</div>
