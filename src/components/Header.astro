@@ -3,6 +3,7 @@ import config from 'virtual:starlight/user-config';
 import Search from 'virtual:starlight/components/Search';
 import SiteTitle from 'virtual:starlight/components/SiteTitle';
 import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
+import { Icon } from '@astrojs/starlight/components';
 
 /**
  * Render the `Search` component if Pagefind is enabled or the default search component has been overridden.
@@ -12,30 +13,30 @@ const shouldRenderSearch =
 ---
 <link rel="stylesheet" href="/src/assets/styles/style.css">
 <script>
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); // 시간 제거
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // 시간 제거
 
-        const threeDaysAgo = new Date(today);
-        threeDaysAgo.setDate(today.getDate() - 3);
+  const threeDaysAgo = new Date(today);
+  threeDaysAgo.setDate(today.getDate() - 3);
 
-        const sidebarContents = document.querySelectorAll(".sidebar-content .top-level li span");
+  const sidebarContents = document.querySelectorAll(".sidebar-content .top-level li span");
 
-        for (let i = 0; i < sidebarContents.length; i++) {
-            const text = sidebarContents[i].innerText.trim();
+  for (let i = 0; i < sidebarContents.length; i++) {
+    const text = sidebarContents[i].innerText.trim();
 
-            // 문자열에서 yyyy-MM-dd 형식 날짜 추출
-            const match = text.match(/\d{4}-\d{2}-\d{2}/);
-            if (!match) continue;
+    // 문자열에서 yyyy-MM-dd 형식 날짜 추출
+    const match = text.match(/\d{4}-\d{2}-\d{2}/);
+    if (!match) continue;
 
-            const [year, month, day] = match[0].split('-').map(Number);
-            const itemDate = new Date(year, month - 1, day);
-            itemDate.setHours(0, 0, 0, 0);
+    const [year, month, day] = match[0].split('-').map(Number);
+    const itemDate = new Date(year, month - 1, day);
+    itemDate.setHours(0, 0, 0, 0);
 
-            if (itemDate >= threeDaysAgo && itemDate <= today) {
-                sidebarContents[i].innerHTML += ' <span class="new-badge">NEW</span>';
-            }
-        }
-  </script>
+    if (itemDate >= threeDaysAgo && itemDate <= today) {
+      sidebarContents[i].innerHTML += ' <span class="new-badge">NEW</span>';
+    }
+  }
+</script>
 <script>
   document.documentElement.dataset.theme = 'light';
   if (typeof localStorage !== 'undefined') {
@@ -57,7 +58,7 @@ const shouldRenderSearch =
     </a>
     <a class="h-full inline-flex items-center px-4" href="/release-notes">
             <span class="font-bold">
-            릴리즈 노트
+            릴리즈노트
           </span>
     </a>
     <a class="h-full inline-flex items-center px-4" href="/api">
@@ -67,13 +68,19 @@ const shouldRenderSearch =
     </a>
     <a class="h-full inline-flex items-center px-4" target="_blank"
        href="https://ubcn.notion.site/UBCn-Network-Pay-21930b3d33e24caea25d97d3a314f066?pvs=4">
-          <span class="font-bold text-link">
+          <span class="font-bold">
             네트워크
           </span>
+        <Icon class="" name="external" />
     </a>
     <a class="h-full inline-flex items-center px-4" href="/faq">
-          <span class="font-bold">
-            자주 묻는 질문
-          </span>
+              <span class="font-bold">
+                자주 묻는 질문
+              </span>
+    </a>
+    <a class="h-full inline-flex items-center px-4" href="/web">
+              <span class="font-bold">
+                웹 가이드
+              </span>
     </a>
 </div>

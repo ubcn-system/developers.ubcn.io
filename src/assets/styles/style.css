@@ -309,6 +309,14 @@ h4 {
   font-size: 1.5rem !important;
 }
 
+span, p, a {
+  color: #4e5968;
+}
+
+a span {
+  color: inherit;
+}
+
 p {
   font-size: 16px !important;
 }
@@ -320,6 +328,15 @@ a {
 
 b, strong {
   font-weight: bolder
+}
+
+.sl-badge {
+  color: white;
+}
+
+.top-level a:hover, .top-lebel span:hover, #category-group a:hover {
+  background: #f2f4f6;
+  color: #3182fb !important;
 }
 
 code, kbd, samp, pre {
@@ -3059,4 +3076,13 @@ footer {
      line-height: 1;   /* ⭐ 위아래 여백 제거 */
  }
 
+}
+.custom-page-move {
+    color: #4e5968 !important;
+    display: flex;
+    align-items: center;
+}
+.custom-page-move:hover {
+    background: #f2f4f6;
+    color: #3182fb !important;
 }
