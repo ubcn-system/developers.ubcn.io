@@ -46,7 +46,7 @@ const shouldRenderSearch =
 <div class="mainSiteTitle">
     <SiteTitle {...Astro.props}/>
 </div>
-<div class="print:hidden">
+<div class="hidden md:block">
   {shouldRenderSearch &&
       <Search {...Astro.props}/>}
 </div>
