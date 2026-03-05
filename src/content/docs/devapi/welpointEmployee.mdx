@@ -47,7 +47,7 @@ import Table from "/src/components/Table.astro";
 ```ts
 
 const API = axios.create({
-  baseURL: `http://api.ubcn.co.kr/api`,
+  baseURL: `https://api.ubcn.co.kr/api`, // http도 허용됩니다.
   headers: {
     "Access-Control-Allow-Origin": "*",
     "PER-ID": "{유출금지}",         // 사원관리 요청 호출 시 `PER-ID`와 `PER-TOKEN`이 필수
@@ -56,7 +56,8 @@ const API = axios.create({
 });
 
 // post 요청만을 지원합니다.
-const res = await API.post("/well/client/{service}"); // {service}에 따라 구분됩니다.
+// {service}에 따라 구분됩니다. 아래 상세 설명을 참조해주세요.
+const res = await API.post("/well/client/{service}");
 console.log(res.data);
 
 // 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
@@ -99,7 +100,7 @@ if (res.code != null) {
 ```ts
 
 const API = axios.create({
-        baseURL: `http://api.ubcn.co.kr/api`,
+        baseURL: `https://api.ubcn.co.kr/api`, // http도 허용됩니다.
         headers: {
             "Access-Control-Allow-Origin": "*",
             "PER-ID": "{유출금지}",
@@ -125,22 +126,6 @@ const API = axios.create({
     headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
         {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
     bodys={[
-        [
-            {"title": "code"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "결과 코드"},
-            {"etc": "-"},
-        ],
-        [
-            {"title": "message"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "응답 메시지"},
-            {"etc": "-"},
-        ],
         [
             {"title": "seq"},
             {"subTitle": "-"},
@@ -225,7 +210,7 @@ employeeList는 사원의 배열로, 내부 객체는 다음과 같은 필드를
                 {"notNull": "Y"},
                 {"argsType": "String"},
                 {"desc": "사원 카드번호"},
-                {"etc": "최대 19자리"},
+                {"etc": "최대 20자리"},
             ],
             [
                 {"title": "userNo"},
@@ -243,6 +228,14 @@ employeeList는 사원의 배열로, 내부 객체는 다음과 같은 필드를
                 {"desc": "초기 복지금액"},
                 {"etc": "-"},
             ],
+            [
+                {"title": "userName"},
+                {"subTitle": "-"},
+                {"notNull": "N"},
+                {"argsType": "String"},
+                {"desc": "사원 명"},
+                {"etc": "-"},
+            ],
         ]}>
     </Table>
 
@@ -250,7 +243,7 @@ employeeList는 사원의 배열로, 내부 객체는 다음과 같은 필드를
 ### 호출 구문
 ```ts
 const API = axios.create({
-    baseURL: `http://api.ubcn.co.kr/api`,
+    baseURL: `https://api.ubcn.co.kr/api`, // http도 허용됩니다.
     headers: {
         "Access-Control-Allow-Origin": "*",
         "PER-ID": "{유출금지}",
@@ -258,17 +251,19 @@ const API = axios.create({
     },
 });
 
-const bodyData = [
+// Array 내부에 등록하고자 하는 사원 수 만큼 Index 생성
+const bodyList = [
     {
         "userCardNo" : "1198609522000000001",
         "userNo" : "UBCN001",
-        "vm" : "10000"
+        "vm" : "10000",
+        "userName" : "홍길동",
     }, ...,
 ]
 
 // post 요청만을 지원합니다.
 // {payment} : 조회하고자 하는 웰포인트의 결제 방식("QR" 혹은 "Barcode")
-const res = await API.post("/well/client/regist/{payment}", bodyData);
+const res = await API.post("/well/client/regist/{payment}", bodyList);
 console.log(res.data);
 
 // 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다.
@@ -284,71 +279,121 @@ if (res.code != null) {
         {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
     bodys={[
         [
-            {"title": "code"},
+            {"title": "successCnt"},
             {"subTitle": "-"},
             {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "결과 코드"},
+            {"argsType": "int"},
+            {"desc": "등록 성공 횟수"},
             {"etc": "-"},
         ],
         [
-            {"title": "message"},
+            {"title": "failCnt"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "int"},
+            {"desc": "등록 실패 횟수"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "failList"},
+            {"subTitle": "-"},
+            {"notNull": "N"},
+            {"argsType": "Array"},
+            {"desc": "실패 원인 Array"},
+            {"etc": "아래 failList 내부 필드 설명 참조"},
+        ],
+        [
+            {"title": "result_code"},
+            {"subTitle": "-"},
+            {"notNull": "Y"},
+            {"argsType": "String"},
+            {"desc": "응답 코드"},
+            {"etc": "-"},
+        ],
+        [
+            {"title": "result_msg"},
             {"subTitle": "-"},
             {"notNull": "Y"},
             {"argsType": "String"},
             {"desc": "응답 메시지"},
             {"etc": "-"},
         ],
-        [
-            {"title": "seq"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "int"},
-            {"desc": "seq"},
-            {"etc": "-"},
-        ],
-        [
-            {"title": "name"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "고객사명"},
-            {"etc": "-"},
-        ],
-        [
-            {"title": "tranOption"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "정책"},
-            {"etc": "'0 : 가용마일리지 초과 허용, 1 : 가용마일리지 초과 불허용"},
-        ],
-        [
-            {"title": "validity"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "유효성체크값"},
-            {"etc": "-"},
-        ],
-        [
-            {"title": "perisisType"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "연동타입"},
-            {"etc": "-"},
-        ],
-        [
-            {"title": "perisisComp"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "연동ID"},
-            {"etc": "-"},
-        ],
     ]}>
 </Table>
+
+    #### failList 내부 필드 설명
+    failList 실패한 요청 파라미터와 실패 사유를 나타내는 배열로, 내부 객체는 다음과 같은 필드를 포함합니다.
+    <Table
+        headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+            {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+        bodys={[
+            [
+                {"title": "seq"},
+                {"subTitle": "-"},
+                {"notNull": "N"},
+                {"argsType": "String"},
+                {"desc": "seq"},
+                {"etc": ""},
+            ],
+            [
+                {"title": "userNo"},
+                {"subTitle": "-"},
+                {"notNull": "N"},
+                {"argsType": "String"},
+                {"desc": "사원번호"},
+                {"etc": ""},
+            ],
+            [
+                {"title": "cSeq"},
+                {"subTitle": "-"},
+                {"notNull": "N"},
+                {"argsType": "String"},
+                {"desc": "고객사SEQ"},
+                {"etc": ""},
+            ],
+            [
+                {"title": "userCardNo"},
+                {"subTitle": "-"},
+                {"notNull": "N"},
+                {"argsType": "String"},
+                {"desc": "사원카드번호"},
+                {"etc": ""},
+            ],
+            [
+                {"title": "userName"},
+                {"subTitle": "-"},
+                {"notNull": "N"},
+                {"argsType": "String"},
+                {"desc": "사원명"},
+                {"etc": ""},
+            ],
+            [
+                {"title": "vm"},
+                {"subTitle": "-"},
+                {"notNull": "N"},
+                {"argsType": "String"},
+                {"desc": "복지금액"},
+                {"etc": ""},
+            ],
+            [
+                {"title": "grade"},
+                {"subTitle": "-"},
+                {"notNull": "N"},
+                {"argsType": "String"},
+                {"desc": "사원등급"},
+                {"etc": ""},
+            ],
+            [
+                {"title": "validity"},
+                {"subTitle": "-"},
+                {"notNull": "N"},
+                {"argsType": "String"},
+                {"desc": "실패사유"},
+                {"etc": ""},
+            ],
+        ]}>
+    </Table>
+
 </Frame>
 
 ## 사용자 정보 변경
@@ -384,6 +429,14 @@ if (res.code != null) {
             {"etc": "-"},
         ],
         [
+            {"title": "userName"},
+            {"subTitle": "-"},
+            {"notNull": "N"},
+            {"argsType": "String"},
+            {"desc": "사원명"},
+            {"etc": "-"},
+        ],
+        [
             {"title": "vm"},
             {"subTitle": "-"},
             {"notNull": "Y"},
@@ -397,7 +450,7 @@ if (res.code != null) {
 ### 호출 구문
 ```ts
 const API = axios.create({
-    baseURL: `http://api.ubcn.co.kr/api`,
+    baseURL: `https://api.ubcn.co.kr/api`, // http도 허용됩니다.
     headers: {
        "Access-Control-Allow-Origin": "*",
        "PER-ID": "{유출금지}",
@@ -409,6 +462,7 @@ const bodyData = {
     "seq" : "1",
     "userCardNo" : "1198609522000001",
     "userNo" : "UBCN002",
+    "userName" : "수정할 이름",
     "vm" : "20000"
 }
 
@@ -430,67 +484,19 @@ if (res.code != null) {
         {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
     bodys={[
         [
-            {"title": "code"},
+            {"title": "result_code"},
             {"subTitle": "-"},
             {"notNull": "Y"},
             {"argsType": "String"},
-            {"desc": "결과 코드"},
+            {"desc": "응답 코드"},
             {"etc": "-"},
         ],
         [
-            {"title": "message"},
+            {"title": "result_msg"},
             {"subTitle": "-"},
             {"notNull": "Y"},
             {"argsType": "String"},
             {"desc": "응답 메시지"},
-            {"etc": "-"},
-        ],
-        [
-            {"title": "seq"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "int"},
-            {"desc": "seq"},
-            {"etc": "-"},
-        ],
-        [
-            {"title": "name"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "고객사명"},
-            {"etc": "-"},
-        ],
-        [
-            {"title": "tranOption"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "정책"},
-            {"etc": "'0 : 가용마일리지 초과 허용, 1 : 가용마일리지 초과 불허용"},
-        ],
-        [
-            {"title": "validity"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "유효성체크값"},
-            {"etc": "-"},
-        ],
-        [
-            {"title": "perisisType"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "연동타입"},
-            {"etc": "-"},
-        ],
-        [
-            {"title": "perisisComp"},
-            {"subTitle": "-"},
-            {"notNull": "Y"},
-            {"argsType": "String"},
-            {"desc": "연동ID"},
             {"etc": "-"},
         ],
     ]}>
@@ -499,11 +505,28 @@ if (res.code != null) {
 
 ## 사용자 사용해지
 <Frame>
+### Request Schema
+    요청에서 필요로 하는 필드는 다음과 같습니다.
+<Table
+        headers={[{"title": "필드명"}, {"subTitle": "상세필드명"}, {"notNull": "필수"},
+            {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
+        bodys={[
+            [
+                {"title": "seq"},
+                {"subTitle": "-"},
+                {"notNull": "Y"},
+                {"argsType": "String"},
+                {"desc": "사원 SEQ"},
+                {"etc": "`사용자 정보 조회` API를 통해 해지하고자 하는 사원의 SEQ 확인"},
+            ],
+        ]}>
+    </Table>
+
 ### 호출구문
 ```ts
 
 const API = axios.create({
-    baseURL: `http://api.ubcn.co.kr/api`,
+    baseURL: `https://api.ubcn.co.kr/api`, // http도 허용됩니다.
     headers: {
         "Access-Control-Allow-Origin": "*",
         "PER-ID": "{유출금지}",
@@ -529,15 +552,15 @@ if (res.code != null) {
         {"argsType": "타입"}, {"desc": "설명"}, {"etc": "비고"}]}
     bodys={[
         [
-            {"title": "code"},
+            {"title": "result_code"},
             {"subTitle": "-"},
             {"notNull": "Y"},
             {"argsType": "String"},
-            {"desc": "결과 코드"},
+            {"desc": "응답 코드"},
             {"etc": "-"},
         ],
         [
-            {"title": "message"},
+            {"title": "result_msg"},
             {"subTitle": "-"},
             {"notNull": "Y"},
             {"argsType": "String"},
