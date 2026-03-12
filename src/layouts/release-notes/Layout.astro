@@ -3,11 +3,6 @@ import Footer from '../../components/Footer.astro';
 const {frontmatter} = Astro.props;
 const classList = `mt-4 mb-6 text-xl text-gray`;
 ---
-<html>
-<head>
-    <title>릴리즈노트</title>
-</head>
-<body>
 <div class={classList}>
     <div class="relative">
         <div>
@@ -17,10 +12,29 @@ const classList = `mt-4 mb-6 text-xl text-gray`;
     </div>
     <h1 id="주요 업데이트 사항">주요 업데이트 사항</h1>
 </div>
-<div class="mb-20">
+<div class="mb-20" id="contents">
     <slot/>
 </div>
 <hr>
 <Footer/>
-</body>
-</html>
+<script>
+  import mediumZoom from "medium-zoom";
+
+  let zoom: any;
+
+  const initZoom = () => {
+    const targets = document.querySelectorAll("#contents img[data-zoomable]");
+    if (!targets.length) return;
+
+    zoom?.detach();
+
+    zoom = mediumZoom(targets, {
+      margin: 24,
+      background: "rgba(0,0,0,0.9)",
+      scrollOffset: 40
+    });
+  };
+
+  initZoom();
+  document.addEventListener("astro:page-load", initZoom);
+</script>

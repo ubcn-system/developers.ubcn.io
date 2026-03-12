@@ -17,6 +17,7 @@
     "@astrojs/starlight": "^0.37.6",
     "astro": "^5.17.1",
     "axios": "^1.4.0",
+    "medium-zoom": "^1.1.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "sharp": "^0.32.5",

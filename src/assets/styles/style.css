@@ -150,7 +150,11 @@ html, :host {
 
 header {
   height: 3.5rem !important;
-  z-index: 1 !important;
+  z-index: 1;
+}
+
+#starlight__sidebar {
+  z-index: 0;
 }
 
 .header > div:first-child span{
@@ -475,13 +479,17 @@ ol, ul, menu {
   padding: 0;
 }
 
+.main-pane .sl-markdown-content #contents > div > ul:has(ul) {
+  margin: 1.5em 0 1.5em .75em;
+}
+
 .main-pane .sl-markdown-content ul {
   list-style: disc;
   padding-left: 1.5em;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin: 1em 0;
+  gap: .25em;
+  margin: .25em 0 .25em .25em;
 }
 
 starlight-tabs [role=tablist]{

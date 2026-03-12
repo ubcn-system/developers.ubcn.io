@@ -17,3 +17,24 @@ const classList = frontmatter.title === "유비씨엔 용어사전" ? `hidden` :
     <hr>
     <Footer/>
 </div>
+<script>
+  import mediumZoom from "medium-zoom";
+
+  let zoom: any;
+
+  const initZoom = () => {
+    const targets = document.querySelectorAll("#contents img[data-zoomable]");
+    if (!targets.length) return;
+
+    zoom?.detach();
+
+    zoom = mediumZoom(targets, {
+      margin: 24,
+      background: "rgba(0,0,0,0.9)",
+      scrollOffset: 40
+    });
+  };
+
+  initZoom();
+  document.addEventListener("astro:page-load", initZoom);
+</script>

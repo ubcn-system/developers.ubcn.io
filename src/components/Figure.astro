@@ -1,31 +1,42 @@
 ---
-import {type LocalImageProps, Picture} from "astro:assets";
+import type { LocalImageProps } from "astro:assets";
 
 interface Props {
-  src: LocalImageProps["src"];
+  src: LocalImageProps["src"] | string;
   caption?: string;
-  width?: string | number;
-  border?: string;
+  width?: number | string;
+  border?: boolean;
 }
 
-const {src, caption, width, border} = Astro.props;
-const cls = border == "none"  ? 'my-4 flex flex-col items-center gap-2 not-content' : 'my-4 flex flex-col items-center gap-2';
+const {
+  src,
+  caption = "",
+  width,
+  border = true
+} = Astro.props;
+
+const imgSrc = typeof src === "string" ? src : src.src;
+
+const imgClass = [
+  "zoomable",
+  border ? "border" : "",
+  "rounded"
+].join(" ");
 ---
-<script>
-</script>
-<figure class={cls}>
-  {
-    typeof src === "string" ? (
-        <img class="border" src={src} alt={caption} width={width}/>
-    ) : (
-        <Picture
-            src={src}
-            alt={caption ?? ""}
-            width={typeof width === "number" ? width : Number(width)}
-            formats={["webp"]}
-        />
-    )
-  }
-  {caption &&
-      <figcaption class="text-sm text-slate-5">{caption}</figcaption>}
+
+<figure class="my-6 flex flex-col items-center gap-2">
+  <img
+    src={imgSrc}
+    alt={caption}
+    width={width}
+    class={imgClass}
+    loading="lazy"
+    data-zoomable
+  />
+
+  {caption && (
+    <figcaption class="text-sm text-slate-500 text-center">
+      {caption}
+    </figcaption>
+  )}
 </figure>

@@ -10,14 +10,40 @@ const classList = frontmatter.title === "자주 묻는 질문" ? `hidden` : 'gri
         <div class={classList}>
             <a href={"/faq/"}>＜자주 묻는 질문으로 돌아가기</a>
         </div>
+
         <div class="bg-primary-2 h-48 rounded mb-4">
-            <div class="text-gray-2 text-6xl font-bold text-center h-full contents-center">{frontmatter.title}</div>
+            <div class="text-gray-2 text-6xl font-bold text-center h-full contents-center">
+              {frontmatter.title}
+            </div>
         </div>
     </div>
 
-    <div class="mb-20">
+    <div class="mb-20" id="contents">
         <slot/>
     </div>
+
     <hr>
     <Footer/>
 </div>
+
+<script>
+  import mediumZoom from "medium-zoom";
+
+  let zoom: any;
+
+  const initZoom = () => {
+    const targets = document.querySelectorAll("#contents img[data-zoomable]");
+    if (!targets.length) return;
+
+    zoom?.detach();
+
+    zoom = mediumZoom(targets, {
+      margin: 24,
+      background: "rgba(0,0,0,0.9)",
+      scrollOffset: 40
+    });
+  };
+
+  initZoom();
+  document.addEventListener("astro:page-load", initZoom);
+</script>
