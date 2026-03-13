@@ -205,13 +205,13 @@ hr {
   margin: 20px 0;
 }
 
-.sl-markdown-content :not(a, strong, em, del, span, input, code) + :not(a, strong, em, del, span, input, code, :where(.not-content *)) {
+/*.sl-markdown-content :not(a, strong, em, del, span, input, code) + :not(a, strong, em, del, span, input, code, :where(.not-content *)) {
   margin-top: 0;
 }
 
 .sl-markdown-content :not(h1, h2, h3, h4, h5, h6, .sl-heading-wrapper) + :is(.sl-heading-wrapper) {
   margin-top: 0;
-}
+}*/
 
 /* 고정값 '개요'를 제거하기 위함 */
 #starlight__mobile-toc > div > ul > li:first-child, starlight-toc > nav > ul > li:first-child {
@@ -460,8 +460,8 @@ button:where{
   display: list-item
 }*/
 
-blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
-  margin: 0
+blockquote, dl, dd, h1, h2, h3, h4, h5, h6, figure, p, pre {
+  margin: .2em 0;
 }
 
 fieldset {
@@ -3093,4 +3093,8 @@ footer {
 .custom-page-move:hover {
     background: #f2f4f6;
     color: #3182fb !important;
+}
+
+.level-h1, .level-h2, .level-h3, .level-h4 {
+  margin: .5em 0;
 }

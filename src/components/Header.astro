@@ -10,6 +10,8 @@ import { Icon } from '@astrojs/starlight/components';
  */
 const shouldRenderSearch =
     config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
+
+const pathName = Astro.url.pathname;
 ---
 <link rel="stylesheet" href="/src/assets/styles/style.css">
 <script>
@@ -19,13 +21,21 @@ const shouldRenderSearch =
   const threeDaysAgo = new Date(today);
   threeDaysAgo.setDate(today.getDate() - 3);
 
-  const sidebarContents = document.querySelectorAll(".sidebar-content .top-level li span");
+  //  Focusing for current Category
+  const urlPathNameElement = document.getElementById('pathName');
+  const sidebarCategoryContents = document.querySelectorAll("ul.top-level > li:not(:has(details)) a")
+  for (let i = 0; i < sidebarCategoryContents.length; i++) {
+    if(urlPathNameElement!.value?.split("/")[1] === sidebarCategoryContents[i].href.split("/")[3]) {
+      sidebarCategoryContents[i].setAttribute("aria-current", "page");
+    }
+  }
 
-  for (let i = 0; i < sidebarContents.length; i++) {
-    const text = sidebarContents[i].innerText.trim();
+  // ADD NEW Badge By Today
+  const sidebarOfNoticeContents = document.querySelectorAll(".sidebar-content .top-level li span");
+  for (let i = 0; i < sidebarOfNoticeContents.length; i++) {
 
     // 문자열에서 yyyy-MM-dd 형식 날짜 추출
-    const match = text.match(/\d{4}-\d{2}-\d{2}/);
+    const match = sidebarOfNoticeContents[i].innerText.trim().match(/\d{4}-\d{2}-\d{2}/);
     if (!match) continue;
 
     const [year, month, day] = match[0].split('-').map(Number);
@@ -33,9 +43,10 @@ const shouldRenderSearch =
     itemDate.setHours(0, 0, 0, 0);
 
     if (itemDate >= threeDaysAgo && itemDate <= today) {
-      sidebarContents[i].innerHTML += ' <span class="new-badge">NEW</span>';
+      sidebarOfNoticeContents[i].innerHTML += ' <span class="new-badge">NEW</span>';
     }
   }
+
 </script>
 <script>
   document.documentElement.dataset.theme = 'light';
@@ -43,6 +54,8 @@ const shouldRenderSearch =
     localStorage.setItem('starlight-theme', 'light');
   }
 </script>
+<input type="hidden" value={Astro.url.pathname} id="pathName"/>
+
 <div class="mainSiteTitle">
     <SiteTitle {...Astro.props}/>
 </div>
