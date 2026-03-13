@@ -6,6 +6,10 @@ writtenAt: 2026-03-16
 ---
 
 import Frame from "/src/components/Frame.astro";
+import Figure from "/src/components/Figure.astro";
+import productExcel01 from "./_assets/productExcel01.png";
+import productExcel02 from "./_assets/productExcel02.png";
+import productExcel03 from "./_assets/productExcel03.png";
 
 ## VMMS 업데이트
 
@@ -77,4 +81,15 @@ import Frame from "/src/components/Frame.astro";
 
     또한 상품 관리 화면에서 **원가 표시 항목이 제거**되었습니다.
 
+</Frame>
+
+<Frame>
+    ### 상품 일괄 등록 개선
+    `상품 일괄 등록`에서 더 원활한 등록을 위해 **엑셀 업로드 유의사항**이 추가되었습니다.
+    <div style={"display: flex; justify-content: center; gap: 50px;"}>
+        <Figure src={productExcel01} caption={"변경 전"} width={500}/>
+        <Figure src={productExcel02} caption={"변경 후"} width={500}/>
+    </div>
+    또한 일괄 저장 시 등록에 실패한 경우가 더 명확히 표기되도록 수정되었습니다.
+    <Figure src={productExcel03} caption={"저장 후 안내메시지"} width={400}/>
 </Frame>
