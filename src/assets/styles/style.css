@@ -254,10 +254,6 @@ abbr:where([title]) {
   text-decoration: underline dotted
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 12px 0px !important;
-}
-
 .main-pane h1, .main-pane h2, .main-pane h3, .main-pane h4, .main-pane h5, .main-pane h6 {
   /*border-bottom: 1px solid #e5e7eb;*/
   font-weight: 400;
@@ -283,7 +279,6 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   letter-spacing: -.021em !important;
   font-weight: 600 !important;
-  margin: 12px 0 !important;
   scroll-margin-top: 5.2rem !important;
 }
 
@@ -296,16 +291,12 @@ h2 {
 h3 {
   letter-spacing: -.018em !important;
   font-weight: 600 !important;
-  margin: 30px 0px 12px 0px !important;
   color: #4e5968 !important;
 }
 
 h4 {
-  font-size: 1.125rem !important;
-  line-height: 1.35 !important;
   letter-spacing: -.018em !important;
-  font-weight: 400 !important;
-  margin: 12px 0px !important;
+  font-weight: 600 !important;
   color: #353841 !important;
 }
 
@@ -323,6 +314,7 @@ a span {
 
 p {
   font-size: 16px !important;
+  margin-top: .5em;
 }
 
 a {
@@ -456,14 +448,6 @@ button:where{
   cursor: pointer;
 }
 
-/*summary {
-  display: list-item
-}*/
-
-blockquote, dl, dd, h1, h2, h3, h4, h5, h6, figure, p, pre {
-  margin: .2em 0;
-}
-
 fieldset {
   margin: 0;
   padding: 0
@@ -480,7 +464,7 @@ ol, ul, menu {
 }
 
 .main-pane .sl-markdown-content #contents > div > ul:has(ul) {
-  margin: 1.5em 0 1.5em .75em;
+  margin: .25em 0 .25em .25em
 }
 
 .main-pane .sl-markdown-content ul {
@@ -1259,6 +1243,14 @@ img, video {
   margin-bottom: 12px
 }
 
+.mb-8 {
+  margin-bottom: 2rem
+}
+
+.mb-12 {
+  margin-bottom: 3rem
+}
+
 .mb-16 {
   margin-bottom: 4rem
 }
@@ -1314,9 +1306,19 @@ img, video {
 .ms {
   margin-inline-start: 1rem
 }
-.mt-5{
-  margin-top: 5px !important;
+
+.mt-0{
+  margin-top: 0;
 }
+
+.mt-1{
+  margin-top: .25em;
+}
+
+.mt-5{
+  margin-top: 2px !important;
+}
+
 .mt-10 {
   margin-top: 2.5rem
 }
@@ -3095,6 +3097,29 @@ footer {
     color: #3182fb !important;
 }
 
-.level-h1, .level-h2, .level-h3, .level-h4 {
-  margin: .5em 0;
+.level-h1, .level-h2, .level-h3, .level-h4, .level-h1 > h1, .level-h2 > h2, .level-h3 > h3, .level-h4 > h4 {
+  margin: .25em 0;
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+}
+
+.level-h4 {
+  margin-top: 1em;
+}
+
+.sl-markdown-content hr:last-child {
+  display: none;
+}
+
+#contents ul {
+  list-style: disc;
+}
+
+#contents ul ul {
+  list-style: circle;
+}
+
+#contents ul ul ul {
+  list-style: square;
 }
