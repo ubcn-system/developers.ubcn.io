@@ -1,0 +1,34 @@
+---
+layout: /src/layouts/release-notes/Layout.astro
+title: 2026-03-24 업데이트
+releasedAt: 2026-03-24
+writtenAt: 2026-03-24
+---
+
+import Frame from "/src/components/Frame.astro";
+import Figure from "/src/components/Figure.astro";
+import asisImg from "./_assets/productManagementAsis.png";
+import tobeImg from "./_assets/productManagementTobe.png";
+
+## VMMS 업데이트
+
+<Frame>
+    ### 웹 상품 매칭 개선
+    `운영머신기 관리 > 웹 상품 매칭`에서 더 편리한 신규 상품 등록을 위해 아래와 같이 변경됩니다.
+    - 신규 상품 등록 시 상품 목록의 최상단에 위치하게 됩니다. (기존 최하단 위치)
+    - 저장 전 신규 상품엔 노란색 강조가 제공됩니다.
+
+    ※상세한 내용은 아래 이미지를 참고해주세요.
+
+    <br/>
+    **☝️ 이미지를 클릭 시 확대되어 자세히 확인하실 수 있어요!**
+    <Figure
+        src={asisImg}
+        caption={"변경 전: 신규 상품 등록 시 최하단에 위치하는 모습"}
+        width={1500}
+    />
+    <Figure
+        src={tobeImg}
+        caption={"변경 후: 신규 상품 등록 시 최상단에 위치하며 노란색 강조가 제공되는 모습"}
+        width={1500}/>
+</Frame>
